@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "CookeryAppClient"
+    }
+  },
+  "defaultProject": "CookeryAppClient",
+  "cli": {
+    "analytics": false
+  }
 }
