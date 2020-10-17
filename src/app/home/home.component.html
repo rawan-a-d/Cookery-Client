@@ -44,33 +44,24 @@
         <mat-form-field class="example-full-width">
         <mat-label>Search</mat-label>
 
-        <input type="text" matInput [formControl]="myControl" [matAutocomplete]="auto">
+        <input 
+            type="text" 
+            matInput 
+            [formControl]="myControl"
+            [(ngModel)]="searchText" 
+            name="searchText"
+            (keyup)="onKey()">
         <mat-icon id="search" matSuffix>search</mat-icon>
-
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-            <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
-            {{option.name}}
-            </mat-option>
-        </mat-autocomplete>
         </mat-form-field>
     </form>
 
-    <!-- <form class="example-form center-form">
-        
-        <mat-form-field>
-          <mat-label>Search</mat-label>
-          <input matInput placeholder="Placeholder">
-          <mat-icon matSuffix>search</mat-icon>
-        </mat-form-field>
-    </form> -->
 
+    <div  class="flex-container">
+        <span class="previous" (click)="i = i - 1"> < </span>
+        <span class="next"  (click)="i = i + 1"> > </span>
 
-    <div class="flex-container">
-        <div class="flex-item-left">
-            <span class="previous" (click)="i = i - 1"> < </span>
-            <span class="next"  (click)="i = i + 1"> > </span>
-
-            <img [src]="recipes[0]?.image" alt="">
+        <div class="flex-item" *ngFor="let recipe of filteredRecipesArr || recipes">
+            <img [src]="recipe.image" alt="">
             <div class="recipe-text">
                 <mat-icon class="favorite" 
                             aria-hidden="false" 
@@ -78,31 +69,14 @@
                             (click)="firstRecipeFavorite = !firstRecipeFavorite">
                         {{firstRecipeFavorite? 'favorite' : 'favorite_border'}}</mat-icon>
 
-                <h1>{{ recipes && recipes[0]?.name }}</h1>
-            </div>
-            
+                <h1>{{ recipe.name }}</h1>
+            </div>        
         </div>
-        <div class="flex-item-right">
-
-            <img [src]="recipes[1]?.image" alt="">
-
-            <div class="recipe-text">
-                <mat-icon class="favorite" 
-                            aria-hidden="false" 
-                            aria-label="Example favorite_border icon"
-                            (click)="secondRecipeFavorite = !secondRecipeFavorite">
-                            {{secondRecipeFavorite? 'favorite' : 'favorite_border'}}</mat-icon>
-
-
-                <h1>{{ recipes && recipes[1]?.name }}</h1>
-            </div>
-
-
-        </div>
-
-
-                            
     </div>
+    <mat-paginator *ngIf="searchText && filteredRecipesArr.length > 0" 
+                    [length]="filteredRecipesArr.length"
+                    [pageSize]="2">
+    </mat-paginator>
 
 
 </div>

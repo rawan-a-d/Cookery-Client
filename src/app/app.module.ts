@@ -16,12 +16,18 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
+import { FilterPipe } from './pipes/filter.pipe';
+
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {MatPaginatorModule} from '@angular/material/paginator';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
-    HomeComponent
+    HomeComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -36,12 +42,16 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     BrowserAnimationsModule,
     MatInputModule,
-    MatIconModule
+    MatIconModule,
+    MatPaginatorModule,
+
+    FlexLayoutModule,
 
   ],
   providers: [
     DataService,
-    RecipeService
+    RecipeService,
+    FilterPipe
   ],
   bootstrap: [AppComponent]
 })

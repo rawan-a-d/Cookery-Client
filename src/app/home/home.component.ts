@@ -1,3 +1,4 @@
+import { FilterPipe } from './../pipes/filter.pipe';
 import { RecipeService } from './../services/recipe.service';
 import { Recipe } from '../models/Recipe';
 import { Component, OnInit } from '@angular/core';
@@ -5,23 +6,16 @@ import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
 
-export interface User {
-  name: string;
-}
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  searchText = '';
+
   myControl = new FormControl();
-  options: User[] = [
-    {name: 'Mary'},
-    {name: 'Shelley'},
-    {name: 'Igor'}
-  ];
-  filteredOptions: Observable<User[]>;
+
 
   allRecipes: Recipe[] = [];
 
@@ -31,21 +25,18 @@ export class HomeComponent implements OnInit {
   firstRecipeFavorite: boolean = false;
   secondRecipeFavorite: boolean = true;
 
+  filteredRecipes: Recipe[];
+
+  regularDistribution = 100 / 3;
+
   i: number = 0;
 
-  constructor(private recipeService: RecipeService) {
+  constructor(private recipeService: RecipeService,
+            private filterPipe: FilterPipe) {
 
   }
 
   ngOnInit() {
-    // this.filteredOptions = this.myControl.valueChanges
-    //   .pipe(
-    //     startWith(''),
-    //     map(value => typeof value === 'string' ? value : value.name),
-    //     map(name => name ? this._filter(name) : this.options.slice())
-    //   );
-      
-
       this.recipeService.getAll()
         .subscribe((recipes)=> {
           console.log(recipes);
@@ -53,15 +44,6 @@ export class HomeComponent implements OnInit {
         })  
   }
 
-  displayFn(user: User): string {
-    return user && user.name ? user.name : '';
-  }
-
-  private _filter(name: string): User[] {
-    const filterValue = name.toLowerCase();
-
-    return this.options.filter(option => option.name.toLowerCase().indexOf(filterValue) === 0);
-  }
 
   get recipes() {
     console.log(this.allRecipes)
@@ -73,9 +55,24 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  public icon = 'close'; 
-
-  public changeIcon(){
-      this.firstRecipeFavorite = true ; 
+  get filteredRecipesArr() {
+    if(this.filteredRecipes) {
+      if(this.i == 0 || this.i == this.filteredRecipes.length - 1) {
+        this.i = 0;
+      }
+      return this.filteredRecipes?.slice(this.i, this.i + 2);
+    }
   }
+
+  onKey() { // without type info
+    if(this.searchText != ''){
+      this.filteredRecipes = this.filterPipe.transform(this.allRecipes, this.searchText);
+    }
+    else {
+      this.filteredRecipes = null;
+    }
+
+  }
+
+
 }
