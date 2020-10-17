@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+  }
+
+  ::ng-deep .customNav nav
+{
+      background-color: #2e415a;
+}
+
+
+.center-form mat-form-field {
+    width: 40%;
+    margin: 0 30%;
+    border-radius: 200px;
+
+}
+  
+  .flex-container {
+    display: flex;
+    font-size: 30px;
+    width: 70%;
+    flex-direction: row;
+    margin: 1% 15%;
+    position: relative;
+  }
+  
+  .flex-item-left {
+    background-color: #d55457;
+    padding: 0;
+    flex: 50%;
+  }
+  
+  .flex-item-right {
+    background-color: #ffd460;
+    padding: 0;
+    flex: 50%;
+  }
+
+  img {
+      width: 100%;
+      height: 60vh;
+      object-fit: cover;
+  }
+
+  .recipe-text {
+    /* height: 10vh; */
+    text-align: center;
+    padding: 5vh 0;
+    /* font-size: 0.6em;; */
+  }
+
+
+.container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+  
+
+  span { 
+    position: absolute;
+    margin: 30vh 0;
+  }
+
+  .next {
+    right: 0;
+
+  }
+
+  .previous, .next {
+      background-color: gray;
+      padding: 10px;
+      cursor: pointer;
+  }
+
+  mat-icon.favorite {
+      float: right;
+      margin-right: 30px;
+      cursor: pointer;
+  }
+
+  .mat-form-field-flex {
+      height: 50px;
+  }
+
+
+
+  /* small screen */
+@media screen and (max-width: 1150px) {
+  .flex-container {
+    flex-direction: column;
+  }
+
+  .flex-item-right {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+  
