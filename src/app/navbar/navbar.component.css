@@ -1,0 +1,5 @@
+/* Nav */
+::ng-deep .customNav nav
+{
+  background-color: #2e415a;
+}
