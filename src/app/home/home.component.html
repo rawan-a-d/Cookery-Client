@@ -15,7 +15,6 @@
         <li class="nav-item" routerLinkActive="active">
           <a class="nav-link waves-light" href="profile" mdbWavesEffect>My Recipes</a>
         </li>
-
        
   
       </ul>
@@ -54,32 +53,42 @@
         <mat-icon id="search" matSuffix>search</mat-icon>
         </mat-form-field>
     </form>
+    <!-- {{'filtered ' + filteredRecipesArr?.length}}
+    <br>
+    {{ 'recipe ' + recipes?.length}}
+    <br>
+    {{'i ' + i}}
+    <br>
+    {{'Dierction ' + direction}} -->
 
-
-    <div  class="flex-container">
-        <span class="previous" (click)="i = i - 1"> < </span>
-        <span class="next"  (click)="i = i + 1"> > </span>
-
+    <div class="flex-container mat-elevation-z6" [style.width.%]="flexWidth" [ngStyle]="{'margin-left': flexWidth == 70? '15%': '25%'}">
+        <div class="prev-next-container">
+            <span class="previous" (click)="previous()">
+                <mat-icon id="search" matSuffix>arrow_back_ios</mat-icon>
+            </span>
+        </div>
+        <div class="prev-next-container right">
+            <span class="next" (click)="next()"> 
+                <mat-icon id="search" matSuffix>arrow_forward_ios</mat-icon>
+            </span>
+        </div>
         <div class="flex-item" *ngFor="let recipe of filteredRecipesArr || recipes">
             <img [src]="recipe.image" alt="">
             <div class="recipe-text">
                 <mat-icon class="favorite" 
                             aria-hidden="false" 
                             aria-label="Example favorite_border icon"
-                            (click)="firstRecipeFavorite = !firstRecipeFavorite">
-                        {{firstRecipeFavorite? 'favorite' : 'favorite_border'}}</mat-icon>
+                            (click)="firstRecipeFavorite = !isFavorite">
+                        {{isFavorite? 'favorite' : 'favorite_border'}}</mat-icon>
 
                 <h1>{{ recipe.name }}</h1>
             </div>        
         </div>
     </div>
-    <mat-paginator *ngIf="searchText && filteredRecipesArr.length > 0" 
-                    [length]="filteredRecipesArr.length"
+    <mat-paginator *ngIf="searchText && filteredRecipes?.length > 0" 
+                    [length]="filteredRecipes?.length"
                     [pageSize]="2">
     </mat-paginator>
 
 
 </div>
-
-
-

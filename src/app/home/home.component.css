@@ -1,13 +1,15 @@
 * {
-    box-sizing: border-box;
-  }
+  box-sizing: border-box;
+}
 
-  ::ng-deep .customNav nav
+/* Nav */
+::ng-deep .customNav nav
 {
-      background-color: #2e415a;
+  background-color: #2e415a;
 }
 
 
+/* Search form */
 .center-form mat-form-field {
     width: 40%;
     margin: 0 30%;
@@ -15,118 +17,117 @@
 
 }
   
-  .flex-container {
-    display: flex;
-    font-size: 30px;
-    width: 70%;
-    flex-direction: row;
-    margin: 1% 15%;
-    position: relative;
-  }
-  
-  .flex-item-left {
-    background-color: #d55457;
-    padding: 0;
-    flex: 50%;
-  }
-  
-  .flex-item-right {
-    background-color: #ffd460;
-    padding: 0;
-    flex: 50%;
-  }
 
-  .flex-item {
-    background-color: #ffd460;
+/* Flex container */
+.flex-container {
+  display: flex;
+  font-size: 30px;
+  flex-direction: row;
+  margin: 1% 15%;
+  position: relative;
+}
 
-    padding: 0;
-    flex: 50%;
-    flex-grow: 4; /* default 0 */
+/* Flex item */
+.flex-item {
+  background-color: #ffd460;
+  padding: 0;
+  border: #dcb951 2px solid;
+  flex: 50%;
+}
 
-  }
+/* image */
+img {
+    width: 100%;
+    height: 60vh;
+    object-fit: cover;
+}
 
-  img {
-      width: 100%;
-      height: 60vh;
-      object-fit: cover;
-  }
-
-  .recipe-text {
-    /* height: 10vh; */
-    text-align: center;
-    padding: 5vh 0;
-    /* font-size: 0.6em;; */
-  }
+/* Recipe text */
+.recipe-text {
+  text-align: center;
+  padding: 5vh 0;
+}
 
 
-.container {
+/* .container {
     max-width: 1000px;
     position: relative;
     margin: auto;
+} */
+
+/* Previous, Next container */
+.prev-next-container {
+  position: absolute;
+  height: 100%;
+  background: rgba(0,0,0,.38);
+  padding: 30vh 0;
 }
-  
 
-  span { 
-    position: absolute;
-    margin: 30vh 0;
-  }
+/* Previous, Next container right button */
+.prev-next-container.right {
+  right: 0;
+}
 
-  .next {
-    right: 0;
-
-  }
-
-  .previous, .next {
-      background-color: gray;
-      padding: 10px;
-      cursor: pointer;
-  }
-
-  mat-icon.favorite {
-      float: right;
-      margin-right: 30px;
-      cursor: pointer;
-  }
-
-  .mat-form-field-flex {
-      height: 50px;
-  }
+.next {
+  right: 0;
+}
 
 
-  mat-paginator {
-    align-items: center;
-    justify-content: center;
-  }
+/* span inside Previous, Next container */
+span { 
+  position: relative;
+  margin: 30vh 0;
+}
 
-  ::ng-deep div.mat-paginator-container {
-    align-items: center;
-    justify-content: center;
-  }
+/* On hover, add a black background color with a little bit see-through */
+.previous:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Next & previous buttons */
+.previous, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Favorite icons */
+mat-icon.favorite {
+    float: right;
+    margin-right: 30px;
+    cursor: pointer;
+    color: #ea5455;
+}
+
+/* Paginator */
+mat-paginator {
+  align-items: center;
+  justify-content: center;
+}
+
+::ng-deep div.mat-paginator-container {
+  align-items: center;
+  justify-content: center;
+}
 
 
-  /* small screen */
+
+/* screens less than 1150px */
 @media screen and (max-width: 1150px) {
   .flex-container {
     flex-direction: column;
   }
 
-  .flex-item-right {
+  .flex-item:nth-of-type(2n) {
     display: none;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-  
