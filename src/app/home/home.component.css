@@ -123,8 +123,10 @@ mat-paginator {
 
 /* screens less than 1150px */
 @media screen and (max-width: 1150px) {
-  .flex-container {
+  ::ng-deep .flex-container {
     flex-direction: column;
+    width: 70% !important;
+    margin: 2% 15% !important;
   }
 
   .flex-item:nth-of-type(2n) {
