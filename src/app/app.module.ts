@@ -21,6 +21,8 @@ import { FilterPipe } from './pipes/filter.pipe';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { NavbarComponent } from './navbar/navbar.component';
+import { RecipeComponent } from './recipe/recipe.component';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -29,7 +31,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     UsersComponent,
     HomeComponent,
     FilterPipe,
-    NavbarComponent
+    NavbarComponent,
+    RecipeComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,17 @@ import { NavbarComponent } from './navbar/navbar.component';
     MatPaginatorModule,
 
     FlexLayoutModule,
+
+    RouterModule.forRoot([
+      {
+        path: 'recipes',
+        component: HomeComponent
+      },
+      {
+        path: 'recipes/:id',
+        component: RecipeComponent
+      }
+    ]),
 
   ],
   providers: [

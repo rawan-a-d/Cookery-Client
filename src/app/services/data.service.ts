@@ -23,6 +23,15 @@ export class DataService {
       )
   }
 
+  get(id: any) {
+    return this.http.get(this.url + '/' + id)
+      .pipe(
+        map(
+          response => response
+        )
+      )
+  }
+
   create(resource: any) {
     return this.http.post(this.url, JSON.stringify(resource))
       .pipe(

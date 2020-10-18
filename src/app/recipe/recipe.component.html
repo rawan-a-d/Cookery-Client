@@ -1,0 +1,38 @@
+<div class="container my-5">
+    <h1 
+        id="recipe-name" 
+        class="text-center">
+        {{ recipe?.name }}
+        <mat-icon class="favorite" 
+            aria-hidden="false" 
+            aria-label="Example favorite_border icon"
+            (click)="isFavorite = !isFavorite">
+            {{isFavorite? 'favorite' : 'favorite_border'}}
+        </mat-icon>
+    </h1>
+    <p class="text-center">Number of people</p>
+    <p class="text-center">
+        <span>
+            Created by user name
+
+        </span>
+        <mat-icon 
+            aria-hidden="false" 
+            aria-label="Example group_add icon"
+            (click)="isFollowed = !isFollowed">
+             {{isFollowed? 'person_remove' : 'group_add'}}
+        </mat-icon>
+    </p> 
+
+
+    <h3 class="section-heading">Ingredients:</h3>
+    <ul class="section">
+        <li *ngFor="let ingredient of recipe?.ingredients">{{ ingredient.amount }} - {{ ingredient.name }}</li>
+    </ul>
+
+    <h3 class="section-heading">Instructions:</h3>
+    <p class="section">
+        {{ recipe?.description }}
+    </p>
+    <img [src]="recipe?.image">
+</div>

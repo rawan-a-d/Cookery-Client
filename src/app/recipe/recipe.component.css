@@ -1,0 +1,48 @@
+/* Recipe title */
+#recipe-name {
+    margin-top: 3%;;
+    font-size: 2.1em;
+}
+
+/* Recipe image */
+img {
+    width: 60%;
+    margin: 2% 20%;
+}
+
+/* Favorite icon */
+.favorite {
+    float: right;
+}
+
+/* Section heading (ingredients, Instructions) */
+h3.section-heading {
+    font-size: 1.5em;
+}
+
+/* Sections */
+.section {
+    font-size: 1.1em;
+    line-height: 1.7em;
+}
+
+/* Ingredients list */
+ul {
+    list-style-type: square;
+}
+
+/* follow, unfollow icons */
+p > .mat-icon {
+  vertical-align: top;
+  font-size: 1.43em;
+}
+
+
+/* screens less than 770px */
+@media screen and (max-width: 770px) {
+    img {
+        width: 80%;
+        margin: 2% 10%;
+    }
+}
+
