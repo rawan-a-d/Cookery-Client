@@ -29,6 +29,7 @@ import {MatTableModule} from '@angular/material/table';
 import { MyRecipesComponent } from './my-recipes/my-recipes.component';
 import { SelectedRecipeComponent } from './my-recipes/selected-recipe/selected-recipe.component';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 
 @NgModule({
@@ -61,6 +62,7 @@ import { NewRecipeComponent } from './new-recipe/new-recipe.component';
     MatDividerModule,
     MatTableModule,
     FlexLayoutModule,
+    MatFormFieldModule,
 
     RouterModule.forRoot([
       {

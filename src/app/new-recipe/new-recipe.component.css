@@ -8,6 +8,7 @@
     display: inline-block;
     width: 58%;
     margin-right: 4%;
+    /* margin-top: 1%; */
     padding: 0;
 
 }
@@ -24,7 +25,14 @@
 
 #ingredient-amount {
     padding: 1.5%;
+    /* margin-bottom: 5%; */
+    /* border-radius: 1%; */
 }
+/* 
+.mat-grid-tile, ul {
+    border: solid 2px #000;
+} */
+
 
 mat-divider {
     width: 80%;
@@ -51,12 +59,12 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {  
 
    opacity: 1;
-   
 
 }
 
-input[type=number]:focus {
-    outline: #2e415a;
+input[type=number]#ingredient-amount:focus {
+    /* background-color: #ffd460; */
+    color: #2e415a;
 }
 
 button {
@@ -83,6 +91,18 @@ button {
     color: #989494;
 }
 
+/* 
+.mat-form-field-label{
+    color:#2e415a !important;
+  }
+  .mat-form-field-underline{
+    background-color:#2e415a !important;
+  } */
+
+/* input color class */
+/* ::ng-deep input.mat-input-element {
+    color: #2e415a;
+  } */
   
   /* Change label color on focused */
   ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {

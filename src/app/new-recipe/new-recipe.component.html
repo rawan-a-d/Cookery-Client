@@ -1,7 +1,7 @@
 <form [formGroup]="recipeForm">
     <div class="example-container">
-        <button mat-raised-button id="save-recipe" type="submit" (click)="submit(recipeForm)">Save</button>
-        <button mat-raised-button id="cancel" type="button" (click)="cancel()">Cancel</button>
+        <button mat-raised-button color="accent" id="save-recipe" type="submit" (click)="submit(recipeForm)">Save</button>
+        <button mat-raised-button color="accent" id="cancel" type="button" (click)="cancel()">Cancel</button>
 
         <br>
         <mat-form-field appearance="legacy">
@@ -26,17 +26,17 @@
                     <mat-label>Ingredient</mat-label>
                     <input matInput name="ingredient" formControlName="ingredient">
                 </mat-form-field>        
-                <input id="ingredient-amount" type="number" name="theValue" step="1" min="0" max="100" required placeholder="1" name="amount" formControlName="amount">
+                <input id="ingredient-amount" type="number" step="1" min="0" max="100" required placeholder="1" name="amount" formControlName="amount">
                 <mat-icon aria-hidden="false" aria-label="Example remove_circle_outline icon">remove_circle_outline</mat-icon>
             </div>
         </div>
         <br>
 
         <mat-divider></mat-divider>
-        <button mat-raised-button id="add-ingredient" type="button" (click)="addIngredient()">Add Ingredient</button>
+        <button mat-raised-button color="accent" id="add-ingredient" type="button" (click)="addIngredient()">Add Ingredient</button>
 
     </div>
 
-    {{ recipeForm.value | json }}
+    <!-- {{ recipeForm.value | json }} -->
 
 </form>

@@ -4,7 +4,7 @@
 
         <div id="flex-container">
             <div class="flex-item-left">
-                <button mat-raised-button id="new-recipe" color="primary" (click)="onNewRecipe()">New Recipe</button>
+                <button mat-raised-button id="new-recipe" color="accent" (click)="onNewRecipe()">New Recipe</button>
                 <mat-divider></mat-divider>
                 <div class="recipe" *ngFor="let recipe of recipes; trackBy: trackRecipe" (click)="onSelected(recipe)">
                     <h3>{{ recipe.name }}</h3> 
