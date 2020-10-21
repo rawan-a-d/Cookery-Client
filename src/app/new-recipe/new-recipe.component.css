@@ -1,0 +1,95 @@
+.mat-form-field {
+    margin-top: 3%;
+    display: block;
+    width: 80%;
+}
+
+.mat-form-field#ingredients {
+    display: inline-block;
+    width: 58%;
+    margin-right: 4%;
+    padding: 0;
+
+}
+
+#cancel {
+    margin: auto 4%;
+}
+
+
+#add-ingredient {
+    margin-top: 6%;
+}
+
+
+#ingredient-amount {
+    padding: 1.5%;
+}
+
+mat-divider {
+    width: 80%;
+    margin-top: 2%;
+}
+
+
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1;
+    border: #989494;
+
+}
+
+
+.mat-icon {
+    margin-left: 1%;
+    color: #989494;
+    vertical-align: middle;
+
+}
+
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+
+   opacity: 1;
+   
+
+}
+
+input[type=number]:focus {
+    outline: #2e415a;
+}
+
+button {
+    background-color: #ffd460;
+    color: #2e415a;
+    /* color: #585656; */
+}
+
+
+
+
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
+    top: 0.25em;
+    bottom: 0.25em;
+}
+
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-start, ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-end {
+    border-radius: 0;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: #989494;
+}
+
+  
+  /* Change label color on focused */
+  ::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: #2e415a !important;
+  }
+  
+  /* underline border color on focused */
+  ::ng-deep .mat-focused .mat-form-field-underline .mat-form-field-ripple, ::ng-deep .mat-focused .mat-form-field-outline .mat-form-field-ripple{
+    background-color: #2e415a !important;
+  }

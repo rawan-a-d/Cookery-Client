@@ -1,0 +1,53 @@
+mat-grid-tile {
+    background: lightblue;
+  }
+
+.recipe {
+    border: 2px solid #eee;
+    height: 12vh;
+    padding: 4%;
+    cursor: pointer;
+}
+
+#recipes {
+    margin: auto 10%;
+    width: 90%;
+}
+
+#flex-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-item-left {
+    flex: 35%;
+    margin: 5%;
+    /* width: 35%; */
+    flex-grow: 0;
+}
+
+.flex-item-right {
+    flex: 40%;
+    margin: 5%;
+}
+
+/* img {
+    width: 40%;
+    margin-bottom: 5%;
+} */
+
+
+
+
+mat-divider {
+    margin: 8% 0;
+}
+
+
+
+/* screens less than 770px */
+@media screen and (max-width: 900px) {
+    #flex-container {
+        flex-direction: column;
+    }
+}

@@ -1,0 +1,42 @@
+<form [formGroup]="recipeForm">
+    <div class="example-container">
+        <button mat-raised-button id="save-recipe" type="submit" (click)="submit(recipeForm)">Save</button>
+        <button mat-raised-button id="cancel" type="button" (click)="cancel()">Cancel</button>
+
+        <br>
+        <mat-form-field appearance="legacy">
+        <mat-label>Name</mat-label>
+        <input matInput name="name" formControlName="name">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="legacy">
+            <mat-label>Image URL</mat-label>
+            <input matInput name="image" formControlName="image">
+        </mat-form-field>
+        <br>  
+        <mat-form-field appearance="legacy">
+            <mat-label>Description</mat-label>
+            <textarea matInput name="description" formControlName="description" rows="4"></textarea>
+        </mat-form-field>
+        <br>
+
+        <div formArrayName="ingredients" *ngFor="let item of ingredients.controls; let ingredientIndex = index">
+            <div [formGroupName]="ingredientIndex">
+                <mat-form-field id="ingredients" appearance="outline">
+                    <mat-label>Ingredient</mat-label>
+                    <input matInput name="ingredient" formControlName="ingredient">
+                </mat-form-field>        
+                <input id="ingredient-amount" type="number" name="theValue" step="1" min="0" max="100" required placeholder="1" name="amount" formControlName="amount">
+                <mat-icon aria-hidden="false" aria-label="Example remove_circle_outline icon">remove_circle_outline</mat-icon>
+            </div>
+        </div>
+        <br>
+
+        <mat-divider></mat-divider>
+        <button mat-raised-button id="add-ingredient" type="button" (click)="addIngredient()">Add Ingredient</button>
+
+    </div>
+
+    {{ recipeForm.value | json }}
+
+</form>

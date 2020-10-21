@@ -1,0 +1,31 @@
+
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="My-recipes">
+
+        <div id="flex-container">
+            <div class="flex-item-left">
+                <button mat-raised-button id="new-recipe" color="primary" (click)="onNewRecipe()">New Recipe</button>
+                <mat-divider></mat-divider>
+                <div class="recipe" *ngFor="let recipe of recipes; trackBy: trackRecipe" (click)="onSelected(recipe)">
+                    <h3>{{ recipe.name }}</h3> 
+                    {{recipe.id}}
+                    <!-- <p>{{ recipe.description }}</p> -->
+                </div>
+            </div>
+
+            <div class="flex-item-right" [ngSwitch]="switch">
+                <app-selected-recipe [recipe]="selectedRecipe" *ngSwitchCase="'selectedRecipe'"></app-selected-recipe>
+
+                <app-new-recipe *ngSwitchCase="'newRecipe'" (onSubmit)="onNewRecipeCreated()"></app-new-recipe>
+            </div>
+
+
+        </div>
+
+
+  
+        
+    </mat-tab>
+    <mat-tab label="Favorites">Content </mat-tab>
+</mat-tab-group>
+

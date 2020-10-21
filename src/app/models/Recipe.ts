@@ -6,4 +6,10 @@ export class Recipe {
     description: string;
     image: string;
     ingredients: Ingredient[];
+    userId: number;
+
+    constructor(init?: Partial<Recipe>){
+        // This constructor will work with any type and will assign any matching filed.
+        Object.assign(this, init);
+    }
 }

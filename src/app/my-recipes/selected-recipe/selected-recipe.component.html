@@ -1,0 +1,19 @@
+<div class="flex-item-right" *ngIf="recipe">
+    <img [src]="recipe.image" alt="">
+    <h2>{{ recipe.name }}</h2>
+    <button mat-raised-button id="manage-recipe" color="primary">Manage Recipe</button>
+    <h3>
+        Instructions
+    </h3>
+    <p id="instructions-content">
+        {{ recipe.description }}
+    </p>
+    <ul>
+        <li *ngFor="let ingredient of recipe.ingredients" class="ingredient">{{ ingredient.ingredient }} - {{ ingredient.amount }}</li>
+    </ul>
+
+
+</div>
+
+
+  

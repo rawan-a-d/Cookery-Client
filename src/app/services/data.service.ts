@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
@@ -7,7 +7,12 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DataService {
-  http: HttpClient
+  http: HttpClient;
+
+  // Fixes Unsupported Media Type
+  httpOptions = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
+  }
 
 
   constructor(private url: string, http: HttpClient) {
@@ -33,7 +38,10 @@ export class DataService {
   }
 
   create(resource: any) {
-    return this.http.post(this.url, JSON.stringify(resource))
+    console.log("resource");
+
+    console.log(resource);
+    return this.http.post(this.url, JSON.stringify(resource), this.httpOptions)
       .pipe(
         map(
           response => response

@@ -23,6 +23,12 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { RouterModule } from '@angular/router';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatTableModule} from '@angular/material/table';
+import { MyRecipesComponent } from './my-recipes/my-recipes.component';
+import { SelectedRecipeComponent } from './my-recipes/selected-recipe/selected-recipe.component';
+import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 
 
 @NgModule({
@@ -32,11 +38,13 @@ import { RouterModule } from '@angular/router';
     HomeComponent,
     FilterPipe,
     NavbarComponent,
-    RecipeComponent
+    RecipeComponent,
+    MyRecipesComponent,
+    SelectedRecipeComponent,
+    NewRecipeComponent
   ],
   imports: [
     BrowserModule,
-
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
@@ -49,7 +57,9 @@ import { RouterModule } from '@angular/router';
     MatInputModule,
     MatIconModule,
     MatPaginatorModule,
-
+    MatTabsModule,
+    MatDividerModule,
+    MatTableModule,
     FlexLayoutModule,
 
     RouterModule.forRoot([
@@ -60,6 +70,10 @@ import { RouterModule } from '@angular/router';
       {
         path: 'recipes/:id',
         component: RecipeComponent
+      },
+      {
+        path: 'users/:id/recipes',
+        component: MyRecipesComponent
       }
     ]),
 
