@@ -1,3 +1,4 @@
+import { AppRoutingModule } from './app-routing.module';
 import { RecipeService } from './services/recipe.service';
 import { DataService } from './services/data.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -23,6 +24,7 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { RouterModule } from '@angular/router';
+
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
@@ -30,6 +32,9 @@ import { MyRecipesComponent } from './my-recipes/my-recipes.component';
 import { SelectedRecipeComponent } from './my-recipes/selected-recipe/selected-recipe.component';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+// import { MatSidenavModule, MatListModule } from  '@angular/material';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 
 @NgModule({
@@ -42,7 +47,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     RecipeComponent,
     MyRecipesComponent,
     SelectedRecipeComponent,
-    NewRecipeComponent
+    NewRecipeComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,21 +68,27 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatTableModule,
     FlexLayoutModule,
     MatFormFieldModule,
-
-    RouterModule.forRoot([
-      {
-        path: 'recipes',
-        component: HomeComponent
-      },
-      {
-        path: 'recipes/:id',
-        component: RecipeComponent
-      },
-      {
-        path: 'users/:id/recipes',
-        component: MyRecipesComponent
-      }
-    ]),
+    MatToolbarModule,
+    MatMenuModule,
+    AppRoutingModule,
+    // RouterModule.forRoot([
+    //   {
+    //     path: 'recipes',
+    //     component: HomeComponent
+    //   },
+    //   {
+    //     path: 'recipes/:id',
+    //     component: RecipeComponent
+    //   },
+    //   {
+    //     path: 'users/:id/recipes',
+    //     component: MyRecipesComponent
+    //   },
+    //   {
+    //     path: 'users/:id/recipes/:recipeId',
+    //     component: SelectedRecipeComponent
+    //   }
+    // ]),
 
   ],
   providers: [

@@ -1,6 +1,9 @@
+import { RecipeService } from './../services/recipe.service';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from './../services/user.service';
-import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { Recipe } from '../models/Recipe';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-my-recipes',
@@ -11,6 +14,9 @@ export class MyRecipesComponent implements OnInit, AfterViewChecked {
   recipes: Recipe[];
   userId = 2;
   selectedRecipe: Recipe;
+  subscription: Subscription;
+  recipeSubscription: Subscription;
+  selectedIndex = -1;
 
   isCreated = true;
 
@@ -18,10 +24,33 @@ export class MyRecipesComponent implements OnInit, AfterViewChecked {
 
   // newRecipe ='';
 
-  constructor(private userService: UserService, private cdr: ChangeDetectorRef) { }
+  constructor(private userService: UserService, 
+              private recipeService: RecipeService,
+              private cdr: ChangeDetectorRef,
+              private router: Router,
+              private route: ActivatedRoute,
+              private elementRef: ElementRef) { }
 
   ngOnInit(): void {
+    // Subscribe to userService
+    console.log("NG INIT")
+    this.subscription = this.userService.getInfo()
+      .subscribe(value => {
+        console.log('Info got changed to: ' + value);
 
+        this.getRecipes();
+
+      })
+
+    // Subscribe to recipeService
+    this.recipeSubscription = this.recipeService.getInfo()
+    .subscribe(value => {
+      console.log('Info got changed to: ' + value);
+
+      this.getRecipes();
+    })
+
+    // Get recipes
     this.getRecipes();
 
   }
@@ -29,70 +58,45 @@ export class MyRecipesComponent implements OnInit, AfterViewChecked {
   getRecipes() {
     this.userService.getRecipes(this.userId)
       .subscribe((recipes) => {
-        // console.log("______________________________________")
-        // console.log("In get recipes")
-        // console.log((<Recipe[]>recipes).length);
-        // console.log(recipes)
-        // console.log("______________________________________")
-
-        // this.recipes = [];
-
         this.recipes = <Recipe[]>recipes;
-
-       //this.ngAfterViewChecked();
-
       })
   }
 
 
   ngAfterViewChecked() {
-
-    // console.log("After view checked")
-   //this.getRecipes();
     this.cdr.detectChanges();
   }
 
-  onSelected(recipe) {
+  onSelected(recipe, index) {
     this.selectedRecipe = recipe;
     this.switch = 'selectedRecipe';
+
+    this.selectedIndex = index;
+    
+    // change route
+    this.router.navigate([recipe.id], {relativeTo: this.route});
+  
   }
 
   onNewRecipe() {
-    this.switch = 'newRecipe';
-
-    // console.log(this.switch)
-    // console.log("HELLP TJERE")
+    this.router.navigate(['new'], {relativeTo: this.route});
   }
 
-  onNewRecipeCreated() {
-     console.log("Recipe created ");
-    
-     //setTimeout(()=>{                           //<<<---using ()=> syntax
+  onRecipeUpdate() {
+    console.log("Something happend in child")
     this.getRecipes();
-
-     //s}, 4000);
-    //this.recipes.push(mess)
-    // this.recipes.push(this.recipes[this.recipes.length - 1])
-    // this.newRecipe = 'hoho'
-    // console.log(this.recipes.join());
-    // console.log("all recipes length " + this.recipes.length);
-
-    // console.log("****************************")
-    // console.log(this.recipes);
-    // console.log("****************************")
-
-    // console.log("all recipes" + this.recipes[this.recipes.length - 1]);
-
-    //this.cdr.detectChanges();
-
- 
-
-
   }
 
   public trackRecipe (index: number, recipe: Recipe) {
-    
     return recipe ? recipe.id : undefined;
-    //return `${recipe.id}-${index}`;
   }
+
+  // ngOnDestroy() {
+  //   // this.subscription.unsubscribe();
+  //   console.log('Items destroyed');
+
+  //   this.elementRef.nativeElement.remove();
+
+  // }
 }
+

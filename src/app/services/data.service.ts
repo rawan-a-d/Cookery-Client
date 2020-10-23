@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 
@@ -7,7 +8,10 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DataService {
+   info = new BehaviorSubject('information');
   http: HttpClient;
+
+
 
   // Fixes Unsupported Media Type
   httpOptions = {
@@ -18,6 +22,18 @@ export class DataService {
   constructor(private url: string, http: HttpClient) {
     this.http = http;
    }
+
+   getInfo(): Observable<string> {
+    return this.info.asObservable();
+  }
+
+  getInfoValue(): string {
+    return this.info.getValue();
+  }
+
+  setInfo(val: string) {
+    this.info.next(val);
+  }
 
   getAll() {
     return this.http.get(this.url)
@@ -41,16 +57,23 @@ export class DataService {
     console.log("resource");
 
     console.log(resource);
+    // this.setInfo('Object created');
+
     return this.http.post(this.url, JSON.stringify(resource), this.httpOptions)
       .pipe(
         map(
           response => response
         )
       )
+
   }
 
   update(resource: any) {
-    return this.http.put(this.url + '/' + resource.id, JSON.stringify(resource))
+    console.log('service')
+    console.log(resource.id)
+    this.setInfo('Object updated');
+
+    return this.http.put(this.url + '/' + resource.id, JSON.stringify(resource), this.httpOptions)
     .pipe(
       map(
         response => response
@@ -60,6 +83,8 @@ export class DataService {
 
 
   delete(id: number) {
+    this.setInfo('Object deleted');
+
     return this.http.delete(this.url + '/' + id) 
     .pipe(
       map(

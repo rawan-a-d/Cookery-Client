@@ -1,7 +1,12 @@
-<div class="flex-item-right" *ngIf="recipe">
-    <img [src]="recipe.image" alt="">
-    <h2>{{ recipe.name }}</h2>
-    <button mat-raised-button id="manage-recipe" color="accent">Manage Recipe</button>
+<div *ngIf="recipe">
+    <img class="mat-elevation-z3" [src]="recipe.image" alt="">
+    <h2>{{ recipe.name }}</h2>    
+    <button mat-raised-button id="manage-recipe" color="accent" [matMenuTriggerFor]="menu">Manage Recipe</button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="edit()">Edit</button>
+        <button mat-menu-item (click)="delete()">Delete</button>
+    </mat-menu>
+
     <h3>
         Instructions
     </h3>
@@ -11,7 +16,6 @@
     <ul>
         <li *ngFor="let ingredient of recipe.ingredients" class="ingredient">{{ ingredient.ingredient }} - {{ ingredient.amount }}</li>
     </ul>
-
 
 </div>
 

@@ -27,7 +27,7 @@
                     <input matInput name="ingredient" formControlName="ingredient">
                 </mat-form-field>        
                 <input id="ingredient-amount" type="number" step="1" min="0" max="100" required placeholder="1" name="amount" formControlName="amount">
-                <mat-icon aria-hidden="false" aria-label="Example remove_circle_outline icon">remove_circle_outline</mat-icon>
+                <mat-icon aria-hidden="false" aria-label="Example remove_circle_outline icon" (click)="deleteIngredient(ingredientIndex)">remove_circle_outline</mat-icon>
             </div>
         </div>
         <br>

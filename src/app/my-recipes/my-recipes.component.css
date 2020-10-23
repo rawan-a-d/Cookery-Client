@@ -1,51 +1,70 @@
-mat-grid-tile {
-    background: lightblue;
-  }
-
-.recipe {
-    border: 2px solid #eee;
-    height: 12vh;
-    padding: 4%;
-    cursor: pointer;
-}
-
-#recipes {
-    margin: auto 10%;
-    width: 90%;
-}
-
+/* Container */
 #flex-container {
     display: flex;
     flex-direction: row;
 }
 
+/* flex left */
 .flex-item-left {
     flex: 35%;
     margin: 5%;
-    /* width: 35%; */
     flex-grow: 0;
 }
 
+/* flex right */
 .flex-item-right {
     flex: 40%;
     margin: 5%;
 }
 
-/* img {
-    width: 40%;
-    margin-bottom: 5%;
-} */
 
+/* Single recipe */
+.recipe {
+    border: 2px solid #eee;
+    height: 12vh;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+}
 
+/* recipe heading */
+.recipe h3 {
+    line-height: 12vh;
+    display: inline;
+    word-wrap: break-word;
 
+}
 
+/* Image container */
+.img-container {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    float: right;
+    margin-right: 4%;
+}
+
+/* image */
+.recipe-image {
+    width: 100px;
+    height: 80%;
+    margin: 10% auto;
+    vertical-align: middle;
+}
+
+/* line */
 mat-divider {
     margin: 8% 0;
 }
 
+/* active class on recipe */
+.active{ 
+    background-color: #f1f1f1;
+
+}
 
 
-/* screens less than 770px */
+/* screens less than 900px */
 @media screen and (max-width: 900px) {
     #flex-container {
         flex-direction: column;

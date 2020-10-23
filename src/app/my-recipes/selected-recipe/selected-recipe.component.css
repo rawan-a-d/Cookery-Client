@@ -1,20 +1,17 @@
-
-
-
-
+/* Recipe image */
 img {
     width: 40%;
     margin-bottom: 5%;
 }
 
 
+/* Ingredients */
 ul {
     margin-top: 6%;
     list-style-type: none;
     padding-left: 0;
     margin-left: 0;
 }
-
 
 li.ingredient {
     padding-left: 4%;
@@ -27,12 +24,13 @@ li.ingredient {
 }
 
 
+/* Manage recipe button */
 #manage-recipe {
     margin: 3% 0;
 }
 
 
-
+/* Instructions */
 #instructions-content {
     line-height: 1.7em;
 }
