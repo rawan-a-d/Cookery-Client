@@ -35,6 +35,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 // import { MatSidenavModule, MatListModule } from  '@angular/material';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { FavouritesComponent } from './favourites/favourites.component';
 
 
 @NgModule({
@@ -48,6 +49,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MyRecipesComponent,
     SelectedRecipeComponent,
     NewRecipeComponent,
+    FavouritesComponent,
   ],
   imports: [
     BrowserModule,

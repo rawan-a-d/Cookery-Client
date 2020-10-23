@@ -1,0 +1,69 @@
+/* Container */
+.container {
+    width: 60%;
+    margin: 5% 20%;
+}
+
+/* Single favourite */
+.favourite {
+    border: 2px solid #eee;
+    height: 12vh;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+/* Image container */
+.img-container {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+    width: 10%;
+    margin: auto 4%;
+}
+
+/* image */
+.recipe-image {
+    width: 100px;
+    height: 80%;
+    margin: 10% auto;
+    vertical-align: middle;
+}
+
+/* Text container */
+.text-container {
+    display: inline-block;
+    width: 70%;
+    margin-left: 4%;
+}
+
+.text-container > p {
+    display: inline-block;
+
+}
+
+.text-container > .mat-icon {
+    float: right;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+
+/* active class on recipe */
+.active{ 
+    background-color: #f1f1f1;
+}
+
+
+/* screens less than 900px */
+@media screen and (max-width: 900px) {
+    .container {
+        width: 90%;
+        margin: 5%;
+    }
+
+    .img-container {
+        width: 14%;
+        margin: auto 4%;
+        
+    }
+}

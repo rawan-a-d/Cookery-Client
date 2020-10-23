@@ -33,7 +33,11 @@ const appRoutes: Routes = [
                 component: NewRecipeComponent
             }
         ]
-    }
+    },
+    {
+        path: 'recipes/:id',
+        component: RecipeComponent
+      }
     
 ]
 
