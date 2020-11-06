@@ -29,9 +29,9 @@ export class SelectedRecipeComponent implements OnInit, OnDestroy {
         (params: Params) => {
           this.id = +params['recipeId'];
 
-          console.log(this.id)
+          // console.log(this.id)
 
-          console.log('NEW RECIPE SELECTED ' + this.id)
+          // console.log('NEW RECIPE SELECTED ' + this.id)
 
           this.recipeService.get(this.id)
           .subscribe((data) => {

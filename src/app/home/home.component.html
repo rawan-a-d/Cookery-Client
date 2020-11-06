@@ -36,7 +36,10 @@
             </span>
         </div>
         <div class="flex-item" *ngFor="let recipe of filteredRecipesArr || recipes">
-            <img [src]="recipe.image" alt="">
+            <img [src]="recipe.image? recipe.image : 'https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'"
+            onerror="this.src='https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'"
+             alt="" class="recipe-image">
+
             <div class="recipe-text">
                 <mat-icon class="favorite" 
                             aria-hidden="false" 
@@ -44,7 +47,7 @@
                             (click)="isFavorite = !isFavorite">
                         {{isFavorite? 'favorite' : 'favorite_border'}}</mat-icon>
 
-                <h1>{{ recipe.name }}</h1>
+                <h1 id="recipe-name" [routerLink]="['/recipes', recipe.id]">{{ recipe.name }}</h1>
             </div>        
         </div>
     </div>

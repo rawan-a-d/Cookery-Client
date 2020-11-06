@@ -1,3 +1,5 @@
+import { ProfileComponent } from './profile/profile.component';
+import { FavouritesComponent } from './favourites/favourites.component';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 import { HomeComponent } from './home/home.component';
 import { MyRecipesComponent } from './my-recipes/my-recipes.component';
@@ -37,7 +39,15 @@ const appRoutes: Routes = [
     {
         path: 'recipes/:id',
         component: RecipeComponent
-      }
+    },
+    {
+        path: 'users/:id/favourites',
+        component: FavouritesComponent
+    },
+    {
+        path: 'users/:id',
+        component: ProfileComponent
+    },
     
 ]
 

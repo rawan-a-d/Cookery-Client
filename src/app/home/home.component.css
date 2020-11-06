@@ -35,6 +35,11 @@ img {
     object-fit: cover;
 }
 
+/* Recipe name */
+#recipe-name {
+  cursor: pointer;
+}
+
 /* Recipe text */
 .recipe-text {
   text-align: center;

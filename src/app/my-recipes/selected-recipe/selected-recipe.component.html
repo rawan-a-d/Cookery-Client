@@ -1,5 +1,7 @@
 <div *ngIf="recipe">
-    <img class="mat-elevation-z3" [src]="recipe.image" alt="">
+    <img class="mat-elevation-z3" alt="" 
+        [src]="recipe.image? recipe.image : 'https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'"
+        onerror="this.src='https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'">
     <h2>{{ recipe.name }}</h2>    
     <button mat-raised-button id="manage-recipe" color="accent" [matMenuTriggerFor]="menu">Manage Recipe</button>
     <mat-menu #menu="matMenu">
@@ -13,11 +15,8 @@
     <p id="instructions-content">
         {{ recipe.description }}
     </p>
-    <ul>
+    <ul *ngIf="recipe.ingredients">
         <li *ngFor="let ingredient of recipe.ingredients" class="ingredient">{{ ingredient.ingredient }} - {{ ingredient.amount }}</li>
     </ul>
 
 </div>
-
-
-  

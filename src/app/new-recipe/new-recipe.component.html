@@ -13,23 +13,49 @@
             <mat-label>Image URL</mat-label>
             <input matInput name="image" formControlName="image">
         </mat-form-field>
-        <br>  
+            <!-- <input matInput name="image" formControlName="image"> -->
+            <!-- <input matInput type="file" (change)="onFileChanged($event)"> -->
+            <!-- <input matInput type="file" id="input-file" name="file" style="display: none">
+
+        </mat-form-field>
+        <!-- <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button> {{ this.selectedFile?.name}}
+        <input (change)="onFileChanged($event)" hidden #fileInput type="file" id="file" name="image" formControlName="image"> -->
+       
+        <!-- <mat-form-field appearance="legacy">
+            <mat-label>Basic legacy input</mat-label>
+            <ngx-mat-file-input formControlName="image" name="image" placeholder="Basic legacy placeholder" (change)="onFileChanged($event)"></ngx-mat-file-input>
+            <mat-icon matSuffix>folder</mat-icon>
+        </mat-form-field> -->
+<!-- 
+        <label class="image-upload-container btn btn-bwm">
+        <span>Select Image</span>
+        <input  type="file"
+                accept="image/*"
+                (change)="onFileSelected($event)">
+        </label> -->
+        
+        <br>
         <mat-form-field appearance="legacy">
             <mat-label>Description</mat-label>
             <textarea matInput name="description" formControlName="description" rows="4"></textarea>
         </mat-form-field>
         <br>
 
-        <div formArrayName="ingredients" *ngFor="let item of ingredients.controls; let ingredientIndex = index">
-            <div [formGroupName]="ingredientIndex">
-                <mat-form-field id="ingredients" appearance="outline">
-                    <mat-label>Ingredient</mat-label>
-                    <input matInput name="ingredient" formControlName="ingredient">
-                </mat-form-field>        
-                <input id="ingredient-amount" type="number" step="1" min="0" max="100" required placeholder="1" name="amount" formControlName="amount">
-                <mat-icon aria-hidden="false" aria-label="Example remove_circle_outline icon" (click)="deleteIngredient(ingredientIndex)">remove_circle_outline</mat-icon>
+        <!-- <div *ngIf="ingredients.controls"> -->
+            <div formArrayName="ingredients" *ngFor="let item of ingredients.controls; let ingredientIndex = index">
+                <div [formGroupName]="ingredientIndex">
+                    <mat-form-field id="ingredients" appearance="outline">
+                        <mat-label>Ingredient</mat-label>
+                        <input matInput name="ingredient" formControlName="ingredient">
+                    </mat-form-field>        
+                    <input id="ingredient-amount" type="number" step="1" min="1" max="100" required value="1" placeholder="1" name="amount" formControlName="amount">
+                    <mat-icon aria-hidden="false" aria-label="Example remove_circle_outline icon" (click)="deleteIngredient(ingredientIndex)">remove_circle_outline</mat-icon>
+                </div>
             </div>
-        </div>
+        <!-- </div> -->
+
+      {{  recipeForm.value | json  }}
+
         <br>
 
         <mat-divider></mat-divider>

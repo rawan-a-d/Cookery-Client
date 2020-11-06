@@ -34,6 +34,7 @@
     display: inline-block;
     width: 70%;
     margin-left: 4%;
+    vertical-align: sub;
 }
 
 .text-container > p {
@@ -55,7 +56,7 @@
 
 
 /* screens less than 900px */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 1000px) {
     .container {
         width: 90%;
         margin: 5%;
@@ -64,6 +65,10 @@
     .img-container {
         width: 14%;
         margin: auto 4%;
-        
+    }
+
+    .text-container {
+        width: 50%;
+        margin-left: 15%;
     }
 }

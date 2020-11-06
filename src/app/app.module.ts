@@ -36,6 +36,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { FavouritesComponent } from './favourites/favourites.component';
+import { ProfileComponent } from './profile/profile.component';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 
 @NgModule({
@@ -50,6 +52,7 @@ import { FavouritesComponent } from './favourites/favourites.component';
     SelectedRecipeComponent,
     NewRecipeComponent,
     FavouritesComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,6 +76,7 @@ import { FavouritesComponent } from './favourites/favourites.component';
     MatToolbarModule,
     MatMenuModule,
     AppRoutingModule,
+    MaterialFileInputModule,
     // RouterModule.forRoot([
     //   {
     //     path: 'recipes',

@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DataService {
-   info = new BehaviorSubject('information');
+  info = new BehaviorSubject('information');
   http: HttpClient;
 
 
@@ -85,7 +85,7 @@ export class DataService {
   delete(id: number) {
     this.setInfo('Object deleted');
 
-    return this.http.delete(this.url + '/' + id) 
+    return this.http.delete(this.url + '/' + id, this.httpOptions) 
     .pipe(
       map(
         response => response

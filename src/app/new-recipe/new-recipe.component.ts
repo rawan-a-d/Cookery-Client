@@ -6,7 +6,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import {AfterViewChecked,ChangeDetectorRef} from '@angular/core'
 import { renderFlagCheckIfStmt } from '@angular/compiler/src/render3/view/template';
+import { User } from '../models/User';
 
+class ImageSnippet {
+  constructor(public src: string, public file: File) {}
+}
 
 @Component({
   selector: 'app-new-recipe',
@@ -15,10 +19,17 @@ import { renderFlagCheckIfStmt } from '@angular/compiler/src/render3/view/templa
 })
 export class NewRecipeComponent implements OnInit {
   loggedInUser = 2;
+  // loggedInUser = new User(1, "Rawan", "rawan@gmail.com");
 
   recipeId: number;
   editMode = false;
   recipeForm: FormGroup;
+
+  // selectedFile: File;
+
+  selectedFile: File = null;
+
+
 
   constructor(private recipeService: RecipeService,
               private fb: FormBuilder, 
@@ -39,7 +50,10 @@ export class NewRecipeComponent implements OnInit {
     this.recipeForm = this.fb.group({
       name: [],
       description: [],
+      // image: [],
       image: [],
+
+      // image: new FormData().append('imageFile', this.selectedFile, this.selectedFile.name),
       ingredients: this.fb.array(
         [this.fb.group(
           {
@@ -56,6 +70,8 @@ export class NewRecipeComponent implements OnInit {
   }
 
   submit(f) {
+    
+
     //console.log(f);
     let newRecipe : Recipe;
 
@@ -65,12 +81,23 @@ export class NewRecipeComponent implements OnInit {
     newRecipe.id = this.recipeId;
 
     newRecipe.userId = this.loggedInUser;
+    // newRecipe.user = this.loggedInUser;
 
-    console.log(newRecipe)
-      if(this.editMode) {
+    // newRecipe.image = this.selectedFile;
+
+    // newRecipe.ingredients = this.ingredients;
+
+    console.log("UPDATED RECIPE: ")
+    console.log(newRecipe);
+    console.log("Ingredient " + this.ingredients[0])
+    if(this.editMode) {
+        console.log("Edit mode")
         this.recipeService.update(newRecipe)
           .subscribe((data) =>{
             this.cancel();
+
+            console.log("UPDATED RECIPE: ")
+            console.log(newRecipe)
 
             // inform parent    
             this.recipeService.setInfo('recipe updated');
@@ -81,7 +108,10 @@ export class NewRecipeComponent implements OnInit {
         this.recipeService.create(newRecipe)
         .subscribe((data) =>{  
           this.cancel();
+          // console.log('NEW RECIPE');
+          // console.log(this.selectedFile);
 
+          console.log(data);
           // inform parent
           this.recipeService.setInfo('recipe created');
         })
@@ -99,7 +129,7 @@ export class NewRecipeComponent implements OnInit {
 
   // add new ingredient
   addIngredient() {
-    this.ingredients.push(this.fb.group({ingredient: '', amount: ''}));
+    this.ingredients.push(this.fb.group({ingredient: '', amount: '1'}));
   }
 
   // delete ingredient
@@ -112,9 +142,11 @@ export class NewRecipeComponent implements OnInit {
     console.log("INIT FORM IS CALLED")
     let recipeName = '';
     let recipeDescription = '';
-    let recipeImage = '';
+    let recipeImage;
     let recipeIngredients;
   
+
+
     // Edit form
     if(this.editMode) {
       // Get recipe
@@ -126,12 +158,15 @@ export class NewRecipeComponent implements OnInit {
           console.log(recipe);
           recipeName = recipe.name;
           recipeDescription = recipe.description;
+          // recipeImage = recipe.image;
           recipeImage = recipe.image;
+
           recipeIngredients = this.fb.array([]);
 
           recipe.ingredients.forEach(ingredient => {
             recipeIngredients.push(this.fb.group(
               {
+                id: ingredient.id,
                 ingredient: ingredient.ingredient,
                 amount: ingredient.amount
               }
@@ -163,6 +198,28 @@ export class NewRecipeComponent implements OnInit {
     //     )]
     //   )
     // })
+
+
+
+  }
+
+  //Gets called when the user selects an image
+  // public onFileChanged(event) {
+  //   //Select File
+  //   this.selectedFile = event.target.files[0];
+
+  //   console.log(this.selectedFile)
+  // }
+
+
+  onFileSelected(event) {
+
+    console.log(event); // target -> files
+    this.selectedFile = <File>event.target.files[0];
+  }
+
+  onUpload() {
+    
   }
 }
 
