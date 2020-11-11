@@ -1,9 +1,10 @@
+import { AuthService } from './services/auth.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeService } from './services/recipe.service';
 import { DataService } from './services/data.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
@@ -38,7 +39,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
-
+import { LoginComponent } from './login/login.component';
+import { AuthHttpInterceptor } from './services/auth-http.interceptor';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,7 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     NewRecipeComponent,
     FavouritesComponent,
     ProfileComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -100,7 +103,13 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
   providers: [
     DataService,
     RecipeService,
-    FilterPipe
+    AuthService,
+    FilterPipe,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthHttpInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

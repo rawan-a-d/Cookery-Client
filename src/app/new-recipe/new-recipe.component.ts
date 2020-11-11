@@ -58,7 +58,7 @@ export class NewRecipeComponent implements OnInit {
         [this.fb.group(
           {
             ingredient: '',
-            amount: ''
+            amount: '1'
           }
         )]
       )

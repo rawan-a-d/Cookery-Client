@@ -1,3 +1,4 @@
+import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';
@@ -48,6 +49,19 @@ const appRoutes: Routes = [
         path: 'users/:id',
         component: ProfileComponent
     },
+    // {
+    //     path: 'admin',
+    //     component: AdminConponent
+    // },
+    {
+        path: 'login',
+        component: LoginComponent
+    },
+    // {
+    //     path: 'no-access',
+    //     component: NoAccessComponent
+    // }
+
     
 ]
 
