@@ -1,15 +1,9 @@
 import { ConfigurableFocusTrap } from '@angular/cdk/a11y';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+// import { JwtHelper, tokenNotExpired } from 'angular-jwt';
 import { combineAll, map } from 'rxjs/operators';
-
-
-// const httpOptions = {
-//   headers: new HttpHeaders({
-//     'Content-Type': 'application/json', 
-//     'Authorization': localStorage.getItem('token') // Basic email:password
-//   })
-// }
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 
 @Injectable({
@@ -17,10 +11,6 @@ import { combineAll, map } from 'rxjs/operators';
 })
 export class AuthService {
   credentials: string = "";
-  // Fixes Unsupported Media Type
-  // httpOptions = {
-  //   headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization': "HELLO"})
-  // }
 
   constructor(private http: HttpClient) { 
     
@@ -28,27 +18,21 @@ export class AuthService {
 
 
   // Login, send credentials to server
-  login(resource: any) {
-    this.credentials = btoa(resource.email + ":" + resource.password); // rawan:1234
-    console.log("CREDENTIALS " + this.credentials);
-    // ClientConfig config = new ClientConfig()
-    // config config = new ConfigurableFocusTrap();
-    // this.httpOptions.headers.append('Authorization', "HELLO");
+  login(credentials: any) {
+    return this.http.post('http://localhost:90/authenticate', JSON.stringify(credentials), {responseType: 'text'})
+        .pipe(
+          map( response => {
+            let result = response;
+            if(result) {
+              // Set token
+              localStorage.setItem('token', result);
 
+              return true;
+            }
 
-    // let httpOptions = {
-    //   headers: new HttpHeaders({'Content-Type': 'application/json', 'Authorization': this.credentials})
-    // }
-
-    localStorage.removeItem('token');
-    localStorage.setItem('token', this.credentials);
-    
-    // return this.http.post('http://localhost:90/authenticate')
-    //     .pipe(
-    //       map(
-    //         response => response
-    //       )
-    //    )
+            return false;
+          })
+       )
   }
 
   logout() {
@@ -56,6 +40,26 @@ export class AuthService {
   }
 
   isLoggedIn() {
+    let token = localStorage.getItem('token');
+
+    if(token) {
+      return true;
+    }
     return false;
+
+    // return tokenNotExpired();
+  }
+
+  get currentUser() {
+    let token = localStorage.getItem('token');
+
+    if(!token) {
+      return null;
+    }
+
+    let jwtHelper = new JwtHelperService();
+    let decodedToken = jwtHelper.decodeToken(token);
+
+    return decodedToken;
   }
 }

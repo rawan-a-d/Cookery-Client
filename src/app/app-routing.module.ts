@@ -8,6 +8,8 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RecipeComponent } from './recipe/recipe.component';
 import { SelectedRecipeComponent } from './my-recipes/selected-recipe/selected-recipe.component';
+import { AuthGuard } from  './services/auth-guard.service';
+import { AdminAuthGuard } from  './services/admin-auth-guard.service';
 
 const appRoutes: Routes = [
     {
@@ -22,18 +24,22 @@ const appRoutes: Routes = [
     {
         path: 'users/:id/recipes',
         component: MyRecipesComponent,
+        canActivate: [AuthGuard],
         children: [
             {
                 path: 'new',
-                component: NewRecipeComponent
+                component: NewRecipeComponent,
+                canActivate: [AuthGuard]
             },
             {
                 path: ':recipeId',
-                component: SelectedRecipeComponent
+                component: SelectedRecipeComponent,
+                canActivate: [AuthGuard]
             },
             {
                 path: ':recipeId/edit',
-                component: NewRecipeComponent
+                component: NewRecipeComponent,
+                canActivate: [AuthGuard]
             }
         ]
     },
@@ -43,16 +49,19 @@ const appRoutes: Routes = [
     },
     {
         path: 'users/:id/favourites',
-        component: FavouritesComponent
+        component: FavouritesComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'users/:id',
-        component: ProfileComponent
+        component: ProfileComponent,
+        canActivate: [AuthGuard]
     },
-    // {
-    //     path: 'admin',
-    //     component: AdminConponent
-    // },
+    {
+        path: 'admin',
+        component: HomeComponent, // Admin
+        canActivate: [AuthGuard, AdminAuthGuard]
+    },
     {
         path: 'login',
         component: LoginComponent

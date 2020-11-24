@@ -10,12 +10,15 @@
       <!-- Links -->
       <ul class="navbar-nav mr-auto">
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link waves-light" routerLink="/recipes"  mdbWavesEffect>Recipe Book<span class="sr-only">(current)</span></a>
+          <a class="nav-link waves-light" routerLink="/recipes" mdbWavesEffect>Recipe Book<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
+        <li class="nav-item" routerLinkActive="active" *ngIf="authService.isLoggedIn()">
           <a class="nav-link waves-light" routerLink="/users/2/recipes" mdbWavesEffect>My Recipes</a>
         </li>
-       
+        <!-- authService.isLoggedIn() && authService.currentUser.admin -->
+        <li class="nav-item" routerLinkActive="active" *ngIf="authService.isLoggedIn() && authService.currentUser.admin">
+          <a class="nav-link waves-light" routerLink="/admin" mdbWavesEffect>Admin</a>
+        </li>       
   
       </ul>
       <!-- Links -->
@@ -26,9 +29,10 @@
           <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
             Account<span class="caret"></span></a>
           <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-            <a class="dropdown-item waves-light" mdbWavesEffect routerLink="/users/2">Profile</a>
-            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Login</a>
-            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Register</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="authService.isLoggedIn()" routerLink="/users/2">Profile</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="!authService.isLoggedIn()" routerLink="/login">Login</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="!authService.isLoggedIn()"  routerLink="/register">Register</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="authService.isLoggedIn()" (click)="authService.logout()">Logout</a>
 
           </div>
         </li>

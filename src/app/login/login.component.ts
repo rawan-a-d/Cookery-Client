@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 // import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
@@ -15,41 +15,26 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     private authService: AuthService) { }
 
   ngOnInit(): void {
   }
 
   signIn(credentials) {
-    console.log("HOHO");
-    console.log(credentials)
-    // let configCl: ClientConfig = new ClientConfig();
-
-    // configCl.register(Http)
-    
 
     this.authService.login(credentials)
-    // .subscribe();
-      // .subscribe(result => {
-      //   console.log("result ");
-      //   this.router.navigate(['/']);
+      .subscribe((result) => {
+        console.log("result ");
+        if(result) {
+          let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl'); // The url the user wanted to go to before he logged in
+          this.router.navigate([returnUrl || '/']);
 
-        // if(result) {
-        //   this.router.navigate(['/']);
-        // }
-        // else {
-        //   console.log("ELSE")
-        //   this.invalidLogin = true;
-        // }
-      // })
+        }
+        else {
+          this.invalidLogin = true;
+        }
+
+      })
   }
-
-
-  // this.userService.get(this.userId)
-  // .subscribe((data) => {
-  //   console.log(data);
-  //   this.user = <User>data;
-  //   console.log(this.user);
-  // })
-
 }

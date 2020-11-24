@@ -41,6 +41,8 @@ import { ProfileComponent } from './profile/profile.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
 import { LoginComponent } from './login/login.component';
 import { AuthHttpInterceptor } from './services/auth-http.interceptor';
+import { AuthGuard } from './services/auth-guard.service';
+import { AdminAuthGuard } from './services/admin-auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -109,7 +111,9 @@ import { AuthHttpInterceptor } from './services/auth-http.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthHttpInterceptor,
       multi: true
-    }
+    },
+    AuthGuard,
+    AdminAuthGuard
   ],
   bootstrap: [AppComponent]
 })
