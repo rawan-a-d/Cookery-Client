@@ -1,0 +1,13 @@
+.form-signin {
+    width: 50%;
+    margin: 10% 25%;
+}
+
+mat-form-field {
+    display: block;
+}
+
+
+#register-btn {
+    margin-top: 2%;
+}

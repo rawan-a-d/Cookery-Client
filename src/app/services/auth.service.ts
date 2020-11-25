@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 // import { JwtHelper, tokenNotExpired } from 'angular-jwt';
 import { combineAll, map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { User } from '../models/User';
 
 
 @Injectable({
@@ -61,5 +62,23 @@ export class AuthService {
     let decodedToken = jwtHelper.decodeToken(token);
 
     return decodedToken;
+  }
+
+
+  register(user: User) {
+    return this.http.post('http://localhost:90/authenticate/register', JSON.stringify(user), {responseType: 'text'})
+        .pipe(
+          map( response => {
+            let result = response;
+            if(result) {
+              // Set token
+              localStorage.setItem('token', result);
+
+              return true;
+            }
+
+            return false;
+          })
+       )
   }
 }

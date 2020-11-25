@@ -43,6 +43,8 @@ import { LoginComponent } from './login/login.component';
 import { AuthHttpInterceptor } from './services/auth-http.interceptor';
 import { AuthGuard } from './services/auth-guard.service';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
+import { RegisterComponent } from './register/register.component';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import { AdminAuthGuard } from './services/admin-auth-guard.service';
     FavouritesComponent,
     ProfileComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
@@ -113,7 +116,8 @@ import { AdminAuthGuard } from './services/admin-auth-guard.service';
       multi: true
     },
     AuthGuard,
-    AdminAuthGuard
+    AdminAuthGuard,
+    // {provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher}
   ],
   bootstrap: [AppComponent]
 })
