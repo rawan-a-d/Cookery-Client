@@ -3,23 +3,7 @@ import { AbstractControl, ValidationErrors } from '@angular/forms'
 export class PasswordValidators {
 
 
-    // static shouldBeUnique(control: AbstractControl) : Promise<ValidationErrors | null> {
-
-    //     return new Promise((resolve, reject) => {
-    //         setTimeout(() => {
-    //             if (control.value == '1234'){
-    //                 // this causes an error because the return is now being done by the callback function
-    //                 resolve({
-    //                     shouldBeUnique: true
-    //                 });
-    //             }
-    //             else {
-    //                 resolve(null);
-    //             } 
-    //         }, 2000)
-
-    //     });
-    // }
+y
 
 
     // Pass entire Form

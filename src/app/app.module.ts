@@ -1,3 +1,4 @@
+import { FavouriteService } from './services/favourite.service';
 import { AuthService } from './services/auth.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeService } from './services/recipe.service';
@@ -109,6 +110,7 @@ import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/materi
     DataService,
     RecipeService,
     AuthService,
+    FavouriteService,
     FilterPipe,
     {
       provide: HTTP_INTERCEPTORS,
