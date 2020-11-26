@@ -82,17 +82,8 @@ export class NewRecipeComponent implements OnInit {
     newRecipe.id = this.recipeId;
 
     newRecipe.userId = this.userId;
-    // newRecipe.user = this.loggedInUser;
 
-    // newRecipe.image = this.selectedFile;
-
-    // newRecipe.ingredients = this.ingredients;
-
-    console.log("UPDATED RECIPE: ")
-    console.log(newRecipe);
-    console.log("Ingredient " + this.ingredients[0])
     if(this.editMode) {
-        console.log("Edit mode")
         this.recipeService.update(newRecipe)
           .subscribe((data) =>{
             this.cancel();
@@ -109,8 +100,6 @@ export class NewRecipeComponent implements OnInit {
         this.recipeService.create(newRecipe)
         .subscribe((data) =>{  
           this.cancel();
-          // console.log('NEW RECIPE');
-          // console.log(this.selectedFile);
 
           console.log(data);
           // inform parent
@@ -185,42 +174,13 @@ export class NewRecipeComponent implements OnInit {
       return;
     }
 
-    // New form
-    // this.recipeForm = this.fb.group({
-    //   name: [],
-    //   description: [],
-    //   image: [],
-    //   ingredients: this.fb.array(
-    //     [this.fb.group(
-    //       {
-    //         ingredient: '',
-    //         amount: ''
-    //       }
-    //     )]
-    //   )
-    // })
-
-
 
   }
-
-  //Gets called when the user selects an image
-  // public onFileChanged(event) {
-  //   //Select File
-  //   this.selectedFile = event.target.files[0];
-
-  //   console.log(this.selectedFile)
-  // }
-
 
   onFileSelected(event) {
 
     console.log(event); // target -> files
     this.selectedFile = <File>event.target.files[0];
-  }
-
-  onUpload() {
-    
   }
 }
 

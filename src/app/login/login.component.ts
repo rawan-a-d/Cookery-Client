@@ -1,8 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
-// import { JwtHelper, tokenNotExpired } from 'angular2-jwt';
-// import { ClientConfig } from 'clientconfig';
 
 @Component({
   selector: 'app-login',

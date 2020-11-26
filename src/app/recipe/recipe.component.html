@@ -10,7 +10,6 @@
             {{isFavorite? 'favorite' : 'favorite_border'}}
         </mat-icon>
     </h1>
-    <!-- <p class="text-center">Number of people</p> -->
     <p class="text-center">
         <span>
             Created by user name
@@ -34,5 +33,7 @@
     <p class="section">
         {{ recipe?.description }}
     </p>
-    <img [src]="recipe?.image">
+    <img [src]="recipe.image? recipe.image : 'https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'"
+    onerror="this.src='https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'"
+     alt="" class="recipe-image">
 </div>

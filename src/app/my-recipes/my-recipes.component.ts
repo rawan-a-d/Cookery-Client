@@ -21,8 +21,6 @@ export class MyRecipesComponent implements OnInit, AfterViewChecked {
 
   switch = '';
 
-  // newRecipe ='';
-
   constructor(private userService: UserService, 
               private recipeService: RecipeService,
               private cdr: ChangeDetectorRef,
@@ -32,7 +30,6 @@ export class MyRecipesComponent implements OnInit, AfterViewChecked {
 
   ngOnInit(): void {
     // Subscribe to userService
-    // console.log("NG INIT")
     this.subscription = this.userService.getInfo()
       .subscribe(value => {
         console.log('Info got changed to: ' + value);
@@ -58,7 +55,6 @@ export class MyRecipesComponent implements OnInit, AfterViewChecked {
     this.userService.getRecipes()
       .subscribe((recipes) => {
         this.recipes = <Recipe[]>recipes;
-        // console.log(recipes);
       })
   }
 
@@ -90,18 +86,5 @@ export class MyRecipesComponent implements OnInit, AfterViewChecked {
   public trackRecipe (index: number, recipe: Recipe) {
     return recipe ? recipe.id : undefined;
   }
-
-  // goToFavourites() {
-  //   console.log("HELLO there")
-  //   // this.router.navigate(['favourites'], {relativeTo: this.route});
-  // }
-
-  // ngOnDestroy() {
-  //   // this.subscription.unsubscribe();
-  //   console.log('Items destroyed');
-
-  //   this.elementRef.nativeElement.remove();
-
-  // }
 }
 
