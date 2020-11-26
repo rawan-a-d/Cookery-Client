@@ -12,7 +12,6 @@ import { Subscription } from 'rxjs';
 })
 export class MyRecipesComponent implements OnInit, AfterViewChecked {
   recipes: Recipe[];
-  userId = 2;
   selectedRecipe: Recipe;
   subscription: Subscription;
   recipeSubscription: Subscription;
@@ -56,7 +55,7 @@ export class MyRecipesComponent implements OnInit, AfterViewChecked {
   }
 
   getRecipes() {
-    this.userService.getRecipes(this.userId)
+    this.userService.getRecipes()
       .subscribe((recipes) => {
         this.recipes = <Recipe[]>recipes;
         // console.log(recipes);

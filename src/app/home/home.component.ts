@@ -1,8 +1,11 @@
+import { RecipeDTO } from './../models/RecipeDTO';
 import { FilterPipe } from './../pipes/filter.pipe';
 import { RecipeService } from './../services/recipe.service';
 import { Recipe } from '../models/Recipe';
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
+import { FavouriteService } from '../services/favourite.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -17,25 +20,32 @@ export class HomeComponent implements OnInit {
   searchText = '';
   myControl = new FormControl();
 
-  allRecipes: Recipe[] = [];
-  filteredRecipes: Recipe[];
+  // allRecipes: Recipe[] = [];
+  allRecipes: RecipeDTO[] = [];
 
-  isFavorite: boolean = false;
+  filteredRecipes: Recipe[];
+  // favourites: RecipeDTO[];
+
+  isFavourite: boolean;
 
 
   constructor(private recipeService: RecipeService,
+            private favouriteService: FavouriteService,
+            private authService: AuthService,
             private filterPipe: FilterPipe) {
   }
 
   ngOnInit() {
     this.getRecipes();
+
+    // this.getFavourites();
   }
 
   getRecipes() {
     this.recipeService.getAll()
       .subscribe((recipes)=> {
         console.log(recipes);
-        this.allRecipes = <Recipe[]>recipes;
+        this.allRecipes = <RecipeDTO[]>recipes;
       })  
   }
 
@@ -106,5 +116,57 @@ export class HomeComponent implements OnInit {
     this.i = this.i + 1;
     this.direction = 'next';
   }
+
+
+
+  // Favourites
+  // getFavourites() {
+  //   this.favouriteService.getAll()
+  //   .subscribe((data) => {
+  //     this.favourites = <RecipeDTO[]>data;
+
+  //     console.log(this.favourites)
+  //     console.log(data);
+  //   })
+  // }
+
+  toggleFavourite(recipe: RecipeDTO) {
+    this.isFavourite = recipe.isFavourite;
+    if(this.isFavourite) {
+      this.removeFavourite(recipe.favouriteId);
+      console.log("Trying to remove fav")
+    }
+    else {
+      this.addFavourite(recipe);
+      console.log("Trying to add fav")
+    }
+
+    this.isFavourite = false;
+  }
+
+  addFavourite(recipe: RecipeDTO) {
+    this.favouriteService.create(recipe)
+      .subscribe((data) => {
+
+        this.getRecipes();
+
+      })
+
+  }
+
+  removeFavourite(id: number) {
+    this.favouriteService.delete(id)
+      .subscribe(()=> {
+        this.getRecipes();
+      });
+  }
+
+  // isFavourite(recipe: Recipe): boolean {
+  //   if(this.favourites.indexOf(recipe) >= 0) {
+  //     return true;
+  //   }
+
+  //   return false;
+  // }
 
 }

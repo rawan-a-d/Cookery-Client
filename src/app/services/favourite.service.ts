@@ -9,7 +9,7 @@ import { DataService } from './data.service';
 export class FavouriteService extends DataService{
 
   constructor(private httpClient: HttpClient, private authService: AuthService) { 
-    super('http://localhost:90/users/' + authService.currentUser.sub + '/favourites', httpClient)
+    super('http://localhost:90/users/' + authService.currentUser?.sub + '/favourites', httpClient)
   }
 
   // public getFavouriteRecipes() {

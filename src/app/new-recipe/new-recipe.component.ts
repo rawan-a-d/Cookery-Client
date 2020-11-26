@@ -7,6 +7,7 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import {AfterViewChecked,ChangeDetectorRef} from '@angular/core'
 import { renderFlagCheckIfStmt } from '@angular/compiler/src/render3/view/template';
 import { User } from '../models/User';
+import { AuthService } from '../services/auth.service';
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -18,8 +19,7 @@ class ImageSnippet {
   styleUrls: ['./new-recipe.component.css']
 })
 export class NewRecipeComponent implements OnInit {
-  loggedInUser = 2;
-  // loggedInUser = new User(1, "Rawan", "rawan@gmail.com");
+  userId = this.authService.currentUser.sub;
 
   recipeId: number;
   editMode = false;
@@ -32,6 +32,7 @@ export class NewRecipeComponent implements OnInit {
 
 
   constructor(private recipeService: RecipeService,
+              private authService: AuthService,
               private fb: FormBuilder, 
               private cdr: ChangeDetectorRef,
               private route: ActivatedRoute,
@@ -80,7 +81,7 @@ export class NewRecipeComponent implements OnInit {
 
     newRecipe.id = this.recipeId;
 
-    newRecipe.userId = this.loggedInUser;
+    newRecipe.userId = this.userId;
     // newRecipe.user = this.loggedInUser;
 
     // newRecipe.image = this.selectedFile;
