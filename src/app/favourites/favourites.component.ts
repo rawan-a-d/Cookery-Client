@@ -1,7 +1,9 @@
+import { RecipeDTO } from './../models/RecipeDTO';
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../models/Recipe';
 import { FavouriteService } from '../services/favourite.service';
 import { UserService } from '../services/user.service';
+import { RecipeService } from '../services/recipe.service';
 
 @Component({
   selector: 'app-favourites',
@@ -9,7 +11,7 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./favourites.component.css']
 })
 export class FavouritesComponent implements OnInit {
-  favourites: Recipe[];
+  favourites: RecipeDTO[];
 
   constructor(private favouriteService: FavouriteService) { }
 
@@ -20,7 +22,7 @@ export class FavouritesComponent implements OnInit {
   getAll() {
     this.favouriteService.getAll()
     .subscribe((data) => {
-      this.favourites = <Recipe[]>data;
+      this.favourites = <RecipeDTO[]>data;
 
       console.log(data);
     })
@@ -29,7 +31,9 @@ export class FavouritesComponent implements OnInit {
 
   remove(id: number) {
     this.favouriteService.delete(id)
-      .subscribe();
+      .subscribe(() => {
+        this.getAll();
+      });
   }
 
 }
