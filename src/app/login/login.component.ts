@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   hide = true;
-  invalidLogin;
+  invalidLogin ;
 
   constructor(
     private router: Router,
@@ -22,17 +22,20 @@ export class LoginComponent implements OnInit {
   signIn(credentials) {
 
     this.authService.login(credentials)
-      .subscribe((result) => {
-        console.log("result ");
-        if(result) {
-          let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl'); // The url the user wanted to go to before he logged in
-          this.router.navigate([returnUrl || '/']);
-
-        }
-        else {
+      .subscribe(
+        (result) => {
+          console.log("result ");
+          if(result) {
+            let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl'); // The url the user wanted to go to before he logged in
+            this.router.navigate([returnUrl || '/']);
+  
+          }
+        },
+        error => {
           this.invalidLogin = true;
-        }
-
-      })
+        },
+      
+      
+      )
   }
 }

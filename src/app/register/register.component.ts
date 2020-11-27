@@ -73,9 +73,6 @@ export class RegisterComponent implements OnInit {
         let returnUrl = this.route.snapshot.queryParamMap.get('returnUrl'); // The url the user wanted to go to before he logged in
         this.router.navigate([returnUrl || '/']);
       }
-      else {
-        this.invalidLogin = true;
-      }
 
     })
   }

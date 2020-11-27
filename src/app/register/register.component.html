@@ -3,10 +3,6 @@
         Please register
     </h2>
 
-    <div *ngIf="invalidLogin" class="alert">
-            Invalid username and/or password
-    </div>
-
     <mat-form-field appearance="fill">
         <mat-label>Name</mat-label>
         <input matInput ngModel name="name" required formControlName="name">
@@ -59,6 +55,6 @@
 		Passwords do not <strong>match</strong>
 	  </mat-error>
 
-      <button mat-raised-button color="accent" id="register-btn">Register</button>
+      <button mat-raised-button color="accent" id="register-btn" [disabled]="form.invalid">Register</button>
 
 </form>
