@@ -42,6 +42,7 @@ export class HomeComponent implements OnInit {
   getRecipes() {
     this.recipeService.getAll()
       .subscribe((recipes)=> {
+        console.log("Recipes")
         console.log(recipes);
         this.allRecipes = <RecipeDTO[]>recipes;
       })  

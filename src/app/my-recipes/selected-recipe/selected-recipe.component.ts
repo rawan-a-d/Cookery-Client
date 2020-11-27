@@ -14,10 +14,6 @@ export class SelectedRecipeComponent implements OnInit, OnDestroy {
   // action = 'new';
   id: number;
 
-  // Update my-recipes on delete or update
-  // @Output() onUpdate = new EventEmitter();
-
-
   constructor(private recipeService: RecipeService,
               private router: Router,
               private route: ActivatedRoute,
@@ -29,10 +25,6 @@ export class SelectedRecipeComponent implements OnInit, OnDestroy {
         (params: Params) => {
           this.id = +params['recipeId'];
 
-          // console.log(this.id)
-
-          // console.log('NEW RECIPE SELECTED ' + this.id)
-
           this.recipeService.get(this.id)
           .subscribe((data) => {
             this.recipe = <Recipe>data;
@@ -41,19 +33,10 @@ export class SelectedRecipeComponent implements OnInit, OnDestroy {
         }
       )
 
-
-
-
-        // console.log(this.recipe)
-
   }
 
   // Modify recipe
   edit() {
-    // console.log(this.action);
-    // open new component and send recipe
-    // this.action= 'edit';
-
     this.recipe = null;
 
     this.router.navigate(['edit'], {relativeTo: this.route});
