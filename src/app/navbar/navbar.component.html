@@ -32,7 +32,7 @@
             <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="authService.isLoggedIn()" routerLink="/users/2">Profile</a>
             <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="!authService.isLoggedIn()" routerLink="/login">Login</a>
             <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="!authService.isLoggedIn()"  routerLink="/register">Register</a>
-            <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="authService.isLoggedIn()" (click)="authService.logout()">Logout</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="authService.isLoggedIn()" (click)="logout()">Logout</a>
 
           </div>
         </li>
