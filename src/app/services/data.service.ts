@@ -17,7 +17,7 @@ export class DataService {
    }
   requestCounter: number;
 
-   getInfo(): Observable<string> {
+  getInfo(): Observable<string> {
     return this.info.asObservable();
   }
 

@@ -46,6 +46,7 @@ import { AuthGuard } from './services/auth-guard.service';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { RegisterComponent } from './register/register.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
+import { RecipesComponent } from './admin/recipes/recipes/recipes.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/materi
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
+    RecipesComponent,
   ],
   imports: [
     BrowserModule,

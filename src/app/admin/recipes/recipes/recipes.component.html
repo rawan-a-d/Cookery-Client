@@ -1,0 +1,24 @@
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Created by</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let recipe of recipes">
+            <td>{{ recipe.id }}</td>
+            <td class="recipe-name" [routerLink]="['/recipes', recipe.id]">{{ recipe.name }}</td>
+            <td><img class="recipe-image" 
+                    [src]="recipe.image? recipe.image : 'https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'"
+                    onerror="this.src='https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'">
+            </td>
+            <td>{{ recipe.user.name }}</td>
+          
+            <!-- <td><a href='users.php?source=edit_user&edit_user=<?php echo $id ?>'>Edit</a></td> -->
+            <td><a (click)="delete(recipe.id)">Delete</a></td>
+        </tr>
+    </tbody>
+</table>
