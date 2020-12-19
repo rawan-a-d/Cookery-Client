@@ -4,6 +4,7 @@
             <th>Id</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Role</th>
             <th>Recipes</th>
         </tr>
     </thead>
@@ -12,7 +13,12 @@
             <td>{{ user.id }}</td>
             <td class="user-name">{{ user.name }}</td>
             <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>Recipes</td>
+            <td><a (click)="makeAdmin(user)">admin</a></td>
+            <td><a (click)="makeUser(user)">user</a></td>
             <td><a (click)="delete(user.id)">Delete</a></td>
+
         </tr>
     </tbody>
 </table>

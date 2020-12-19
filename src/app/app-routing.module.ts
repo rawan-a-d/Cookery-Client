@@ -62,6 +62,7 @@ const appRoutes: Routes = [
     },
     {
         path: 'admin',
+        canActivate: [AuthGuard, AdminAuthGuard],
         children: [
             {
                 path: 'recipes',
