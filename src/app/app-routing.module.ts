@@ -12,6 +12,7 @@ import { SelectedRecipeComponent } from './my-recipes/selected-recipe/selected-r
 import { AuthGuard } from  './services/auth-guard.service';
 import { AdminAuthGuard } from  './services/admin-auth-guard.service';
 import { RecipesComponent } from './admin/recipes/recipes/recipes.component';
+import { UsersComponent } from './admin/users/users/users.component';
 
 const appRoutes: Routes = [
     {
@@ -61,8 +62,18 @@ const appRoutes: Routes = [
     },
     {
         path: 'admin',
-        component: RecipesComponent, // Admin
-        canActivate: [AuthGuard, AdminAuthGuard]
+        children: [
+            {
+                path: 'recipes',
+                component: RecipesComponent, // Admin
+                canActivate: [AuthGuard, AdminAuthGuard]
+            },
+            {
+                path: 'users',
+                component: UsersComponent, // Admin
+                canActivate: [AuthGuard, AdminAuthGuard]
+            }
+        ]
     },
     {
         path: 'login',

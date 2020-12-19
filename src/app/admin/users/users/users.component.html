@@ -1,0 +1,18 @@
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Recipes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td class="user-name">{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td><a (click)="delete(user.id)">Delete</a></td>
+        </tr>
+    </tbody>
+</table>

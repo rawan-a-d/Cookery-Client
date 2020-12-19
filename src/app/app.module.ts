@@ -8,7 +8,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { UsersComponent } from './users/users.component';
+import { UsersComponent } from './admin/users/users/users.component';
 import { HomeComponent } from './home/home.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
