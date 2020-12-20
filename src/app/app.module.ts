@@ -47,6 +47,9 @@ import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { RegisterComponent } from './register/register.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 import { RecipesComponent } from './admin/recipes/recipes/recipes.component';
+import { StatisticsComponent } from './admin/statistics/statistics.component';
+import { AdminComponent } from './admin/admin/admin.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -64,6 +67,8 @@ import { RecipesComponent } from './admin/recipes/recipes/recipes.component';
     LoginComponent,
     RegisterComponent,
     RecipesComponent,
+    StatisticsComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,6 +91,7 @@ import { RecipesComponent } from './admin/recipes/recipes/recipes.component';
     MatFormFieldModule,
     MatToolbarModule,
     MatMenuModule,
+    MatSelectModule,
     AppRoutingModule,
     MaterialFileInputModule,
     // RouterModule.forRoot([

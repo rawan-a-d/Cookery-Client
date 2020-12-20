@@ -13,6 +13,8 @@ import { AuthGuard } from  './services/auth-guard.service';
 import { AdminAuthGuard } from  './services/admin-auth-guard.service';
 import { RecipesComponent } from './admin/recipes/recipes/recipes.component';
 import { UsersComponent } from './admin/users/users/users.component';
+import { StatisticsComponent } from './admin/statistics/statistics.component';
+import { AdminComponent } from './admin/admin/admin.component';
 
 const appRoutes: Routes = [
     {
@@ -62,8 +64,14 @@ const appRoutes: Routes = [
     },
     {
         path: 'admin',
+        component: AdminComponent,
         canActivate: [AuthGuard, AdminAuthGuard],
         children: [
+            {
+                path: 'statistics',
+                component: StatisticsComponent,
+                canActivate: [AuthGuard, AdminAuthGuard]
+            },
             {
                 path: 'recipes',
                 component: RecipesComponent, // Admin

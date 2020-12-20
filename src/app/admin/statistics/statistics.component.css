@@ -1,0 +1,10 @@
+#chart {
+    width: 50%;
+    margin: 1% auto;
+    display: block;
+}
+
+#select-statistic {
+    width: 30%;
+    margin: 4% 35% 2%;
+}

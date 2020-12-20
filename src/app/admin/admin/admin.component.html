@@ -1,0 +1,26 @@
+<mat-tab-group  mat-align-tabs="center" color="accent"  (selectedTabChange)="onTabChanged($event)"
+>
+    <mat-tab> 
+        <ng-template mat-tab-label >
+            <mat-icon class="example-tab-icon">insert_chart</mat-icon>
+            Statistics
+        </ng-template>
+        <app-statistics></app-statistics>
+    </mat-tab>
+
+    <mat-tab> 
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">people_alt</mat-icon>
+            Users
+        </ng-template>
+        <app-users></app-users>
+    </mat-tab>
+
+    <mat-tab> 
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">local_pizza</mat-icon>
+            Recipes
+        </ng-template>
+        <app-recipes></app-recipes>
+    </mat-tab>
+  </mat-tab-group>

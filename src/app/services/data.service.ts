@@ -30,6 +30,7 @@ export class DataService {
   }
 
   getAll() {
+    console.log("GET STATS " + this.url)
     return this.http.get(this.url)
       .pipe(
         map(

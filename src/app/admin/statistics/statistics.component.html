@@ -1,0 +1,20 @@
+<mat-form-field appearance="fill" id ="select-statistic">
+  <mat-label>Select Statistic</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let statistic of statisticsList" [value]="statistic.value">
+      {{statistic.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<div id="chart">
+    <canvas mdbChart
+        [chartType]="chartType"
+        [datasets]="chartDatasets"
+        [labels]="chartLabels"
+        [colors]="chartColors"
+        [options]="chartOptions"
+        [legend]="true"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+    </canvas>
+  </div>
