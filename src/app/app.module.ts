@@ -50,6 +50,11 @@ import { RecipesComponent } from './admin/recipes/recipes/recipes.component';
 import { StatisticsComponent } from './admin/statistics/statistics.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import {MatSelectModule} from '@angular/material/select';
+import { NgxEchartsModule } from 'ngx-echarts';
+
+// NgxEchartsModule.forRoot({
+//   echarts: () => import('echarts')
+// })
 
 @NgModule({
   declarations: [
@@ -112,6 +117,10 @@ import {MatSelectModule} from '@angular/material/select';
     //     component: SelectedRecipeComponent
     //   }
     // ]),
+    NgxEchartsModule.forRoot({
+      echarts: () => import('echarts')
+    })
+    
 
   ],
   providers: [

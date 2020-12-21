@@ -1,92 +1,176 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, NgModule, OnInit } from '@angular/core';
 import { StatisticsService } from '../../services/statistics.service';
-import { Statistics } from '../../models/Statistics';
+import { ChartData } from '../../models/ChartData';
 import { Router } from '@angular/router';
+import { connect, getInstanceByDom } from 'echarts';
+
+import * as echarts from 'echarts';
+import { macarons } from 'echarts-themes-js/src/macarons';
+import { walden } from 'echarts-themes-js/src/walden';
+import { vintage } from 'echarts-themes-js/src/vintage';
+import { halloween } from 'echarts-themes-js/src/halloween';
+import { chalk } from 'echarts-themes-js/src/chalk';
+import { infographic } from 'echarts-themes-js/src/infographic';
+// import { purple-passion } from 'echarts-themes-js/src/infographic';
+import { shine } from 'echarts-themes-js/src/shine';
+import { essos } from 'echarts-themes-js/src/essos';
+import { westeros } from 'echarts-themes-js/src/westeros';
+import { wonderland } from 'echarts-themes-js/src/wonderland';
+import { roma } from 'echarts-themes-js/src/roma';
+import { romantic } from 'echarts-themes-js/src/romantic';
+import { dark } from 'echarts-themes-js/src/dark';
+
 
 @Component({
-  selector: 'app-statistics',
-  templateUrl: './statistics.component.html',
-  styleUrls: ['./statistics.component.css']
+	selector: 'app-statistics',
+	templateUrl: './statistics.component.html',
+	styleUrls: ['./statistics.component.css']
 })
 export class StatisticsComponent implements OnInit {
-  statisticsList = [
-    {value: 'favourites-recipes-per-user', viewValue: 'Favourites recipes per user'},
-    {value: 'test 2', viewValue: 'test 2 value'},
-    {value: 'test 3', viewValue: 'test 3 value'}
-  ]
+	chartData: ChartData = null;
+	
+	// statistics types
+	statisticsList = [
+		{value: 'favourites-recipes-per-user', viewValue: 'Favourites recipes per user'},
+		{value: 'recipes-per-month', viewValue: 'Recipes per month'},
+		{value: 'test 3', viewValue: 'test 3 value'}
+	]
 
-  chartData: Statistics[] = null;
+	// Chart options
+	options;
 
-  public chartType: string;
-  public chartDatasets: Array<any>;
-  public chartLabels: Array<any>;
-  public chartColors: Array<any>;
-  public chartOptions: any;
+	constructor(private statisticsService: StatisticsService
+				) { }
 
-
-  constructor(private statisticsService: StatisticsService
-        ) { }
 
 	ngOnInit() {
-    this.statisticsService.getAll()
-      .subscribe((data) => {
-        console.log("DATA" + data);
-        this.chartData = <Statistics[]>data;
-        console.log(this.chartData[0]);
+		this.getStatistic(this.statisticsList[0].value);
+	}
 
-        this.generateChart();
-      })
-  }
 
-  public generateChart() {
-    this.chartType = 'bar';
-  
-    this.chartDatasets = [
-      { data: 
-        // [65, 59, 80, 81, 56, 55, 40], 
-        [this.chartData[0].yAxis, this.chartData[1].yAxis], 
-  
-        // label: 'My First dataset Title' 
-        label: this.chartData[0].title
+	getStatistic(title: string) {
+		this.statisticsService.get(title)
+		.subscribe((data) => {
+			this.chartData = <ChartData>data;
 
-      }
-    ];
-  
-    // public chartLabels: Array<any> = ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'];
-    this.chartLabels = [this.chartData[0].xAxis, this.chartData[1].xAxis];
-  
-    this.chartColors = [
-      {
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
-        ],
-        borderColor: [
-          'rgba(255,99,132,1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
-        ],
-        borderWidth: 2,
-      }
-    ];
-  
-    this.chartOptions = {
-      responsive: true
-    };
-  }
+			this.generateChart(title);
+		})
+	}
 
-  public chartClicked(e: any): void {
 
-   }
+	generateChart(title: string) {
+		console.log("generate chart " + title)
+		this.options = {
+			// backgroundColor: 'dark',
+			responsive: true,
+			maintainAspectRatio: false,
+			// width: '60%',
+			theme: walden, // chalk, essos, halloween, infographic, macarons, roma
+			// backgroundColor: '#555555',
+			// fontColor: 'white',
+			// title: 'Favourites per user',
+			// color: ['#3398DB'],
+			title: {
+				text: this.chartData.title,
+				left: 'center',
+				top: '3%',
+				bottom: '3%',
+				textStyle: {
+					fontWeight: 'bold',
+					fontSize: '2em',
+					lineHeight: 20,
+				}
+			},
+			tooltip: {
+				trigger: 'axis',
+				axisPointer: {
+					type: 'shadow',
+				},
+				backgroundColor: 'white'
+			},
+			grid: {
+				
+				// themeName: 'macarons',
+	
+				// left: '3%',
+				// right: '4%',
+				// bottom: '3%',
+				// width: '60%',
+				// margin: '2% 20%',
+				containLabel: true,
+			},
+			xAxis: [
+				{
+					type: 'category',
+					data: 
+					// ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], // xAxis
+					this.chartData.x, // xAxis
+	
+					axisTick: {
+						alignWithLabel: true,
+					},
+				},
+			],
+			yAxis: [
+				{
+					type: 'value',
+				},
+			],
+			series: [
+				{
+					type: 'bar',
+					// barWidth: '60%',
+					// data: [10, 52, 200, 334, 390, 330, 220], // yAxis
+					data: this.chartData.y, // yAxis
+	
+				},
+			],
+			toolbox: {
+				feature: {
+						dataView: {},
+						saveAsImage: {},
+						restore: {}
+				}
+			}
+			
+		};
 
-  public chartHovered(e: any): void { 
+		this.handleUniqueStyle(title);
+	}
 
-  }
+
+	// Handles different styles between different statistics types
+	handleUniqueStyle(statisticType: string) {
+		switch(statisticType) {
+			case 'favourites-recipes-per-user': {
+				this.favouriteRecipesPersUser();
+				break;
+			}
+			case 'recipes-per-month': {
+				this.RecipesPerMonth();
+				break;
+			}
+			case 'default': {
+
+			}
+		}
+	}
+	
+	favouriteRecipesPersUser() {
+		console.log("favouriteRecipesPersUser")
+		this.options.series[0].name = 'Favourites';
+	}
+
+	RecipesPerMonth() {
+		console.log("RecipesPerMonth")
+
+		this.options.series[0].name = 'Recipes';
+	}
+
+
+	// On select change
+	onChange(statisticType) {		
+		this.getStatistic(statisticType.value);
+	}
+	
 }

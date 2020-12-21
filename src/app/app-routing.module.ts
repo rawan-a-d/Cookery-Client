@@ -70,17 +70,17 @@ const appRoutes: Routes = [
             {
                 path: 'statistics',
                 component: StatisticsComponent,
-                canActivate: [AuthGuard, AdminAuthGuard]
-            },
-            {
-                path: 'recipes',
-                component: RecipesComponent, // Admin
-                canActivate: [AuthGuard, AdminAuthGuard]
+                pathMatch: 'full'
             },
             {
                 path: 'users',
                 component: UsersComponent, // Admin
-                canActivate: [AuthGuard, AdminAuthGuard]
+                pathMatch: 'full'
+            },
+            {
+                path: 'recipes',
+                component: RecipesComponent, // Admin
+                pathMatch: 'full'
             }
         ]
     },

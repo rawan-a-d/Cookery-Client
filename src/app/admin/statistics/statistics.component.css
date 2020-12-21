@@ -1,10 +1,40 @@
 #chart {
-    width: 50%;
-    margin: 1% auto;
-    display: block;
+    padding: 1% 25%;
+
+    /* display: block; */
 }
 
 #select-statistic {
     width: 30%;
     margin: 4% 35% 2%;
+}
+
+/* #chart-container {
+    width: 80% !important;
+    margin: 2% 13% !important;
+    height: 81vh !important;
+}
+
+canvas.canvasjs-chart-canvas {
+    width: -webkit-fill-available  !important;
+    height: min-content  !important;
+} */
+
+
+.canvasjs-chart-toolbar {
+  top: -20px !important;
+}
+
+
+/* Chart 2 */
+canvas {
+    width: 70%;
+    margin: 2% 15%;
+}
+
+.demo-chart {
+    width: 70%;
+    height: 60vh;
+    margin: 2% 15%;
+    padding: 0 1%;
 }

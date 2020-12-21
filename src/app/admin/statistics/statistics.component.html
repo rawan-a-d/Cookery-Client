@@ -1,12 +1,14 @@
 <mat-form-field appearance="fill" id ="select-statistic">
   <mat-label>Select Statistic</mat-label>
-  <mat-select>
+  <mat-select #statisticType #statisticType (selectionChange)="onChange(statisticType)" name="statisticType" >
     <mat-option *ngFor="let statistic of statisticsList" [value]="statistic.value">
       {{statistic.viewValue}}
     </mat-option>
   </mat-select>
 </mat-form-field>
-<div id="chart">
+
+
+<!-- <div id="chart">
     <canvas mdbChart
         [chartType]="chartType"
         [datasets]="chartDatasets"
@@ -17,4 +19,30 @@
         (chartHover)="chartHovered($event)"
         (chartClick)="chartClicked($event)">
     </canvas>
+  </div> -->
+
+<!-- <div id="chart">
+    <div id="chartContainer" style="height: 500px;"></div>
+</div> -->
+
+  <!-- {{chartData | json}} -->
+
+
+
+  <div nz-row>
+    <div nz-col nzSpan="12">
+      <div id="chart1" 
+            echarts 
+            [options]="options"
+            theme="walden" 
+            class="demo-chart mat-elevation-z2"
+            [autoResize]="true"
+            >
+        </div>
+    </div>
   </div>
+
+
+  
+
+  <!-- <echarts [initOpts]="initOpts" [options]="options4" ></echarts> -->
