@@ -2,6 +2,6 @@ export class ChartData {
     public title: string;
     // xAxis: Object;
     // yAxis: Object;
-    public x: Object[];
-    public y: Object[];
+    public xAxis: Object[];
+    public yAxis: Object[];
 }

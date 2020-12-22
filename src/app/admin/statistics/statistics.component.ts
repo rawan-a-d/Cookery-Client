@@ -104,7 +104,7 @@ export class StatisticsComponent implements OnInit {
 					type: 'category',
 					data: 
 					// ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], // xAxis
-					this.chartData.x, // xAxis
+					this.chartData.xAxis, // xAxis
 	
 					axisTick: {
 						alignWithLabel: true,
@@ -121,7 +121,7 @@ export class StatisticsComponent implements OnInit {
 					type: 'bar',
 					// barWidth: '60%',
 					// data: [10, 52, 200, 334, 390, 330, 220], // yAxis
-					data: this.chartData.y, // yAxis
+					data: this.chartData.yAxis, // yAxis
 	
 				},
 			],
