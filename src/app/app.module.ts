@@ -3,6 +3,9 @@ import { AuthService } from './services/auth.service';
 import { AppRoutingModule } from './app-routing.module';
 import { RecipeService } from './services/recipe.service';
 import { DataService } from './services/data.service';
+import { ErrorService } from './services/errors/error.service';
+import { NotificationService } from './services/errors/notification.service';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -51,6 +54,14 @@ import { StatisticsComponent } from './admin/statistics/statistics.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import {MatSelectModule} from '@angular/material/select';
 import { NgxEchartsModule } from 'ngx-echarts';
+import { BadRequestComponent } from './errors/bad-request/bad-request.component';
+import { ForbiddenComponent } from './errors/forbidden/forbidden.component';
+import { InternalServerErrorComponent } from './errors/internal-server-error/internal-server-error.component';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { OfflineComponent } from './errors/offline/offline.component';
+import { UnexpectedErrorComponent } from './errors/unexpected-error/unexpected-error.component';
+import { ErrorInterceptor } from './services/error.interceptor';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 // NgxEchartsModule.forRoot({
 //   echarts: () => import('echarts')
@@ -74,6 +85,12 @@ import { NgxEchartsModule } from 'ngx-echarts';
     RecipesComponent,
     StatisticsComponent,
     AdminComponent,
+    BadRequestComponent,
+    ForbiddenComponent,
+    InternalServerErrorComponent,
+    NotFoundComponent,
+    OfflineComponent,
+    UnexpectedErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -97,6 +114,7 @@ import { NgxEchartsModule } from 'ngx-echarts';
     MatToolbarModule,
     MatMenuModule,
     MatSelectModule,
+    MatSnackBarModule,
     AppRoutingModule,
     MaterialFileInputModule,
     // RouterModule.forRoot([
@@ -128,10 +146,17 @@ import { NgxEchartsModule } from 'ngx-echarts';
     RecipeService,
     AuthService,
     FavouriteService,
+    // ErrorService,
+    // NotificationService,
     FilterPipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthHttpInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
       multi: true
     },
     AuthGuard,

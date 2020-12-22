@@ -15,6 +15,12 @@ import { RecipesComponent } from './admin/recipes/recipes/recipes.component';
 import { UsersComponent } from './admin/users/users/users.component';
 import { StatisticsComponent } from './admin/statistics/statistics.component';
 import { AdminComponent } from './admin/admin/admin.component';
+import { ForbiddenComponent } from './errors/forbidden/forbidden.component';
+import { UnexpectedErrorComponent } from './errors/unexpected-error/unexpected-error.component';
+import { BadRequestComponent } from './errors/bad-request/bad-request.component';
+import { OfflineComponent } from './errors/offline/offline.component';
+import { InternalServerErrorComponent } from './errors/internal-server-error/internal-server-error.component';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
 
 const appRoutes: Routes = [
     {
@@ -92,12 +98,30 @@ const appRoutes: Routes = [
         path: 'register',
         component: RegisterComponent
     },
-    // {
-    //     path: 'no-access',
-    //     component: NoAccessComponent
-    // }
-
-    
+	{
+		path: 'forbidden',
+		component: ForbiddenComponent,
+	},
+	{
+		path: 'unexpected-error',
+		component: UnexpectedErrorComponent,
+	},
+	{
+		path: 'bad-request',
+		component: BadRequestComponent,
+	},
+	{
+		path: 'offline',
+		component: OfflineComponent
+	},
+	{
+		path: 'internal-server-error',
+		component: InternalServerErrorComponent
+	},
+	{
+		path: '**',
+		component: NotFoundComponent
+	}
 ]
 
 @NgModule({
