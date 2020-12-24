@@ -6,20 +6,21 @@
         <mat-icon class="favorite" 
             aria-hidden="false" 
             aria-label="Example favorite_border icon"
-            (click)="isFavorite = !isFavorite">
-            {{isFavorite? 'favorite' : 'favorite_border'}}
+            matTooltip="Favourite recipe"
+            (click)="recipe?.isFavourite ? removeFavourite(recipe.favouriteId) : addFavourite(recipe)">
+            {{recipe?.isFavourite? 'favorite' : 'favorite_border'}}
         </mat-icon>
     </h1>
     <p class="text-center">
         <span>
-            Created by user name
-
+            Created by {{ recipe?.user.name }}
         </span>
         <mat-icon 
+            matTooltip="Follow user"
             aria-hidden="false" 
             aria-label="Example group_add icon"
-            (click)="isFollowed = !isFollowed">
-             {{isFollowed? 'person_remove' : 'group_add'}}
+            (click)="recipe?.isFollowed ? unFollow(recipe.followId): follow(recipe.user)">
+             {{recipe?.isFollowed? 'person_remove' : 'group_add'}}
         </mat-icon>
     </p> 
 
@@ -33,7 +34,7 @@
     <p class="section">
         {{ recipe?.description }}
     </p>
-    <img [src]="recipe.image? recipe.image : 'https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'"
+    <img [src]="recipe?.image? recipe.image : 'https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'"
     onerror="this.src='https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'"
      alt="" class="recipe-image">
 </div>

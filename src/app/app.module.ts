@@ -40,6 +40,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 // import { MatSidenavModule, MatListModule } from  '@angular/material';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTooltipModule} from '@angular/material/tooltip';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { ProfileComponent } from './profile/profile.component';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
@@ -109,6 +110,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatTabsModule,
     MatDividerModule,
     MatTableModule,
+    MatTooltipModule,
     FlexLayoutModule,
     MatFormFieldModule,
     MatToolbarModule,
