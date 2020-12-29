@@ -39,7 +39,6 @@
     "ngx-echarts": "^5.2.2",
     "ngx-material-file-input": "^2.1.1",
     "ngx-password-strength-meter": "^1.1.1",
-    "ngx-strength-meter": "^9.0.1",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"

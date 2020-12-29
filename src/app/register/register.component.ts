@@ -11,7 +11,7 @@ import { PasswordValidators } from '../validators/password.validators';
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class RegisterComponent implements OnInit {
@@ -43,11 +43,9 @@ export class RegisterComponent implements OnInit {
   constructor(    
     private router: Router,
     private route: ActivatedRoute,
-    private authService: AuthService,
-    private passwordStrengthMeterService: NgxPasswordStrengthMeterService) { }
+    private authService: AuthService) { }
 
   ngOnInit(): void {
-    const result = this.passwordStrengthMeterService.calculate('123');
   }
 
   get name () {
