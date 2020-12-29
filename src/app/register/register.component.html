@@ -29,20 +29,20 @@
 
       <mat-form-field appearance="fill">
         <mat-label>Password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" name="password" required formControlName="password">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <input #passwordWithValidation matInput [type]="hide ? 'password' : 'text'" name="password" required formControlName="password">
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
 		</button>
 
-		<mat-error *ngIf="password.hasError('required')">
+		<!-- <mat-error *ngIf="password.hasError('required')">
 			Password is <strong>required</strong>
-		</mat-error>
+		</mat-error> -->
       </mat-form-field>
 
       <mat-form-field appearance="fill">
         <mat-label>Confirm Password</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" name="confirmPassword" required formControlName="confirmPassword">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
         <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
 		</button>
 		
@@ -55,6 +55,37 @@
 		Passwords do not <strong>match</strong>
 	  </mat-error>
 
+
+	  <!-- <mat-form-field appearance="outline" style="width: 100%"> -->
+		<!-- <mat-label>Password</mat-label>
+		<input matInput #passwordWithValidation
+			   [type]="inputType"
+			   required
+			   [formControl]="passwordComponentWithValidation.passwordFormControl"
+			   placeholder="Password"> -->
+	<div *ngIf="password.touched">
+
+		<mat-hint align="end" aria-live="polite">
+		  {{passwordWithValidation.value.length}} / 25
+		</mat-hint>
+		<mat-error *ngIf="password.hasError('required')">
+		  Password is required
+		</mat-error>
+		<mat-error *ngIf="password.hasError('pattern')">
+		  Password is not valid
+		</mat-error>
+		<!-- </mat-form-field> -->
+		<mat-password-strength #passwordComponentWithValidation
+									  (onStrengthChanged)="onStrengthChanged($event)"
+									  [password]="password.value">
+	  	</mat-password-strength>
+	  	<!--Password's strength info-->
+		<mat-password-strength-info
+			[passwordComponent]="passwordComponentWithValidation">
+		</mat-password-strength-info>
+	</div>
+
       <button mat-raised-button color="accent" id="register-btn" [disabled]="form.invalid">Register</button>
+
 
 </form>

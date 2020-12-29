@@ -63,6 +63,9 @@ import { OfflineComponent } from './errors/offline/offline.component';
 import { UnexpectedErrorComponent } from './errors/unexpected-error/unexpected-error.component';
 import { ErrorInterceptor } from './services/error.interceptor';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+
 
 // NgxEchartsModule.forRoot({
 //   echarts: () => import('echarts')
@@ -119,6 +122,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatSnackBarModule,
     AppRoutingModule,
     MaterialFileInputModule,
+    MatPasswordStrengthModule,
+    MatSlideToggleModule,
     // RouterModule.forRoot([
     //   {
     //     path: 'recipes',

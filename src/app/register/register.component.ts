@@ -1,22 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, NgModule, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NgxPasswordStrengthMeterService } from 'ngx-password-strength-meter';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { PasswordValidators } from '../validators/password.validators';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class RegisterComponent implements OnInit {
   hide = true;
   invalidLogin;
-
+  
   form = new FormGroup(
     {
       name: new FormControl('', 
@@ -42,9 +43,11 @@ export class RegisterComponent implements OnInit {
   constructor(    
     private router: Router,
     private route: ActivatedRoute,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private passwordStrengthMeterService: NgxPasswordStrengthMeterService) { }
 
   ngOnInit(): void {
+    const result = this.passwordStrengthMeterService.calculate('123');
   }
 
   get name () {
@@ -75,6 +78,11 @@ export class RegisterComponent implements OnInit {
       }
 
     })
+  }
+
+
+  onStrengthChanged(score) {
+    console.log('new score', score);
   }
 
 }

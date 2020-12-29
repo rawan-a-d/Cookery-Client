@@ -31,10 +31,14 @@ ul {
     list-style-type: square;
 }
 
-/* follow, unfollow icons */
+/* follow, favourite icons */
 p > .mat-icon {
   vertical-align: top;
-  font-size: 1.43em;
+  font-size: 1.6em;
+}
+
+::ng-deep .mat-tooltip {
+    font-size: 0.8em;
 }
 
 
