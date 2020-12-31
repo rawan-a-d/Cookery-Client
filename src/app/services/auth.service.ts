@@ -66,7 +66,7 @@ export class AuthService {
 
 
   register(user: User) {
-    return this.http.post('http://localhost:90/authenticate/register', JSON.stringify(user), {responseType: 'text'})
+    return this.http.post('http://localhost:90/users', JSON.stringify(user), {responseType: 'text'})
         .pipe(
           map( response => {
             let result = response;
