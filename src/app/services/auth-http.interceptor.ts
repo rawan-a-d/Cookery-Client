@@ -20,16 +20,22 @@ export class AuthHttpInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
-    
+    const isLoggedIn = token != null;
+
     request = request.clone({
       // responseType: 'json',
       setHeaders: {
         'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
+        // Authorization: auth
         // Authorization: `Basic ${token}`
       }
+      
+      
     });
 
+    if(isLoggedIn) {
+      request.headers.append('Authorization', `Basic ${token}`)
+    }
     // npm install angular2-jwt
 
 

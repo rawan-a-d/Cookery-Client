@@ -6,7 +6,7 @@
         <mat-icon class="favorite" 
             aria-hidden="false" 
             aria-label="Example favorite_border icon"
-            [matTooltip]="recipe.isFavourite ? 'unfavourite recipe' : 'Favourite recipe'"
+            [matTooltip]="recipe?.isFavourite ? 'unfavourite recipe' : 'Favourite recipe'"
             (click)="recipe?.isFavourite ? removeFavourite(recipe.favouriteId) : addFavourite(recipe)">
             {{recipe?.isFavourite? 'favorite' : 'favorite_border'}}
         </mat-icon>
@@ -16,7 +16,7 @@
             Created by {{ recipe?.user.name }}
         </span>
         <mat-icon 
-            [matTooltip]="recipe.isFollowed ? 'Unfollow user' : 'Follow user'"
+            [matTooltip]="recipe?.isFollowed ? 'Unfollow user' : 'Follow user'"
             aria-hidden="false" 
             aria-label="Example group_add icon"
             (click)="recipe?.isFollowed ? unFollow(recipe.followId): follow(recipe.user)">

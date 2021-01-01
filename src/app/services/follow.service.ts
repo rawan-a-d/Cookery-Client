@@ -9,6 +9,6 @@ import { DataService } from './data.service';
 export class FollowService extends DataService {
 
   constructor(http: HttpClient, private authService: AuthService) { 
-    super('http://localhost:90/users/' + authService.currentUser.sub + '/followers', http);
+    super('http://localhost:90/users/' + authService.currentUser?.sub + '/followers', http);
    }
 }
