@@ -8,33 +8,29 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { tap } from "rxjs/operators";
-
-// import 'rxjs/add/operator/do';
 
 @Injectable()
 export class AuthHttpInterceptor implements HttpInterceptor {
-  // requestCounter: number = 0;
-
   constructor() {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('token');
-    const isLoggedIn = token != null;
-
-    request = request.clone({
-      // responseType: 'json',
-      setHeaders: {
-        'Content-Type': 'application/json',
-        // Authorization: auth
-        // Authorization: `Basic ${token}`
-      }
-      
-      
-    });
+    let isLoggedIn = token != null;
 
     if(isLoggedIn) {
-      request.headers.append('Authorization', `Basic ${token}`)
+      request = request.clone({
+        setHeaders: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
+        }
+      });
+    }
+    else {
+      request = request.clone({
+        setHeaders: {
+          'Content-Type': 'application/json'
+        }
+      });
     }
     // npm install angular2-jwt
 

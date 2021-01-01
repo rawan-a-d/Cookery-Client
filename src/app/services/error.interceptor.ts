@@ -11,11 +11,13 @@ import { Router } from '@angular/router';
 import { catchError } from 'rxjs/operators';
 import { ErrorService } from './errors/error.service';
 import { NotificationService } from './errors/notification.service';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 	constructor(private injector: Injector,
-    private router: Router) { }
+    private router: Router,
+    private authService: AuthService) { }
 
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -36,6 +38,12 @@ export class ErrorInterceptor implements HttpInterceptor {
               console.log("server error")
               
               if(error.status == 401) { // Unauthorized
+                if(error.error.indexOf("Token has expired")) {
+                  console.log("Token expried " + error.error);
+                  
+                  this.authService.logout();
+                }
+
                 this.router.navigate(['login']);
               }
   
