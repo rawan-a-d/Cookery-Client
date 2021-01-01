@@ -88,20 +88,15 @@ export class NewRecipeComponent implements OnInit {
           .subscribe((data) =>{
             this.cancel();
 
-            console.log("UPDATED RECIPE: ")
-            console.log(newRecipe)
-
             // inform parent    
             this.recipeService.setInfo('recipe updated');
           })
       }
       else {
-
         this.recipeService.create(newRecipe)
         .subscribe((data) =>{  
           this.cancel();
 
-          console.log(data);
           // inform parent
           this.recipeService.setInfo('recipe created');
         })
@@ -129,12 +124,10 @@ export class NewRecipeComponent implements OnInit {
 
   // initialize form
   private initForm() {
-    console.log("INIT FORM IS CALLED")
     let recipeName = '';
     let recipeDescription = '';
     let recipeImage;
     let recipeIngredients;
-  
 
 
     // Edit form
@@ -145,7 +138,6 @@ export class NewRecipeComponent implements OnInit {
         .subscribe((data) => {
           recipe = <Recipe>data;
 
-          console.log(recipe);
           recipeName = recipe.name;
           recipeDescription = recipe.description;
           // recipeImage = recipe.image;
