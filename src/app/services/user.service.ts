@@ -23,4 +23,9 @@ export class UserService extends DataService {
     return this.httpClient.get('http://localhost:90/users/' + this.authService.currentUser.sub + '/recipes');
 
   }
+
+
+  public getProfile() {
+    return this.httpClient.get('http://localhost:90/users/' + this.authService.currentUser.sub + '/profile')
+  }
 }
