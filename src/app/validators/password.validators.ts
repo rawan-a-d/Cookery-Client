@@ -1,11 +1,6 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms'
 
 export class PasswordValidators {
-
-
-y
-
-
     // Pass entire Form
     static passwordsShouldMatch(control: AbstractControl) {
         let password = control.get('password');

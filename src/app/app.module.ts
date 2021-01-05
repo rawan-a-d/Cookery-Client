@@ -65,6 +65,8 @@ import { ErrorInterceptor } from './services/error.interceptor';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatDialogModule} from '@angular/material/dialog';
+import { UploadImageComponent } from './profile/upload-image/upload-image.component';
 
 
 // NgxEchartsModule.forRoot({
@@ -95,6 +97,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     NotFoundComponent,
     OfflineComponent,
     UnexpectedErrorComponent,
+    UploadImageComponent,
   ],
   imports: [
     BrowserModule,
@@ -124,6 +127,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MaterialFileInputModule,
     MatPasswordStrengthModule,
     MatSlideToggleModule,
+    MatDialogModule,
     // RouterModule.forRoot([
     //   {
     //     path: 'recipes',

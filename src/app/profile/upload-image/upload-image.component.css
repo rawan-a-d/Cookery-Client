@@ -1,0 +1,41 @@
+/* Container */
+.container {
+    text-align: center;
+}
+
+
+/* Image */
+img {
+    width: 50%;
+    object-fit: contain;
+    margin: 1% auto;
+}
+
+
+/* Buttons */
+.buttons > button {
+    width: 20%;
+    margin: 1%;
+}
+
+.buttons > #submitButton {
+    color: #2e415a;
+}
+
+
+@media (max-width: 1300px)
+{
+    .container {
+        text-align: center;
+    }
+    
+    img {
+        width: 63%;
+        margin: 1% auto;
+    }
+    
+    .buttons > button {
+        width: 35%;
+        margin: 1%;
+    }
+}

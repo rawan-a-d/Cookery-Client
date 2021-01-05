@@ -1,9 +1,12 @@
 <div id="flex-container" class="mat-elevation-z4">
     <div class="flex-item-left">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROa-v3M7qp_Po1Bw2zSgueCCbIPCKlrptQrA&usqp=CAU" alt="">
+        <div class="img-container">
+            <img [src]="'assets/' + profile?.image" alt="">
+            <mat-icon aria-hidden="false" aria-label="Example edit icon" (click)="openDialog()">edit</mat-icon>
+         </div>
     </div>
     <div class="flex-item-right">
-        <h1><span id="name">{{ profile?.user?.name }}</span></h1>
+        <h1 id="name">{{ profile?.user?.name }}</h1>
         <div id="container">
             <div class="flex-left">
                 <p class="title">Recipes</p>
@@ -16,5 +19,4 @@
         </div>
         <p id="email"><span id="emailHeading">Email </span>{{ profile?.user?.email }}</p>
     </div>
-    <!-- <p><span>Favourites </span>34</p> -->
 </div>

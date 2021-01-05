@@ -1,7 +1,8 @@
 import { DataService } from './data.service';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
+import { map } from 'rxjs/operators';
 
 
 @Injectable({
@@ -20,12 +21,33 @@ export class UserService extends DataService {
 
   public getRecipes() {
     // return this.httpClient.get('http://localhost:90/users/' + userId + '/recipes');
-    return this.httpClient.get('http://localhost:90/users/' + this.authService.currentUser.sub + '/recipes');
+    return this.httpClient.get('http://localhost:90/users/' + this.authService.currentUser.sub + '/recipes')
+    .pipe(
+      map(
+        response => response
+      )
+    )
 
   }
 
 
   public getProfile() {
     return this.httpClient.get('http://localhost:90/users/' + this.authService.currentUser.sub + '/profile')
+      .pipe(
+        map(
+          response => response
+        )
+      )
+  }
+
+  public uploadImage(data) {
+    return this.httpClient.put('http://localhost:90/users/'+ this.authService.currentUser.sub +'/image', data, 
+                {headers : new HttpHeaders({ 'Content-Type': 'multipart/form-data' })}
+                )
+      .pipe(
+        map(
+          response => response
+        )
+      )
   }
 }

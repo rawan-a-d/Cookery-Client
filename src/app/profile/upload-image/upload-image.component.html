@@ -1,0 +1,25 @@
+<div class="container">
+    <h1>Profile Picture</h1>
+    <img src="{{ image }}">    
+
+    <!-- Form -->
+      <form [formGroup]="uploadForm" (ngSubmit)="submitImage()">      
+        <div>
+          <input style="display: none;"  
+            type="file"
+            name="image" 
+            accept="image/*"
+            required
+            (change)="onFileSelect($event)"
+            class="select-profile-picture" 
+            #selectPicture/>
+        </div> 
+        <mat-error>
+			{{ imageError }}
+        </mat-error>     
+        <div class="buttons">
+            <button mat-raised-button type="button" (click) = "selectPicture.click()">Change Image</button>
+            <button mat-raised-button color="accent" type="submit" id="submitButton" [disabled]="(imageError != '') || (uploadForm.invalid)">Submit</button>
+        </div>
+      </form>
+</div>
