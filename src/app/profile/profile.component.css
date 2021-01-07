@@ -11,14 +11,16 @@
 
 /* flex left */
 .flex-item-left {
-    flex: 35%;
+    flex: 20%;
     flex-grow: 1;
 }
 
 /* flex right */
 .flex-item-right {
     flex: 40%;
-    margin: 5%;
+    /* margin: 5%; */
+    /* To place edit icon on container */
+    position: relative;
 }
 
 
@@ -42,12 +44,12 @@
 }
 
 
-
 /* User's details */
 #name {
     font-size: 2.1em;
     font-weight: 500;
     text-align: center;
+    margin-top: 6%;
 }
 
 #email {
@@ -58,6 +60,12 @@
 #emailHeading {
     margin-right: 25%;
     color: #7e7e7e;
+}
+
+.flex-item-right > mat-icon {
+    top: 4%;
+    right: 5%;
+    position: absolute;
 }
 
 

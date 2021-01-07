@@ -6,15 +6,16 @@
          </div>
     </div>
     <div class="flex-item-right">
+        <mat-icon aria-hidden="false" aria-label="Example edit icon" (click)="openUpdateProfileDialog()">edit</mat-icon>
         <h1 id="name">{{ profile?.user?.name }}</h1>
         <div id="container">
             <div class="flex-left">
                 <p class="title">Recipes</p>
-                <p class="number">{{ profile?.recipesNr }}</p>
+                <p class="number" [routerLink]="['/users', authService.currentUser.sub, 'recipes']">{{ profile?.recipesNr }}</p>
             </div>
             <div class="flex-right">
                 <p class="title">followers</p>
-                <p class="number">{{ profile?.followersNr }}</p>
+                <p class="number" [routerLink]="['/users', authService.currentUser.sub, 'followers']">{{ profile?.followersNr }}</p>
             </div>
         </div>
         <p id="email"><span id="emailHeading">Email </span>{{ profile?.user?.email }}</p>

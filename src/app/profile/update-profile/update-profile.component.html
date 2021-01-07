@@ -1,0 +1,96 @@
+<!-- <h1 mat-dialog-title>Hi {{data.name}}</h1>
+<div mat-dialog-content>
+  <p>What's your favorite animal?</p>
+  <mat-form-field>
+    <mat-label>Favorite Animal</mat-label>
+    <input matInput [(ngModel)]="data.animal">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">No Thanks</button>
+  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>
+</div> -->
+
+
+
+<form id="form-update-profile" [formGroup]="form" (ngSubmit)="updateProfile()">
+    <h2 class="form-update-profile-heading">
+        Update Profile
+    </h2>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput ngModel name="name" required formControlName="name" [(ngModel)]="profile.user.name">
+        
+		<mat-error *ngIf="name.hasError('required')">
+			Name is <strong>required</strong>
+		</mat-error>
+		<mat-error *ngIf="name.hasError('minlength')">
+			Name should have a minimum length of <strong>{{name.errors.minlength.requiredLength}}</strong> charachters.
+		</mat-error>     
+	</mat-form-field>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Email address</mat-label>
+		<input type="email" matInput placeholder="pat@example.com" name="email" formControlName="email" [(ngModel)]="profile.user.email">
+		
+		<mat-error *ngIf="email.hasError('email') && !email.hasError('required')">
+			Please enter a valid email address
+		</mat-error>
+		<mat-error *ngIf="email.hasError('required')">
+			Email is <strong>required</strong>
+		</mat-error>
+      </mat-form-field>
+<!-- 
+      <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input #passwordWithValidation matInput [type]="hide ? 'password' : 'text'" name="password" required formControlName="password">
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+		</button>
+
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" name="confirmPassword" required formControlName="confirmPassword">
+        <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+		</button>
+		
+		<mat-error *ngIf="confirmPassword.invalid && confirmPassword.hasError('required')">
+			Confirm Password is <strong>required</strong>
+		</mat-error>
+
+	  </mat-form-field>
+	  <mat-error *ngIf="confirmPassword.valid && form.invalid && form.hasError('passwordsShouldMatch')">
+		Passwords do not <strong>match</strong>
+	  </mat-error>
+
+
+	<div *ngIf="password.touched">
+
+		<mat-hint align="end" aria-live="polite">
+		  {{password.value.length}} / 25
+		</mat-hint>
+		<mat-error *ngIf="password.hasError('required')">
+		  Password is required
+		</mat-error>
+		<mat-error *ngIf="password.hasError('pattern')">
+		  Password is not valid
+		</mat-error>
+		<mat-password-strength #passwordComponentWithValidation
+									  (onStrengthChanged)="onStrengthChanged($event)"
+									  [password]="password.value">
+	  	</mat-password-strength>
+		<mat-password-strength-info
+			[passwordComponent]="passwordComponentWithValidation">
+		</mat-password-strength-info> -->
+	<!-- </div> -->
+
+    <div mat-dialog-actions>
+        <button mat-raised-button (click)="onNoClick()" type="button">Cancel</button>
+        <button mat-raised-button color="accent" id="update-btn" [disabled]="form.invalid" type="submit">Update</button>
+    </div>
+
+</form>

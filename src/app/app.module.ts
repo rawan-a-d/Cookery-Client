@@ -67,6 +67,7 @@ import { MatPasswordStrengthModule } from '@angular-material-extensions/password
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
 import { UploadImageComponent } from './profile/upload-image/upload-image.component';
+import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
 
 
 // NgxEchartsModule.forRoot({
@@ -98,6 +99,7 @@ import { UploadImageComponent } from './profile/upload-image/upload-image.compon
     OfflineComponent,
     UnexpectedErrorComponent,
     UploadImageComponent,
+    UpdateProfileComponent,
   ],
   imports: [
     BrowserModule,

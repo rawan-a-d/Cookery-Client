@@ -1,0 +1,18 @@
+#form-update-profile {
+    width: 80%;
+    margin: 2% 10%;
+}
+
+
+mat-form-field {
+    width: 100%;
+}
+
+.mat-dialog-actions {
+    width: 100%;
+}
+
+button {
+    width: 48%;
+    /* margin: auto 6% auto 0; */
+}
