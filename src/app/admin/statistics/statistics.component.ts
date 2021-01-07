@@ -129,6 +129,7 @@ export class StatisticsComponent implements OnInit {
 				feature: {
 						dataView: {},
 						saveAsImage: {},
+						saveAsPdf: {},
 						restore: {}
 				}
 			}

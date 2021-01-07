@@ -68,6 +68,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
 import { UploadImageComponent } from './profile/upload-image/upload-image.component';
 import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
+import { FollowersComponent } from './follow/followers/followers.component';
 
 
 // NgxEchartsModule.forRoot({
@@ -100,6 +101,7 @@ import { UpdateProfileComponent } from './profile/update-profile/update-profile.
     UnexpectedErrorComponent,
     UploadImageComponent,
     UpdateProfileComponent,
+    FollowersComponent,
   ],
   imports: [
     BrowserModule,

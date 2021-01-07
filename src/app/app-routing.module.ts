@@ -21,6 +21,7 @@ import { BadRequestComponent } from './errors/bad-request/bad-request.component'
 import { OfflineComponent } from './errors/offline/offline.component';
 import { InternalServerErrorComponent } from './errors/internal-server-error/internal-server-error.component';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { FollowersComponent } from './follow/followers/followers.component';
 
 const appRoutes: Routes = [
     {
@@ -97,6 +98,10 @@ const appRoutes: Routes = [
     {
         path: 'register',
         component: RegisterComponent
+    },
+    {
+        path: 'users/:id/followers',
+        component: FollowersComponent
     },
 	{
 		path: 'forbidden',

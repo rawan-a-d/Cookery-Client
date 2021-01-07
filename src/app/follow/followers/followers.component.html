@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="follower active mat-elevation-z2" *ngFor="let follower of followers">
+        <div class="img-container">
+            <img class="user-image" [src]="'assets/' + follower?.image">
+            <!-- <img [src]="'assets/' + profile?.image" alt=""> -->
+
+            <!-- image {{follower.image}} -->
+            <!-- {{follower.user.id}} -->
+        </div>
+        <div class="text-container">
+            <h3 [routerLink]="['/users', follower.user.id, 'recipes']">{{follower.user.name}}</h3> 
+        </div>
+        <!-- {{ follower }} -->
+    </div>
+</div>
