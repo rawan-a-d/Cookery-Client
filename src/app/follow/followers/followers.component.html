@@ -1,16 +1,11 @@
-<h1 id="header">You have {{ followers.length }} followers</h1>
+<h1 id="header">You have {{ followers?.length }} followers</h1>
 <div class="container">
-    <div class="follower active mat-elevation-z2" *ngFor="let followee of followers">
+    <div class="follower active mat-elevation-z2" *ngFor="let follower of followers">
         <div class="img-container">
-            <img class="user-image" [src]="'assets/' + followee?.image">
-            <!-- <img [src]="'assets/' + profile?.image" alt=""> -->
-
-            <!-- image {{follower.image}} -->
-            <!-- {{follower.user.id}} -->
+            <img class="user-image" [src]="'assets/' + follower?.image">
         </div>
         <div class="text-container">
-            <h3 [routerLink]="['/users', followee.user.id, 'recipes']">{{followee.user.name}}</h3> 
+            <h3 [routerLink]="['/users', follower.user.id]">{{follower.user.name}}</h3> 
         </div>
-        <!-- {{ follower }} -->
     </div>
 </div>

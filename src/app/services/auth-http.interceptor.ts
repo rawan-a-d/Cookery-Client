@@ -32,7 +32,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
       contentType = headers.get('Content-Type');
     }
 
-    console.log("content " + contentType)
+    // console.log("content " + contentType)
 
     // request = request.clone({
     //   setHeaders: {
@@ -52,7 +52,7 @@ export class AuthHttpInterceptor implements HttpInterceptor {
       //     Authorization: `Bearer ${token}`
       //   }
       // });
-      console.log("loggedIn")
+      // console.log("loggedIn")
       headers = headers.append('Authorization', `Bearer ${token}`);
     }
     else {
@@ -80,8 +80,8 @@ export class AuthHttpInterceptor implements HttpInterceptor {
         (headers = headers.append('Content-Type', 'application/json')) : 
         (headers = headers.delete('Content-Type'));
 
-    console.log(headers.get('Content-Type'))
-    console.log('Authorization ' + headers.get('Authorization'))
+    // console.log(headers.get('Content-Type'))
+    // console.log('Authorization ' + headers.get('Authorization'))
 
     // npm install angular2-jwt
 

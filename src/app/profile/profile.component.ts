@@ -6,6 +6,7 @@ import { ProfileDTO } from '../models/ProfileDTO';
 import { UploadImageComponent } from './upload-image/upload-image.component';
 import { UpdateProfileComponent } from './update-profile/update-profile.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
 	selector: 'app-profile',
@@ -14,19 +15,32 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class ProfileComponent implements OnInit {
 	profile: ProfileDTO;
+	currentUserId = this.authService.userId;
+	userId;
 
 	constructor(private userService: UserService,
 							public authService: AuthService,
-							public dialog: MatDialog) { }
+							public dialog: MatDialog,
+							public route: ActivatedRoute) { }
 
 
 	ngOnInit(): void {
-		this.userService.getProfile()
+		// this.userId = this.route.snapshot.paramMap.get("id")
+
+		this.route.paramMap.subscribe(params => {
+			this.userId = params.get("id")
+			console.log('userId ' + this.userId)
+
+			this.getProfile();
+		})
+	}
+
+	getProfile() {
+		this.userService.getProfile(this.userId)
 			.subscribe((data) => {
 				this.profile = <ProfileDTO>data;
 			})
 	}
-
 
 	// Upload Image
 	openDialog(): void {

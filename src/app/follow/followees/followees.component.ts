@@ -26,4 +26,13 @@ export class FolloweesComponent implements OnInit {
       console.log(data);
     })
   }
+
+
+  unFollow(followId: number) {
+    console.log(followId);
+    this.followService.delete(followId)
+      .subscribe(() => {
+        this.getAll();
+      });
+  }
 }

@@ -31,8 +31,8 @@ export class UserService extends DataService {
   }
 
 
-  public getProfile() {
-    return this.httpClient.get('http://localhost:90/users/' + this.authService.currentUser.sub + '/profile')
+  public getProfile(id: number) {
+    return this.httpClient.get('http://localhost:90/users/' + id + '/profile')
       .pipe(
         map(
           response => response

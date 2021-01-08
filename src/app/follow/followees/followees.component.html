@@ -1,16 +1,12 @@
-<h1 id="header">You are following {{ followees.length }} users</h1>
+<h1 id="header">You are following {{ followees?.length }} users</h1>
 <div class="container">
-    <div class="follower active mat-elevation-z2" *ngFor="let follower of followees">
+    <div class="follower active mat-elevation-z2" *ngFor="let followee of followees">
         <div class="img-container">
-            <img class="user-image" [src]="'assets/' + follower?.image">
-            <!-- <img [src]="'assets/' + profile?.image" alt=""> -->
-
-            <!-- image {{follower.image}} -->
-            <!-- {{follower.user.id}} -->
+            <img class="user-image" [src]="'assets/' + followee?.image">
         </div>
         <div class="text-container">
-            <h3 [routerLink]="['/users', follower.user.id, 'recipes']">{{follower.user.name}}</h3> 
+            <h3 [routerLink]="['/users', followee.user.id]">{{followee.user.name}}</h3>
+            <mat-icon aria-hidden="false" aria-label="Example remove_circle_outline icon" (click)="unFollow(followee.followId)">remove_circle_outline</mat-icon>
         </div>
-        <!-- {{ follower }} -->
     </div>
 </div>

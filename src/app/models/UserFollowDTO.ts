@@ -1,7 +1,7 @@
 import { UserBase } from "./UserBase";
 
 export class UserFollowDTO {
-    constructor(public user: UserBase, public image: string){
+    constructor(public followId: number, public user: UserBase, public image: string){
 
     }
 }

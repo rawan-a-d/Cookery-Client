@@ -29,7 +29,7 @@
           <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
             Account<span class="caret"></span></a>
           <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
-            <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="authService.isLoggedIn()" routerLink="/users/2">Profile</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="authService.isLoggedIn()" [routerLink]="['users', authService.userId]">Profile</a>
             <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="!authService.isLoggedIn()" routerLink="/login">Login</a>
             <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="!authService.isLoggedIn()"  routerLink="/register">Register</a>
             <a class="dropdown-item waves-light" mdbWavesEffect *ngIf="authService.isLoggedIn()" (click)="logout()">Logout</a>
