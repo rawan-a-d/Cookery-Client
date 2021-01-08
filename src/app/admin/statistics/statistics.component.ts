@@ -33,7 +33,7 @@ export class StatisticsComponent implements OnInit {
 	statisticsList = [
 		{value: 'favourites-recipes-per-user', viewValue: 'Favourites recipes per user'},
 		{value: 'recipes-per-month', viewValue: 'Recipes per month'},
-		{value: 'test 3', viewValue: 'test 3 value'}
+		{value: 'top-followed-users', viewValue: 'Top followed users'}
 	]
 
 	// Chart options
