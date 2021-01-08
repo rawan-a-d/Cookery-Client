@@ -69,6 +69,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { UploadImageComponent } from './profile/upload-image/upload-image.component';
 import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
 import { FollowersComponent } from './follow/followers/followers.component';
+import { FolloweesComponent } from './follow/followees/followees.component';
 
 
 // NgxEchartsModule.forRoot({
@@ -102,6 +103,7 @@ import { FollowersComponent } from './follow/followers/followers.component';
     UploadImageComponent,
     UpdateProfileComponent,
     FollowersComponent,
+    FolloweesComponent,
   ],
   imports: [
     BrowserModule,
