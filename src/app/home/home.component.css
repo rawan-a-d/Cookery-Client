@@ -1,133 +1,138 @@
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 /* Search form */
 .center-form mat-form-field {
-    width: 40%;
-    margin: 0 30%;
-    border-radius: 200px;
+		width: 40%;
+		margin: 0 30%;
+		border-radius: 200px;
 
 }
-  
+	
+
+#filter-by-ingredient {
+	margin: 0 30%;
+}
+
 
 /* Flex container */
 .flex-container {
-  display: flex;
-  font-size: 30px;
-  flex-direction: row;
-  margin: 1% 15%;
-  position: relative;
+	display: flex;
+	font-size: 30px;
+	flex-direction: row;
+	margin: 1% 15%;
+	position: relative;
 }
 
 /* Flex item */
 .flex-item {
-  background-color: #ffd460;
-  padding: 0;
-  border: #dcb951 2px solid;
-  flex: 50%;
+	background-color: #ffd460;
+	padding: 0;
+	border: #dcb951 2px solid;
+	flex: 50%;
 }
 
 /* image */
 img {
-    width: 100%;
-    height: 60vh;
-    object-fit: cover;
+		width: 100%;
+		height: 60vh;
+		object-fit: cover;
 }
 
 /* Recipe name */
 #recipe-name {
-  cursor: pointer;
+	cursor: pointer;
 }
 
 /* Recipe text */
 .recipe-text {
-  text-align: center;
-  padding: 5vh 0;
+	text-align: center;
+	padding: 5vh 0;
 }
 
 
 /* .container {
-    max-width: 1000px;
-    position: relative;
-    margin: auto;
+		max-width: 1000px;
+		position: relative;
+		margin: auto;
 } */
 
 /* Previous, Next container */
 .prev-next-container {
-  position: absolute;
-  height: 100%;
-  background: rgba(0,0,0,.38);
-  padding: 30vh 0;
+	position: absolute;
+	height: 100%;
+	background: rgba(0,0,0,.38);
+	padding: 30vh 0;
 }
 
 /* Previous, Next container right button */
 .prev-next-container.right {
-  right: 0;
+	right: 0;
 }
 
 .next {
-  right: 0;
+	right: 0;
 }
 
 
 /* span inside Previous, Next container */
 span { 
-  position: relative;
-  margin: 30vh 0;
+	position: relative;
+	margin: 30vh 0;
 }
 
 /* On hover, add a black background color with a little bit see-through */
 .previous:hover, .next:hover {
-  background-color: rgba(0,0,0,0.8);
+	background-color: rgba(0,0,0,0.8);
 }
 
 /* Next & previous buttons */
 .previous, .next {
-  cursor: pointer;
-  position: absolute;
-  top: 50%;
-  width: auto;
-  padding: 16px;
-  margin-top: -22px;
-  color: white;
-  font-weight: bold;
-  font-size: 18px;
-  transition: 0.6s ease;
-  border-radius: 0 3px 3px 0;
-  user-select: none;
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	padding: 16px;
+	margin-top: -22px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+	user-select: none;
 }
 
 /* Favorite icons */
 mat-icon.favorite {
-    float: right;
-    margin-right: 30px;
-    cursor: pointer;
-    color: #ea5455;
+		float: right;
+		margin-right: 30px;
+		cursor: pointer;
+		color: #ea5455;
 }
 
 /* Paginator */
 mat-paginator {
-  align-items: center;
-  justify-content: center;
+	align-items: center;
+	justify-content: center;
 }
 
 ::ng-deep div.mat-paginator-container {
-  align-items: center;
-  justify-content: center;
+	align-items: center;
+	justify-content: center;
 }
 
 
 
 /* screens less than 1150px */
 @media screen and (max-width: 1150px) {
-  ::ng-deep .flex-container {
-    flex-direction: column;
-    width: 70% !important;
-    margin: 2% 15% !important;
-  }
+	::ng-deep .flex-container {
+		flex-direction: column;
+		width: 70% !important;
+		margin: 2% 15% !important;
+	}
 
-  .flex-item:nth-of-type(2n) {
-    display: none;
-  }
+	.flex-item:nth-of-type(2n) {
+		display: none;
+	}
 }

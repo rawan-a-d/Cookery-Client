@@ -35,5 +35,20 @@ export class RecipeService extends DataService {
         )
       )
   }
+
+  // get recipes by ingredient
+  getRecipesBy(ingredients: string[]) {
+    let url = 'http://localhost:90/recipes?'
+    ingredients.forEach(element => {
+      url += 'ingredient=' + element + '&';
+    });
+
+    return this.http.get(url)
+      .pipe(
+        map(
+          response => response
+        )
+      )
+  }
   
 }

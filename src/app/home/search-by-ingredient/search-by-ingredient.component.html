@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Find a recipe</h1>
+<div mat-dialog-content>
+    <mat-form-field class="example-chip-list">
+        <mat-label>Favorite Ingredients</mat-label>
+        <mat-chip-list #chipList aria-label="Ingredient selection">
+          <mat-chip *ngFor="let ingredient of ingredients" [selectable]="selectable"
+                   [removable]="removable" (removed)="remove(ingredient)">
+            {{ ingredient }}
+            <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+          </mat-chip>
+          <input placeholder="New ingredient..."
+                 [matChipInputFor]="chipList"
+                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                 [matChipInputAddOnBlur]="addOnBlur"
+                 (matChipInputTokenEnd)="add($event)">
+        </mat-chip-list>
+    </mat-form-field>
+    <!-- Ingredient exists? -->
+    <mat-error *ngIf="doesIngredientExist">
+        This ingredient was already <strong>added</strong>
+    </mat-error>
+</div>
+    
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+  <button mat-button (click)="search()">Search</button>
+</div>

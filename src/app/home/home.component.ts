@@ -6,166 +6,162 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import { FavouriteService } from '../services/favourite.service';
 import { AuthService } from '../services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
+import { SearchByIngredientComponent } from './search-by-ingredient/search-by-ingredient.component';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+	selector: 'app-home',
+	templateUrl: './home.component.html',
+	styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  direction: string = "next";
-  flexWidth: number = 70;
-  i: number = 0;
+	direction: string = "next";
+	flexWidth: number = 70;
+	i: number = 0;
+	filter = '';
 
-  searchText = '';
-  myControl = new FormControl();
+	searchText = '';
+	myControl = new FormControl();
 
-  // allRecipes: Recipe[] = [];
-  allRecipes: RecipeDTO[] = [];
+	allRecipes: RecipeDTO[] = [];
 
-  filteredRecipes: Recipe[];
-  // favourites: RecipeDTO[];
+	filteredRecipes: Recipe[];
 
-  isFavourite: boolean;
-
-
-  constructor(private recipeService: RecipeService,
-            private favouriteService: FavouriteService,
-            private authService: AuthService,
-            private filterPipe: FilterPipe) {
-  }
-
-  ngOnInit() {
-    this.getRecipes();
-  }
-
-  getRecipes() {
-    this.recipeService.getAll()
-      .subscribe((recipes)=> {
-        console.log("Recipes")
-        console.log(recipes);
-        this.allRecipes = <RecipeDTO[]>recipes;
-      })  
-  }
+	isFavourite: boolean;
 
 
-  get recipes() {
-    if(this.allRecipes) {
-      if(this.i <= 0 && this.direction == 'prev') {
-        this.i = this.allRecipes.length - 2;
-      }
-      else if(this.i >= this.allRecipes.length - 1 && this.direction == 'next') {
-        this.i = 0;
-      }
-      return this.allRecipes?.slice(this.i, this.i + 2);
-    }
-  }
+	constructor(private recipeService: RecipeService,
+						private favouriteService: FavouriteService,
+						private authService: AuthService,
+						private filterPipe: FilterPipe,
+						private dialog: MatDialog) {
+
+	}
+
+	ngOnInit() {
+		this.getRecipes();
+	}
+
+	getRecipes() {
+		this.recipeService.getAll()
+			.subscribe((recipes)=> {
+				console.log("Recipes")
+				console.log(recipes);
+				this.allRecipes = <RecipeDTO[]>recipes;
+			})  
+	}
 
 
-  get filteredRecipesArr() {
-    if(this.filteredRecipes) {
-      if(this.i <= 0 && this.direction == 'prev') {
-        this.i = this.filteredRecipes.length - 2;
-      }
-      else if(this.i >= this.filteredRecipes.length - 1 && this.direction == 'next') {
-        this.i = 0;
-      }
-
-      return this.filteredRecipes?.slice(this.i, this.i + 2);
-    }
-  }
-
-  // list of recipes
-  // when I move to next element increase i and check if it's the last element
-  // get the last element and the first
-
-  // when I move back to previous decrease i and check if it's the first element
-  // get the first element and last
-
-  onKey() { // without type info
-    if(this.searchText != ''){
-      this.filteredRecipes = this.filterPipe.transform(this.allRecipes, this.searchText);
-    }
-    else {
-      this.filteredRecipes = null;
-    }
-
-    // Set width
-    this.setFlexWidth();
-  }
+	get recipes() {
+			if(this.i <= 0 && this.direction == 'prev') {
+				this.i = this.allRecipes.length - 2;
+				console.log(this.i);
+			}
+			else if(this.i >= this.allRecipes.length - 1 && this.direction == 'next') {
+				this.i = 0;
+				console.log(this.i);
+			}
+			return this.allRecipes?.slice(this.i, this.i + 2);
+	}
 
 
-  setFlexWidth() {
-    if(this.filteredRecipes.length == 1) {
-      this.flexWidth = 50;
-    }
-    else {
-      this.flexWidth = 70;
-    }
-  }
+	get filteredRecipesArr() {
+		if(this.filteredRecipes) {
+			if(this.i <= 0 && this.direction == 'prev') {
+				this.i = this.filteredRecipes.length - 2;
+			}
+			else if(this.i >= this.filteredRecipes.length - 1 && this.direction == 'next') {
+				this.i = 0;
+			}
+
+			return this.filteredRecipes?.slice(this.i, this.i + 2);
+		}
+	}
+
+	// list of recipes
+	// when I move to next element increase i and check if it's the last element
+	// get the last element and the first
+
+	// when I move back to previous decrease i and check if it's the first element
+	// get the first element and last
+
+	onKey() { // without type info
+		if(this.searchText != ''){
+			this.filteredRecipes = this.filterPipe.transform(this.allRecipes, this.searchText);
+		}
+		else {
+			this.filteredRecipes = null;
+		}
+
+		// Set width
+		this.setFlexWidth();
+	}
 
 
-  previous() {
-    this.i = this.i - 1;
-    this.direction = 'prev';
-  }
+	setFlexWidth() {
+		if(this.filteredRecipes.length == 1) {
+			this.flexWidth = 50;
+		}
+		else {
+			this.flexWidth = 70;
+		}
+	}
 
 
-  next() {
-    this.i = this.i + 1;
-    this.direction = 'next';
-  }
+	previous() {
+		this.i = this.i - 1;
+		this.direction = 'prev';
+	}
 
 
+	next() {
+		this.i = this.i + 1;
+		this.direction = 'next';
+	}
 
-  // Favourites
-  // getFavourites() {
-  //   this.favouriteService.getAll()
-  //   .subscribe((data) => {
-  //     this.favourites = <RecipeDTO[]>data;
+	toggleFavourite(recipe: RecipeDTO) {
+		this.isFavourite = recipe.isFavourite;
+		if(this.isFavourite) {
+			this.removeFavourite(recipe.favouriteId);
+			console.log("Trying to remove fav")
+		}
+		else {
+			this.addFavourite(recipe);
+			console.log("Trying to add fav")
+		}
 
-  //     console.log(this.favourites)
-  //     console.log(data);
-  //   })
-  // }
+		this.isFavourite = false;
+	}
 
-  toggleFavourite(recipe: RecipeDTO) {
-    this.isFavourite = recipe.isFavourite;
-    if(this.isFavourite) {
-      this.removeFavourite(recipe.favouriteId);
-      console.log("Trying to remove fav")
-    }
-    else {
-      this.addFavourite(recipe);
-      console.log("Trying to add fav")
-    }
+	addFavourite(recipe: RecipeDTO) {
+		this.favouriteService.create(recipe)
+			.subscribe((data) => {
 
-    this.isFavourite = false;
-  }
+				this.getRecipes();
 
-  addFavourite(recipe: RecipeDTO) {
-    this.favouriteService.create(recipe)
-      .subscribe((data) => {
+			})
 
-        this.getRecipes();
+	}
 
-      })
+	removeFavourite(id: number) {
+		this.favouriteService.delete(id)
+			.subscribe(()=> {
+				this.getRecipes();
+			});
+	}
 
-  }
 
-  removeFavourite(id: number) {
-    this.favouriteService.delete(id)
-      .subscribe(()=> {
-        this.getRecipes();
-      });
-  }
-
-  // isFavourite(recipe: Recipe): boolean {
-  //   if(this.favourites.indexOf(recipe) >= 0) {
-  //     return true;
-  //   }
-
-  //   return false;
-  // }
-
+	// Search by ingredients dialog
+	openSearchByIngredientDialog() {
+		let dialogRef = this.dialog.open(SearchByIngredientComponent, {
+			height: 'auto',
+			width: '40%',
+		})
+		
+		// Get filtered recipes
+		dialogRef.afterClosed()
+			.subscribe(data => {
+				this.allRecipes = <RecipeDTO[]>data;
+			});
+	}
 }

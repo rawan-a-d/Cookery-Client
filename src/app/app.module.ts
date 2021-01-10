@@ -23,6 +23,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
 import {MatIconModule} from '@angular/material/icon';
 import { FilterPipe } from './pipes/filter.pipe';
+import {MatChipsModule} from '@angular/material/chips';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -70,6 +71,7 @@ import { UploadImageComponent } from './profile/upload-image/upload-image.compon
 import { UpdateProfileComponent } from './profile/update-profile/update-profile.component';
 import { FollowersComponent } from './follow/followers/followers.component';
 import { FolloweesComponent } from './follow/followees/followees.component';
+import { SearchByIngredientComponent } from './home/search-by-ingredient/search-by-ingredient.component';
 
 
 // NgxEchartsModule.forRoot({
@@ -104,6 +106,7 @@ import { FolloweesComponent } from './follow/followees/followees.component';
     UpdateProfileComponent,
     FollowersComponent,
     FolloweesComponent,
+    SearchByIngredientComponent,
   ],
   imports: [
     BrowserModule,
@@ -130,6 +133,7 @@ import { FolloweesComponent } from './follow/followees/followees.component';
     MatSelectModule,
     MatSnackBarModule,
     AppRoutingModule,
+    MatChipsModule,
     MaterialFileInputModule,
     MatPasswordStrengthModule,
     MatSlideToggleModule,

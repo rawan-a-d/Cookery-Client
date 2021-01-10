@@ -13,6 +13,7 @@ export class FilterPipe implements PipeTransform {
       return items;
     }
 
+    console.log("FILTER PIPE")
     searchText = searchText.toString().toLowerCase();
 
     console.log(items);

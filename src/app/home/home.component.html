@@ -3,25 +3,18 @@
 
     <form class="example-form center-form">
         <mat-form-field class="example-full-width">
-        <mat-label>Search</mat-label>
-
-        <input 
-            type="text" 
-            matInput 
-            [formControl]="myControl"
-            [(ngModel)]="searchText" 
-            name="searchText"
-            (keyup)="onKey()">
-        <mat-icon id="search" matSuffix>search</mat-icon>
+            <mat-label>Search</mat-label>
+            <input 
+                type="text" 
+                matInput 
+                [formControl]="myControl"
+                [(ngModel)]="searchText" 
+                name="searchText"
+                (keyup)="onKey()">
+            <mat-icon id="search" matSuffix>search</mat-icon>
         </mat-form-field>
+        <button id="filter-by-ingredient" mat-button color="primary" (click)="openSearchByIngredientDialog()">Filter by ingredient</button>
     </form>
-    <!-- {{'filtered ' + filteredRecipesArr?.length}}
-    <br>
-    {{ 'recipe ' + recipes?.length}}
-    <br>
-    {{'i ' + i}}
-    <br>
-    {{'Dierction ' + direction}} -->
 
     <!-- RECIPES -->
     <div class="flex-container mat-elevation-z6" [style.width.%]="flexWidth" [ngStyle]="{'margin-left': flexWidth == 70? '15%': '25%'}">
