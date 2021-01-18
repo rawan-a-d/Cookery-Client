@@ -20,6 +20,10 @@
           <a class="nav-link waves-light" routerLink="/admin" mdbWavesEffect>Admin</a>
         </li>       
   
+        <li class="nav-item" routerLinkActive="active" *ngIf="authService.isLoggedIn()" (click)="notificationMenuComponent.markAsSeen()">
+          <!-- <a class="nav-link waves-light" routerLink="/admin" mdbWavesEffect>Admin</a> -->
+          <app-notification-menu (notificationTabClicked)="markAsSeen()"></app-notification-menu>
+        </li>  
       </ul>
       <!-- Links -->
   

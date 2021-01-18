@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 import { combineAll, map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from '../models/User';
+import { NotificationSocketService } from './notification-socket.service';
 
 
 @Injectable({
@@ -13,9 +14,10 @@ import { User } from '../models/User';
 export class AuthService {
   credentials: string = "";
 
-  constructor(private http: HttpClient) { 
-    
+  constructor(private http: HttpClient,
+              private notificationSocketService: NotificationSocketService) { 
   }
+
 
 
   // Login, send credentials to server
@@ -38,6 +40,9 @@ export class AuthService {
 
   logout() {
     localStorage.removeItem('token');
+
+    // Clost socket
+    this.notificationSocketService.close();
   }
 
   isLoggedIn() {

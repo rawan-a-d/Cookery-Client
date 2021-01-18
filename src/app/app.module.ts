@@ -72,6 +72,8 @@ import { UpdateProfileComponent } from './profile/update-profile/update-profile.
 import { FollowersComponent } from './follow/followers/followers.component';
 import { FolloweesComponent } from './follow/followees/followees.component';
 import { SearchByIngredientComponent } from './home/search-by-ingredient/search-by-ingredient.component';
+import { NotificationMenuComponent } from './notification-menu/notification-menu.component';
+import {MatBadgeModule} from '@angular/material/badge';
 
 
 // NgxEchartsModule.forRoot({
@@ -107,6 +109,7 @@ import { SearchByIngredientComponent } from './home/search-by-ingredient/search-
     FollowersComponent,
     FolloweesComponent,
     SearchByIngredientComponent,
+    NotificationMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -138,6 +141,7 @@ import { SearchByIngredientComponent } from './home/search-by-ingredient/search-
     MatPasswordStrengthModule,
     MatSlideToggleModule,
     MatDialogModule,
+     MatBadgeModule,
     // RouterModule.forRoot([
     //   {
     //     path: 'recipes',

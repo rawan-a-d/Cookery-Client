@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { NotificationMenuComponent } from '../notification-menu/notification-menu.component';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,6 +9,8 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  @ViewChild(NotificationMenuComponent)
+  notificationMenuComponent: NotificationMenuComponent;
 
   constructor(public authService: AuthService,
               private router: Router,

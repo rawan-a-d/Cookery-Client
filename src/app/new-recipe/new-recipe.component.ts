@@ -8,6 +8,8 @@ import {AfterViewChecked,ChangeDetectorRef} from '@angular/core'
 import { renderFlagCheckIfStmt } from '@angular/compiler/src/render3/view/template';
 import { User } from '../models/User';
 import { AuthService } from '../services/auth.service';
+import { NotificationService } from '../services/notification.service';
+import { NotificationSocketService } from '../services/notification-socket.service';
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}
@@ -36,7 +38,8 @@ export class NewRecipeComponent implements OnInit {
               private fb: FormBuilder, 
               private cdr: ChangeDetectorRef,
               private route: ActivatedRoute,
-              private router: Router) { }
+              private router: Router,
+              public notificationSocketService: NotificationSocketService) { }
 
 
   ngOnInit(): void {
@@ -99,6 +102,8 @@ export class NewRecipeComponent implements OnInit {
 
           // inform parent
           this.recipeService.setInfo('recipe created');
+
+          this.notificationSocketService.sendMessage(newRecipe);
         })
       }
   }

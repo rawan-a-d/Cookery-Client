@@ -16,9 +16,7 @@ export class SearchByIngredientComponent implements OnInit {
 	removable = true;
 	addOnBlur = true;
 	readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-	ingredients: string[] = [
-		// 'Lemon'
-	];
+	ingredients: string[] = [];
 	doesIngredientExist = false;
 
 	recipes: RecipeDTO[];

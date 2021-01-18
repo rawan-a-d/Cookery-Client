@@ -1,0 +1,17 @@
+<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon 
+        [matBadge]="notificationsContainer?.newNotificationsNr || null" 
+        matBadgeSize="small" matBadgeColor="warn">notifications_active</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+    <div *ngFor="let notification of notificationsContainer?.notifications" 
+    [ngClass]="{'not-seen': notification.isSeen == false}"
+    [routerLink]="['recipes', notification.recipeId]">
+        <button mat-menu-item>
+            <span>
+                <span class="name">{{notification.userName}}</span> has posted a new recipe <span class="name">{{notification.recipeName}}</span>
+            </span>
+        </button>
+        <mat-divider></mat-divider>
+    </div>
+</mat-menu>

@@ -1,0 +1,50 @@
+/* icon */
+mat-icon {
+    color: white;
+    font-size: 1.4em;
+}
+
+
+/* list of notifications */
+::ng-deep .cdk-overlay-pane#cdk-overlay-0 {
+    max-height: 56%;
+    width: 45%;
+}
+
+/* Recipe name/ user name */
+.name {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+/* Arround each notification */
+::ng-deep .mat-menu-panel > .mat-menu-content:not(:empty) {
+    padding: 0;
+}
+
+/* Each notification */
+button {
+    outline: none;
+}
+
+::ng-deep .mat-menu-panel#mat-menu-panel-0 {
+    max-width: 100%;
+    min-width: 50%;
+}
+
+
+/* Not seen status */
+.not-seen {
+    background-color: #f1f1f1;
+}
+
+
+/* Line */
+hr {
+    width: 100%;
+    color: black;
+}
+
+/* ::ng-deep .cdk-overlay-pane > .mat-menu-panel.ng-trigger.ng-trigger-transformMenu {
+    min-height: auto;
+} */
