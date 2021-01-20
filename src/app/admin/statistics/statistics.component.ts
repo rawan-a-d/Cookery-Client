@@ -61,15 +61,10 @@ export class StatisticsComponent implements OnInit {
 	generateChart(title: string) {
 		console.log("generate chart " + title)
 		this.options = {
-			// backgroundColor: 'dark',
 			responsive: true,
 			maintainAspectRatio: false,
-			// width: '60%',
+			width: '80%',
 			theme: walden, // chalk, essos, halloween, infographic, macarons, roma
-			// backgroundColor: '#555555',
-			// fontColor: 'white',
-			// title: 'Favourites per user',
-			// color: ['#3398DB'],
 			title: {
 				text: this.chartData.title,
 				left: 'center',
@@ -86,29 +81,16 @@ export class StatisticsComponent implements OnInit {
 				axisPointer: {
 					type: 'shadow',
 				},
-				backgroundColor: 'white'
+				backgroundColor: 'white',
 			},
 			grid: {
-				
-				// themeName: 'macarons',
-	
-				// left: '3%',
-				// right: '4%',
-				// bottom: '3%',
-				// width: '60%',
-				// margin: '2% 20%',
 				containLabel: true,
 			},
 			xAxis: [
 				{
 					type: 'category',
 					data: 
-					// ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'], // xAxis
 					this.chartData.xAxis, // xAxis
-	
-					axisTick: {
-						alignWithLabel: true,
-					},
 				},
 			],
 			yAxis: [
@@ -119,18 +101,14 @@ export class StatisticsComponent implements OnInit {
 			series: [
 				{
 					type: 'bar',
-					// barWidth: '60%',
-					// data: [10, 52, 200, 334, 390, 330, 220], // yAxis
 					data: this.chartData.yAxis, // yAxis
-	
 				},
 			],
 			toolbox: {
 				feature: {
-						dataView: {},
-						saveAsImage: {},
-						saveAsPdf: {},
-						restore: {}
+					dataView: {},
+					saveAsImage: {},
+					restore: {}
 				}
 			}
 			
@@ -173,5 +151,4 @@ export class StatisticsComponent implements OnInit {
 	onChange(statisticType) {		
 		this.getStatistic(statisticType.value);
 	}
-	
 }

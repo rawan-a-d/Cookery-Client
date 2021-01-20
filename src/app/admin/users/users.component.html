@@ -1,0 +1,33 @@
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Recipes</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td class="user-name">{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>Recipes</td>
+            <td>
+                <!-- <a (click)="makeAdmin(user)">admin</a> -->
+                <button mat-stroked-button color='primary' (click)="makeAdmin(user)">admin</button>
+            </td>
+            <td>
+                <!-- <a (click)="makeUser(user)">user</a> -->
+                <button mat-stroked-button color='primary' (click)="makeUser(user)">user</button>
+            </td>
+            <td>
+                <!-- <a (click)="delete(user.id)">Delete</a> -->
+                <button mat-stroked-button color='warn' (click)="delete(user.id)">Delete</button>
+            </td>
+
+        </tr>
+    </tbody>
+</table>

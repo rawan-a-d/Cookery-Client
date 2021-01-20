@@ -11,8 +11,7 @@ import { RecipeComponent } from './recipe/recipe.component';
 import { SelectedRecipeComponent } from './my-recipes/selected-recipe/selected-recipe.component';
 import { AuthGuard } from  './services/auth-guard.service';
 import { AdminAuthGuard } from  './services/admin-auth-guard.service';
-import { RecipesComponent } from './admin/recipes/recipes/recipes.component';
-import { UsersComponent } from './admin/users/users/users.component';
+import { UsersComponent } from './admin/users/users.component';
 import { StatisticsComponent } from './admin/statistics/statistics.component';
 import { AdminComponent } from './admin/admin/admin.component';
 import { ForbiddenComponent } from './errors/forbidden/forbidden.component';
@@ -23,6 +22,7 @@ import { InternalServerErrorComponent } from './errors/internal-server-error/int
 import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { FollowersComponent } from './follow/followers/followers.component';
 import { FolloweesComponent } from './follow/followees/followees.component';
+import { RecipesComponent } from './admin/recipes/recipes.component';
 
 const appRoutes: Routes = [
     {

@@ -3,5 +3,5 @@ export class ChartData {
     // xAxis: Object;
     // yAxis: Object;
     public xAxis: Object[];
-    public yAxis: Object[];
+    public yAxis: number[];
 }

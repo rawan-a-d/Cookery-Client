@@ -7,40 +7,20 @@
   </mat-select>
 </mat-form-field>
 
-
-<!-- <div id="chart">
-    <canvas mdbChart
-        [chartType]="chartType"
-        [datasets]="chartDatasets"
-        [labels]="chartLabels"
-        [colors]="chartColors"
-        [options]="chartOptions"
-        [legend]="true"
-        (chartHover)="chartHovered($event)"
-        (chartClick)="chartClicked($event)">
-    </canvas>
-  </div> -->
-
-<!-- <div id="chart">
-    <div id="chartContainer" style="height: 500px;"></div>
-</div> -->
-
-  <!-- {{chartData | json}} -->
-
-
-
-  <div nz-row>
-    <div nz-col nzSpan="12">
-      <div id="chart1" 
-            echarts 
-            [options]="options"
-            theme="walden" 
-            class="demo-chart mat-elevation-z2"
-            [autoResize]="true"
-            >
-        </div>
-    </div>
+<div nz-row>
+  <div nz-col nzSpan="12">
+    <div id="chart1" 
+          echarts 
+          [options]="options"
+          theme="walden" 
+          class="demo-chart mat-elevation-z2"
+          [autoResize]="true"
+          >
+      </div>
   </div>
+</div>
+
+
 
 
   

@@ -11,7 +11,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { UsersComponent } from './admin/users/users/users.component';
+import { UsersComponent } from './admin/users/users.component';
 import { HomeComponent } from './home/home.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -51,9 +51,9 @@ import { AuthGuard } from './services/auth-guard.service';
 import { AdminAuthGuard } from './services/admin-auth-guard.service';
 import { RegisterComponent } from './register/register.component';
 import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
-import { RecipesComponent } from './admin/recipes/recipes/recipes.component';
 import { StatisticsComponent } from './admin/statistics/statistics.component';
 import { AdminComponent } from './admin/admin/admin.component';
+import { RecipesComponent } from './admin/recipes/recipes.component';
 import {MatSelectModule} from '@angular/material/select';
 import { NgxEchartsModule } from 'ngx-echarts';
 import { BadRequestComponent } from './errors/bad-request/bad-request.component';

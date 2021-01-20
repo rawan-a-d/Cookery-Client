@@ -17,8 +17,9 @@
             </td>
             <td>{{ recipe.user.name }}</td>
           
-            <!-- <td><a href='users.php?source=edit_user&edit_user=<?php echo $id ?>'>Edit</a></td> -->
-            <td><a (click)="delete(recipe.id)">Delete</a></td>
+            <td>
+                <button mat-stroked-button color='warn' (click)="delete(recipe.id)">Delete</button>
+            </td>
         </tr>
     </tbody>
 </table>
