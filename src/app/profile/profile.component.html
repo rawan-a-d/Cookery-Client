@@ -2,26 +2,45 @@
     <div class="flex-item-left">
         <div class="img-container">
             <img [src]="'assets/' + profile?.image" alt="">
-            <mat-icon aria-hidden="false" aria-label="Example edit icon" (click)="openDialog()">edit</mat-icon>
+            <mat-icon aria-hidden="false" aria-label="Example edit icon" 
+                    (click)="openDialog()"
+                    *ngIf="isMyProfile">
+                edit
+            </mat-icon>
          </div>
     </div>
     <div class="flex-item-right">
-        <mat-icon aria-hidden="false" aria-label="Example edit icon" (click)="openUpdateProfileDialog()">edit</mat-icon>
+        <mat-icon aria-hidden="false" aria-label="Example edit icon" 
+            (click)="openUpdateProfileDialog()"
+            *ngIf="isMyProfile">
+            edit
+        </mat-icon>
         <h1 id="name">{{ profile?.user?.name }}</h1>
         <div id="container">
             <div class="item">
                 <p class="title">Recipes</p>
-                <p class="number" [routerLink]="['/users', authService.currentUser.sub, 'recipes']">{{ profile?.recipesNr }}</p>
+                <p class="number" 
+                    [routerLink]="['/users', authService.currentUser.sub, 'recipes']">
+                    {{ profile?.recipesNr }}
+                </p>
             </div>
             <div class="item">
                 <p class="title">followers</p>
-                <p class="number" [routerLink]="['/users', authService.currentUser.sub, 'followers']">{{ profile?.followersNr }}</p>
+                <p class="number" 
+                    [ngClass]="{'is-not-my-profile': !isMyProfile}"
+                    [routerLink]="isMyProfile ? ['/users', authService.currentUser.sub, 'followers'] : []">
+                    {{ profile?.followersNr }}
+                </p>
             </div>
             <div class="item">
                 <p class="title">followees</p>
-                <p class="number" [routerLink]="['/users', authService.currentUser.sub, 'followees']">{{ profile?.followeesNr }}</p>
+                <p class="number" 
+                    [ngClass]="{'is-not-my-profile': !isMyProfile}"
+                    [routerLink]="isMyProfile ? ['/users', authService.currentUser.sub, 'followees'] : []">
+                    {{ profile?.followeesNr }}
+                </p>
             </div>
         </div>
-        <p id="email"><span id="emailHeading">Email </span>{{ profile?.user?.email }}</p>
+        <p id="email" *ngIf="isMyProfile"><span id="emailHeading">Email </span>{{ profile?.user?.email }}</p>
     </div>
 </div>

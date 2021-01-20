@@ -91,6 +91,11 @@
     cursor: pointer;
 }
 
+/* Update cursor based on owner */
+.is-not-my-profile {
+    cursor: auto;
+}
+
 
 
 @media (max-width:768px)

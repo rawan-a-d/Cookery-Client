@@ -18,6 +18,8 @@ export class ProfileComponent implements OnInit {
 	currentUserId = this.authService.userId;
 	userId;
 
+	isMyProfile : boolean;
+
 	constructor(private userService: UserService,
 							public authService: AuthService,
 							public dialog: MatDialog,
@@ -29,6 +31,9 @@ export class ProfileComponent implements OnInit {
 			this.userId = params.get("id")
 
 			this.getProfile();
+
+			// current user is owner??
+			this.isMyProfile = (this.currentUserId == this.userId);
 		})
 	}
 
