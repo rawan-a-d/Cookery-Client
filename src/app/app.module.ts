@@ -74,6 +74,7 @@ import { FolloweesComponent } from './follow/followees/followees.component';
 import { SearchByIngredientComponent } from './home/search-by-ingredient/search-by-ingredient.component';
 import { NotificationMenuComponent } from './notification-menu/notification-menu.component';
 import {MatBadgeModule} from '@angular/material/badge';
+import { DeleteUserConfirmationDialogComponent } from './admin/delete-user-confirmation-dialog/delete-user-confirmation-dialog.component';
 
 
 // NgxEchartsModule.forRoot({
@@ -110,6 +111,7 @@ import {MatBadgeModule} from '@angular/material/badge';
     FolloweesComponent,
     SearchByIngredientComponent,
     NotificationMenuComponent,
+    DeleteUserConfirmationDialogComponent,
   ],
   imports: [
     BrowserModule,

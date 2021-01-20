@@ -13,7 +13,7 @@
           <a class="nav-link waves-light" routerLink="/recipes" mdbWavesEffect>Recipe Book<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item" routerLinkActive="active" *ngIf="authService.isLoggedIn()">
-          <a class="nav-link waves-light" routerLink="/users/2/recipes" mdbWavesEffect>My Recipes</a>
+          <a class="nav-link waves-light" [routerLink]="['/users', authService.userId, 'recipes']" mdbWavesEffect>My Recipes</a>
         </li>
         <!-- authService.isLoggedIn() && authService.currentUser.admin -->
         <li class="nav-item" routerLinkActive="active" *ngIf="authService.isLoggedIn() && authService.currentUser.admin">

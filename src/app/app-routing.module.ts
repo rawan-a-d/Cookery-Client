@@ -23,6 +23,7 @@ import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { FollowersComponent } from './follow/followers/followers.component';
 import { FolloweesComponent } from './follow/followees/followees.component';
 import { RecipesComponent } from './admin/recipes/recipes.component';
+import { AuthService } from './services/auth.service';
 
 const appRoutes: Routes = [
     {
@@ -37,6 +38,7 @@ const appRoutes: Routes = [
     {
         path: 'users/:id/recipes',
         component: MyRecipesComponent,
+
         canActivate: [AuthGuard],
         children: [
             {
@@ -138,4 +140,5 @@ const appRoutes: Routes = [
     imports: [RouterModule.forRoot(appRoutes)],
     exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+}

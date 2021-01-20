@@ -25,8 +25,7 @@ export class MyRecipesComponent implements OnInit, AfterViewChecked {
               private recipeService: RecipeService,
               private cdr: ChangeDetectorRef,
               private router: Router,
-              private route: ActivatedRoute,
-              private elementRef: ElementRef) { }
+              private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     // Subscribe to userService
