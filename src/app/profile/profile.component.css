@@ -17,13 +17,10 @@
 
 /* flex right */
 .flex-item-right {
-    flex: 40%;
-    /* margin: 5%; */
+    flex: 50%;
     /* To place edit icon on container */
     position: relative;
 }
-
-
 
 /* Image Container */
 .img-container { 
@@ -78,14 +75,9 @@
     text-align: center;
 }
 
-/* flex left */
-.flex-left {
-    flex: 40%;
-}
-
-/* flex right */
-.flex-right {
-    flex: 60%;
+/* Numbers */
+.item {
+    flex-grow: 1;
 }
 
 .title {
@@ -96,6 +88,7 @@
 .number {
     font-weight: 500;
     font-size: 1.6em;
+    cursor: pointer;
 }
 
 
@@ -106,7 +99,6 @@
     #container {
         width: 80%;
         margin: 10% 10%;
-        height: 30vh;
     }
 
     #container > #name {

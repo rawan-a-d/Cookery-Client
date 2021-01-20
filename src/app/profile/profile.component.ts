@@ -25,11 +25,8 @@ export class ProfileComponent implements OnInit {
 
 
 	ngOnInit(): void {
-		// this.userId = this.route.snapshot.paramMap.get("id")
-
 		this.route.paramMap.subscribe(params => {
 			this.userId = params.get("id")
-			console.log('userId ' + this.userId)
 
 			this.getProfile();
 		})
@@ -56,13 +53,11 @@ export class ProfileComponent implements OnInit {
   openUpdateProfileDialog(): void {
 	const dialogRef = this.dialog.open(UpdateProfileComponent, {
 	  width: '35%',
-	  height: '40%',
 	  data: {profile: this.profile}
 	});
 
 	dialogRef.afterClosed().subscribe(result => {
 	  console.log('The dialog was closed');
-	//   this.animal = result;
 	});
   }
 }
