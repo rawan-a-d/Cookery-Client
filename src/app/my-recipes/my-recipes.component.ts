@@ -4,6 +4,7 @@ import { UserService } from './../services/user.service';
 import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, OnDestroy, OnInit } from '@angular/core';
 import { Recipe } from '../models/Recipe';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-my-recipes',
@@ -21,13 +22,29 @@ export class MyRecipesComponent implements OnInit, AfterViewChecked {
 
   switch = '';
 
+  loggedInUserId = this.authService.userId;
+  userIdInUrl;
+  isOwner: boolean;
+
   constructor(private userService: UserService, 
               private recipeService: RecipeService,
               private cdr: ChangeDetectorRef,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private authService: AuthService) { }
 
   ngOnInit(): void {
+    // get id in url
+    this.route.paramMap.subscribe(params => {
+			this.userIdInUrl = params.get("id")
+
+			this.getRecipes();
+
+			// current user is owner??
+      this.isOwner = (this.loggedInUserId == this.userIdInUrl);
+    })
+
+    
     // Subscribe to userService
     this.subscription = this.userService.getInfo()
       .subscribe(value => {
@@ -46,12 +63,12 @@ export class MyRecipesComponent implements OnInit, AfterViewChecked {
     })
 
     // Get recipes
-    this.getRecipes();
+    // this.getRecipes();
 
   }
 
   getRecipes() {
-    this.userService.getRecipes()
+    this.userService.getRecipes(this.userIdInUrl)
       .subscribe((recipes) => {
         this.recipes = <Recipe[]>recipes;
       })

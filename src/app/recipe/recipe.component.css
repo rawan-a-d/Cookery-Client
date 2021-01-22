@@ -4,6 +4,22 @@
     font-size: 2.1em;
 }
 
+
+/* User name */
+#user-name {
+    color: blue;
+    cursor: pointer;
+    font-family: helvetica;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+#user-name:hover {
+    font-size: 120%;
+    text-decoration: underline;
+}
+
+
 /* Recipe image */
 img {
     width: 60%;

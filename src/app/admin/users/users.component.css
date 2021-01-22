@@ -41,11 +41,17 @@ a:hover {
 	text-decoration: underline;
 }
 
-.user-name {
+/* .user-name {
     cursor: pointer;
+} */
+
+.recipes {
+    color: blue;
+    cursor: pointer;
+    font-family: helvetica;
+    text-decoration: none;
 }
 
-.user-image {
-    width: 130px;
-    height: 100px;
+.recipes:hover {
+    text-decoration: underline;
 }

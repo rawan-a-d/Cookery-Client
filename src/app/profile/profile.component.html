@@ -20,7 +20,7 @@
             <div class="item">
                 <p class="title">Recipes</p>
                 <p class="number" 
-                    [routerLink]="['/users', authService.currentUser.sub, 'recipes']">
+                    [routerLink]="['/users', userId, 'recipes']">
                     {{ profile?.recipesNr }}
                 </p>
             </div>

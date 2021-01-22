@@ -13,7 +13,10 @@ export class DeleteUserConfirmationDialogComponent implements OnInit {
     public dialogRef: MatDialogRef<DeleteUserConfirmationDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any) {
       console.log("Data " + data.user)
-    }
+  }
+
+  ngOnInit(): void {
+  }
 
   onNoClick(): void {
     // Close dialog

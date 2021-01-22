@@ -14,7 +14,7 @@
             <td class="user-name">{{ user.name }}</td>
             <td>{{ user.email }}</td>
             <td>{{ user.role }}</td>
-            <td [routerLink]="['/users', user.id, 'recipes']">Recipes</td>
+            <td class="recipes" [routerLink]="['/users', user.id, 'recipes']">Recipes</td>
             <td>
                 <button mat-stroked-button color='primary' (click)="makeAdmin(user)">admin</button>
             </td>

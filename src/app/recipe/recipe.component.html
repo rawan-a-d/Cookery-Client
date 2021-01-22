@@ -12,13 +12,14 @@
         </mat-icon>
     </h1>
     <p class="text-center">
-        <span>
-            Created by {{ recipe?.user.name }}
+        <span [routerLink]="['/users', recipe.user.id]">
+            Created by <span id="user-name">{{ recipe?.user.name }}</span>
         </span>
         <mat-icon 
             [matTooltip]="recipe?.isFollowed ? 'Unfollow user' : 'Follow user'"
             aria-hidden="false" 
             aria-label="Example group_add icon"
+            matTooltipPosition="below"
             (click)="recipe?.isFollowed ? unFollow(recipe.followId): follow(recipe.user)">
              {{recipe?.isFollowed? 'person_remove' : 'group_add'}}
         </mat-icon>

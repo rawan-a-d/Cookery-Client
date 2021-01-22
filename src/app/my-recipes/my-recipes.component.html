@@ -2,12 +2,12 @@
     <mat-tab>
         <ng-template mat-tab-label>
             <mat-icon class="example-tab-icon">local_pizza</mat-icon>
-            My Recipes
+            {{isOwner ? 'My Recipes' : 'Recipes'}}
         </ng-template>
         <div id="flex-container">
             <div class="flex-item-left">
-                <button mat-raised-button id="new-recipe" color="accent" (click)="onNewRecipe()">New Recipe</button>
-                <mat-divider></mat-divider>
+                <button mat-raised-button id="new-recipe" color="accent" *ngIf="isOwner" (click)="onNewRecipe()">New Recipe</button>
+                <mat-divider *ngIf="isOwner"></mat-divider>
                 <div class="recipe mat-elevation-z2" *ngFor="let recipe of recipes; let i = index; trackBy: trackRecipe" (click)="onSelected(recipe, i)" [class.active]="selectedIndex == i">
                     <h3>{{ recipe.name }}</h3> 
                     <div class="img-container">
@@ -25,7 +25,7 @@
         </div>
     </mat-tab>
 
-    <mat-tab>
+    <mat-tab *ngIf="isOwner">
         <ng-template mat-tab-label>
             <mat-icon class="example-tab-icon">favorite</mat-icon>
             Favourites

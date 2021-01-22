@@ -19,9 +19,9 @@ export class UserService extends DataService {
   //   return this.httpClient.get(this.url);
   // }
 
-  public getRecipes() {
+  public getRecipes(userId: number) {
     // return this.httpClient.get('http://localhost:90/users/' + userId + '/recipes');
-    return this.httpClient.get('http://localhost:90/users/' + this.authService.currentUser.sub + '/recipes')
+    return this.httpClient.get('http://localhost:90/users/' + userId + '/recipes')
     .pipe(
       map(
         response => response

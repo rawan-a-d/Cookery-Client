@@ -3,6 +3,7 @@ import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit } from '@
 import { Recipe } from 'src/app/models/Recipe';
 import { Output } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-selected-recipe',
@@ -14,12 +15,26 @@ export class SelectedRecipeComponent implements OnInit, OnDestroy {
   // action = 'new';
   id: number;
 
+  loggedInUserId = this.authService.userId;
+  userIdInUrl;
+  isOwner: boolean = false;
+
   constructor(private recipeService: RecipeService,
               private router: Router,
               private route: ActivatedRoute,
-              private elementRef: ElementRef) { }
+              private elementRef: ElementRef,
+              private authService: AuthService) { }
 
   ngOnInit(): void {
+    // get user id in url
+    this.route.parent.params
+    .subscribe((params) => { 
+      this.userIdInUrl = params.id;
+    
+      // current user is owner??
+      this.isOwner = (this.loggedInUserId == this.userIdInUrl);
+    });
+
     this.route.params
       .subscribe(
         (params: Params) => {
