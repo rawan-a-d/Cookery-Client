@@ -41,12 +41,9 @@ a:hover {
 	text-decoration: underline;
 }
 
-/* .user-name {
-    cursor: pointer;
-} */
 
 .recipes {
-    color: blue;
+    color: #337ab7;
     cursor: pointer;
     font-family: helvetica;
     text-decoration: none;

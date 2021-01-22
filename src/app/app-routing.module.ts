@@ -4,11 +4,11 @@ import { ProfileComponent } from './profile/profile.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { NewRecipeComponent } from './new-recipe/new-recipe.component';
 import { HomeComponent } from './home/home.component';
-import { MyRecipesComponent } from './my-recipes/my-recipes.component';
+import { MyRecipesComponent } from './user-recipes/user-recipes.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RecipeComponent } from './recipe/recipe.component';
-import { SelectedRecipeComponent } from './my-recipes/selected-recipe/selected-recipe.component';
+import { SelectedRecipeComponent } from './user-recipes/selected-recipe/selected-recipe.component';
 import { AuthGuard } from  './services/auth-guard.service';
 import { AdminAuthGuard } from  './services/admin-auth-guard.service';
 import { UsersComponent } from './admin/users/users.component';
@@ -84,12 +84,12 @@ const appRoutes: Routes = [
             },
             {
                 path: 'users',
-                component: UsersComponent, // Admin
+                component: UsersComponent,
                 pathMatch: 'full'
             },
             {
                 path: 'recipes',
-                component: RecipesComponent, // Admin
+                component: RecipesComponent,
                 pathMatch: 'full'
             }
         ]

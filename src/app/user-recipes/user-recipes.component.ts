@@ -8,8 +8,8 @@ import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-my-recipes',
-  templateUrl: './my-recipes.component.html',
-  styleUrls: ['./my-recipes.component.css']
+  templateUrl: './user-recipes.component.html',
+  styleUrls: ['./user-recipes.component.css']
 })
 export class MyRecipesComponent implements OnInit, AfterViewChecked {
   recipes: Recipe[];
