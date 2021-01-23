@@ -1,3 +1,4 @@
+import { Notification } from './../models/Notification';
 import { Component, Input, OnInit } from '@angular/core';
 import { NotificationService } from '../services/notification.service';
 import { NotificationDTO } from '../models/NotificationDTO';

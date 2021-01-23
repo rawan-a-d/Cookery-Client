@@ -4,8 +4,9 @@
         matBadgeSize="small" matBadgeColor="warn">notifications_active</mat-icon>
 </button>
 <mat-menu #menu="matMenu">
+    
     <div *ngFor="let notification of notificationsContainer?.notifications" 
-    [ngClass]="{'not-seen': notification.isSeen == false}"
+    [ngClass]="{'not-seen': notification?.isSeen == false}"
     [routerLink]="['recipes', notification.recipeId]">
         <button mat-menu-item>
             <span>
@@ -15,3 +16,4 @@
         <mat-divider></mat-divider>
     </div>
 </mat-menu>
+

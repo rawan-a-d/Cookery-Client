@@ -22,9 +22,12 @@ export class RecipeComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.id =+ this.route.snapshot.paramMap.get('id');
 
-    this.getRecipe(this.id);
+    this.route.paramMap.subscribe(params => {
+			this.id =+ params.get("id")
+
+      this.getRecipe(this.id);
+		})
   }
 
   getRecipe(id: any) {
