@@ -27,6 +27,7 @@
     "@fortawesome/fontawesome-free": "^5.15.1",
     "@types/chart.js": "^2.9.25",
     "angular-bootstrap-md": "^10.1.1",
+    "angular-favicon": "^1.0.4",
     "angular-jwt": "github:auth0/angular-jwt",
     "animate.css": "^4.1.1",
     "bootstrap": "^4.5.3",

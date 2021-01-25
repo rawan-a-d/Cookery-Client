@@ -1,7 +1,9 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
+import { AngularFaviconService } from 'angular-favicon';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { webSocket, WebSocketSubject } from 'rxjs/webSocket';
 import { Recipe } from '../models/Recipe';
+import { TitleBlinkerService } from './title-blinker.service';
 
 const WS_ENDPOINT = 'ws://localhost:90/ws/notification'
 
@@ -9,6 +11,11 @@ const WS_ENDPOINT = 'ws://localhost:90/ws/notification'
   providedIn: 'root'
 })
 export class NotificationSocketService {
+  constructor(private titleBlinkerService: TitleBlinkerService,
+            private ngxFavicon: AngularFaviconService) {
+
+  }
+
   // OBSERVABLES
   // socket of current client, allows client to connect, send message, stop or unsubscribe...
   private socket$: WebSocketSubject<any>;
@@ -25,31 +32,34 @@ export class NotificationSocketService {
   // Connect to service, declare availability and interest
   // if there's no previous connection
   public connect(): void {
-		console.log("SOCKET conn "+ this.socket$)
     // if no socket or closed
     if (!this.socket$ || this.socket$.closed) {
-			console.log("Previous socket " + this.socket$)
       // create socket
       this.socket$ = NotificationSocketService.getNewWebSocket() as WebSocketSubject<any>;
-			console.log("SOCKET post conn "+ this.socket$)
 
       // subscribe to receive messages from server
       this.socket$.subscribe(
         // Called whenever there is a message from the server
         // when message is received
-        msg => this.populateMessage(msg),
+        (msg) => {
+          this.populateMessage(msg);
+
+          // Handle browser tab notification
+          // 1. blink tab with message
+          this.titleBlinkerService.blink('Cookery Notification');
+          // 2. Change icon to notification bell
+          this.ngxFavicon.setFavicon('assets/notification.gif');
+        },
         
         // Called if WebSocket API signals some kind of error
         // when an exception is received
         err => {
-          console.log('getting error');
           console.log(err);
         },
 
         // Called when connection is closed (for whatever reason)
         // when disconnect
         () => {
-          console.log('complete');
           this.socket$ = null;
         }
       );
@@ -63,8 +73,7 @@ export class NotificationSocketService {
       return;
 		}
 		let notification = <Notification>message;
-		console.log('message received: ' + message);
-		console.log(notification);
+
     // pass message to next method, to inform any module interested in the change
     this.state$.next(message);
   }
@@ -81,13 +90,11 @@ export class NotificationSocketService {
     if (!this.socket$){
       return;
     }
-    console.log('message: ' + msg);
     this.socket$.next(msg);
   }
 
 
   public close(): void {
-		console.log("Socket close " + this.socket$);
     if(this.socket$ != undefined) {
 			this.socket$.complete();
 		} 

@@ -19,10 +19,7 @@ export class AppComponent {
   constructor(private notificationSocketService: NotificationSocketService, 
             private authService: AuthService) {
       if(this.authService.isLoggedIn()) {
-        console.log("logged in")
-        console.log(this.authService.isLoggedIn());
         // Connect to server when client starts the application
-        console.log("Connect")
         this.notificationSocketService.connect();
     
         // Subscribe to state to get updated of new mesages
