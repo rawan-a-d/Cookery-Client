@@ -123,7 +123,6 @@ import { DeleteUserConfirmationDialogComponent } from './admin/delete-user-confi
     MDBBootstrapModule.forRoot(),
     MatAutocompleteModule,
     MatButtonModule,
-    BrowserAnimationsModule,
     MatInputModule,
     MatIconModule,
     MatPaginatorModule,
@@ -143,29 +142,10 @@ import { DeleteUserConfirmationDialogComponent } from './admin/delete-user-confi
     MatPasswordStrengthModule,
     MatSlideToggleModule,
     MatDialogModule,
-     MatBadgeModule,
-    // RouterModule.forRoot([
-    //   {
-    //     path: 'recipes',
-    //     component: HomeComponent
-    //   },
-    //   {
-    //     path: 'recipes/:id',
-    //     component: RecipeComponent
-    //   },
-    //   {
-    //     path: 'users/:id/recipes',
-    //     component: MyRecipesComponent
-    //   },
-    //   {
-    //     path: 'users/:id/recipes/:recipeId',
-    //     component: SelectedRecipeComponent
-    //   }
-    // ]),
+    MatBadgeModule,
     NgxEchartsModule.forRoot({
       echarts: () => import('echarts')
-    })
-    
+    }),
 
   ],
   providers: [

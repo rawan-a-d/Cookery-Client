@@ -5,18 +5,37 @@
             {{isOwner ? 'My Recipes' : 'Recipes'}}
         </ng-template>
         <div id="flex-container">
-            <div class="flex-item-left">
+            <div class="flex-item-left" [@recipesAnimation]="recipes.length">
                 <button mat-raised-button id="new-recipe" color="accent" *ngIf="isOwner" (click)="onNewRecipe()">New Recipe</button>
                 <mat-divider *ngIf="isOwner"></mat-divider>
-                <div class="recipe mat-elevation-z2" *ngFor="let recipe of recipes; let i = index; trackBy: trackRecipe" (click)="onSelected(recipe, i)" [class.active]="selectedIndex == i">
-                    <h3>{{ recipe.name }}</h3> 
-                    <div class="img-container">
-                        <img [src]="recipe.image? recipe.image : 'https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'"
-                        onerror="this.src='https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'"
-                         alt="" class="recipe-image">
-                    </div>
+                <div *ngIf="recipes">
+                    <div 
+                        @recipeAnimation
+                        class="recipe mat-elevation-z2" 
+                        *ngFor="let recipe of recipes; let i = index; 
+                        trackBy: trackRecipe" 
+                        (click)="onSelected(recipe, i)" 
+                        [class.active]="selectedIndex == i"
+                        (@recipeAnimation.start)="animationStarted($event)"
+                        (@recipeAnimation.done)="animationDone($event)">
+                        <h3>{{ recipe.name }}</h3> 
+                        <div class="img-container">
+                            <img [src]="recipe.image? recipe.image : 'https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'"
+                            onerror="this.src='https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'"
+                            alt="" class="recipe-image">
+                        </div>
 
+                    </div>
                 </div>
+
+                <!-- <button type="button"
+                @recipeAnimation
+                (@recipeAnimation.start)="animationStarted($event)"
+                (@recipeAnimation.done)="animationDone($event)"
+                *ngFor="let item of items"
+                (click)="removeItem(item)"
+                class="list-group-item"
+                >{{ item }}</button> -->
             </div>
 
             <div class="flex-item-right">

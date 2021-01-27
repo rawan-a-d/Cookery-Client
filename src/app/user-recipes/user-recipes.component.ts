@@ -5,11 +5,48 @@ import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, OnDestroy, 
 import { Recipe } from '../models/Recipe';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { animate, animateChild, group, query, stagger, style, transition, trigger, useAnimation } from '@angular/animations';
+import { bounceOutLeftAnimation, fadeInAnimation } from '../animations';
 
 @Component({
   selector: 'app-my-recipes',
   templateUrl: './user-recipes.component.html',
-  styleUrls: ['./user-recipes.component.css']
+  styleUrls: ['./user-recipes.component.css'],
+  animations: [
+    // fadeIn,
+    // fadeInOne
+
+    trigger('recipesAnimation', [
+      transition(':enter', [
+        group([
+          query('@recipeAnimation', 
+          stagger(200, 
+            animateChild()
+          ),
+          { optional: true }
+          )
+        ])
+
+      ])
+    ]),
+
+    trigger('recipeAnimation', [
+      transition(':enter', [
+        useAnimation(fadeInAnimation, {
+          params: {
+            duration: '500ms'
+          }
+        })
+      ]),
+      transition(':leave', [
+        style({
+          backgroundColor: 'red'
+        }),
+        animate(1000),
+        useAnimation(bounceOutLeftAnimation)
+      ])
+    ])
+  ]
 })
 export class MyRecipesComponent implements OnInit, AfterViewChecked {
   recipes: Recipe[];
@@ -101,6 +138,15 @@ export class MyRecipesComponent implements OnInit, AfterViewChecked {
 
   public trackRecipe (index: number, recipe: Recipe) {
     return recipe ? recipe.id : undefined;
+  }
+
+
+  animationStarted($event) {
+    console.log($event);
+  }
+
+  animationDone($event) {
+    console.log($event);
   }
 }
 
