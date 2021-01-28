@@ -29,6 +29,14 @@
     vertical-align: middle;
 }
 
+
+/* Creator */
+.user-name {
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+
 /* Text container */
 .text-container {
     display: inline-block;
@@ -37,9 +45,14 @@
     vertical-align: sub;
 }
 
+.text-container > h3 {
+    letter-spacing: 0.1em;
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
 .text-container > p {
     display: inline-block;
-
 }
 
 .text-container > .mat-icon {

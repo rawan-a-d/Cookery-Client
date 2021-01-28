@@ -9,7 +9,12 @@
                 alt="" class="recipe-image">
             </div>
             <div class="text-container">
-                <h3 [routerLink]="['/recipes', favourite.id]">{{ favourite.name }}</h3> <p>Created by </p> {{favourite.user.name}}
+                <h3 [routerLink]="['/recipes', favourite.id]">{{ favourite.name }}</h3> 
+                <p>Created by </p> 
+                <span class="user-name" 
+                            [routerLink]="['/users', favourite.user.id]"> 
+                            {{favourite.user.name}}
+                </span>
                 <mat-icon aria-hidden="false" aria-label="Example remove_circle_outline icon" (click)="remove(favourite.favouriteId)">remove_circle_outline</mat-icon>
             </div>
         </div>
