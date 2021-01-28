@@ -1,3 +1,4 @@
+import { homeAnimation } from './home.component.animation';
 import { RecipeDTO } from './../models/RecipeDTO';
 import { FilterPipe } from './../pipes/filter.pipe';
 import { RecipeService } from './../services/recipe.service';
@@ -8,11 +9,13 @@ import { FavouriteService } from '../services/favourite.service';
 import { AuthService } from '../services/auth.service';
 import { MatDialog } from '@angular/material/dialog';
 import { SearchByIngredientComponent } from './search-by-ingredient/search-by-ingredient.component';
+import { searchByIngredientsAnimation } from './search-by-ingredient/search-by-ingredient.component.animation';
 
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
-	styleUrls: ['./home.component.css']
+	styleUrls: ['./home.component.css'],
+	animations: [homeAnimation]
 })
 export class HomeComponent implements OnInit {
 	direction: string = "next";
@@ -163,5 +166,10 @@ export class HomeComponent implements OnInit {
 			.subscribe(data => {
 				this.allRecipes = <RecipeDTO[]>data;
 			});
+	}
+
+
+	public trackRecipe (index: number, recipe: Recipe) {
+		return recipe ? recipe.id : undefined;
 	}
 }

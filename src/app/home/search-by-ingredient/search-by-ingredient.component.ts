@@ -1,13 +1,20 @@
+import { searchByIngredientsAnimation } from './search-by-ingredient.component.animation';
 import { Component, OnInit } from '@angular/core';
 import { MatChipInputEvent } from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { RecipeDTO } from 'src/app/models/RecipeDTO';
 import { MatDialogRef } from '@angular/material/dialog';
+import { bounce, fadeIn, flipInX, shake } from 'ng-animate';
+import { transition, trigger, useAnimation } from '@angular/animations';
 
 @Component({
-	selector: 'app-search-by-ingredient',  templateUrl: './search-by-ingredient.component.html',
-	styleUrls: ['./search-by-ingredient.component.css']
+	selector: 'app-search-by-ingredient',  
+	templateUrl: './search-by-ingredient.component.html',
+	styleUrls: ['./search-by-ingredient.component.css'],
+	// animations: [
+	// 	searchByIngredientsAnimation
+	// ]
 })
 export class SearchByIngredientComponent implements OnInit {
 	[x: string]: any;

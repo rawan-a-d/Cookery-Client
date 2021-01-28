@@ -1,6 +1,6 @@
 <!-- SEARCH -->
 <div class="container-fluid my-5">
-
+    
     <form class="example-form center-form">
         <mat-form-field class="example-full-width">
             <mat-label>Search</mat-label>
@@ -28,7 +28,10 @@
                 <mat-icon id="search" matSuffix>arrow_forward_ios</mat-icon>
             </span>
         </div>
-        <div class="flex-item" *ngFor="let recipe of filteredRecipesArr || recipes">
+        <div class="flex-item" 
+            *ngFor="let recipe of filteredRecipesArr || recipes; let i = index; 
+            trackBy: trackRecipe"
+            @homeAnimation>
             <img [src]="recipe.image? recipe.image : 'https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'"
             onerror="this.src='https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'"
              alt="" class="recipe-image">
@@ -39,7 +42,6 @@
                             aria-label="Example icon"
                             *ngIf="authService.isLoggedIn()"
                             (click)="toggleFavourite(recipe)">
-                            <!-- (click)="isFavourite = !isFavourite"> -->
                         {{ recipe.isFavourite ? 'favorite' : 'favorite_border'}}</mat-icon>
                 <h1 id="recipe-name" [routerLink]="['/recipes', recipe.id]">{{ recipe.name }}</h1>
             </div>        
