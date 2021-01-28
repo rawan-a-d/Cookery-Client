@@ -1,3 +1,4 @@
+import { favouriteAnimation, favouritesAnimation } from './favourites.component.animation';
 import { RecipeDTO } from './../models/RecipeDTO';
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../models/Recipe';
@@ -8,7 +9,11 @@ import { RecipeService } from '../services/recipe.service';
 @Component({
   selector: 'app-favourites',
   templateUrl: './favourites.component.html',
-  styleUrls: ['./favourites.component.css']
+  styleUrls: ['./favourites.component.css'],
+  animations: [
+    favouritesAnimation,
+    favouriteAnimation
+  ]
 })
 export class FavouritesComponent implements OnInit {
   favourites: RecipeDTO[];
@@ -23,8 +28,6 @@ export class FavouritesComponent implements OnInit {
     this.favouriteService.getAll()
     .subscribe((data) => {
       this.favourites = <RecipeDTO[]>data;
-
-      console.log(data);
     })
   }
 
@@ -36,4 +39,8 @@ export class FavouritesComponent implements OnInit {
       });
   }
 
+
+  public trackRecipe (index: number, recipe: Recipe) {
+    return recipe ? recipe.id : undefined;
+  }
 }

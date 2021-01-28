@@ -10,12 +10,12 @@
                 <mat-divider *ngIf="isOwner"></mat-divider>
                 <div *ngIf="recipes">
                     <div 
-                        @recipeAnimation
                         class="recipe mat-elevation-z2" 
                         *ngFor="let recipe of recipes; let i = index; 
                         trackBy: trackRecipe" 
                         (click)="onSelected(recipe, i)" 
                         [class.active]="selectedIndex == i"
+                        @recipeAnimation
                         (@recipeAnimation.start)="animationStarted($event)"
                         (@recipeAnimation.done)="animationDone($event)">
                         <h3>{{ recipe.name }}</h3> 
