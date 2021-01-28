@@ -1,3 +1,4 @@
+import { recipeAnimation, recipesAnimation } from './user-recipes.component.animation';
 import { RecipeService } from './../services/recipe.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from './../services/user.service';
@@ -5,47 +6,14 @@ import { AfterViewChecked, ChangeDetectorRef, Component, ElementRef, OnDestroy, 
 import { Recipe } from '../models/Recipe';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../services/auth.service';
-import { animate, animateChild, group, query, stagger, style, transition, trigger, useAnimation } from '@angular/animations';
-import { bounceOutLeftAnimation, fadeInAnimation } from '../animations';
 
 @Component({
   selector: 'app-my-recipes',
   templateUrl: './user-recipes.component.html',
   styleUrls: ['./user-recipes.component.css'],
   animations: [
-    // fadeIn,
-    // fadeInOne
-
-    trigger('recipesAnimation', [
-      transition(':enter', [
-        group([
-          query('@recipeAnimation', 
-          stagger(200, 
-            animateChild()
-          ),
-          { optional: true }
-          )
-        ])
-
-      ])
-    ]),
-
-    trigger('recipeAnimation', [
-      transition(':enter', [
-        useAnimation(fadeInAnimation, {
-          params: {
-            duration: '500ms'
-          }
-        })
-      ]),
-      transition(':leave', [
-        style({
-          backgroundColor: 'red'
-        }),
-        animate(1000),
-        useAnimation(bounceOutLeftAnimation)
-      ])
-    ])
+    recipesAnimation,
+    recipeAnimation,
   ]
 })
 export class MyRecipesComponent implements OnInit, AfterViewChecked {
@@ -98,10 +66,6 @@ export class MyRecipesComponent implements OnInit, AfterViewChecked {
 
       this.getRecipes();
     })
-
-    // Get recipes
-    // this.getRecipes();
-
   }
 
   getRecipes() {
