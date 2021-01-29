@@ -1,6 +1,8 @@
 <h1 id="header">You have {{ followers?.length }} followers</h1>
-<div class="container">
-    <div class="follower active mat-elevation-z2" *ngFor="let follower of followers">
+<div class="container" [@followsAnimation]="followers.length">
+    <div class="follower active mat-elevation-z2" 
+        *ngFor="let follower of followers"
+        @followAnimation>
         <div class="img-container">
             <img class="user-image" [src]="'assets/' + follower?.image">
         </div>

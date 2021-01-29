@@ -1,3 +1,4 @@
+import { followAnimation, followsAnimation } from './../followees.component.animation';
 import { Component, OnInit } from '@angular/core';
 import { UserFollowDTO } from 'src/app/models/UserFollowDTO';
 import { FollowService } from 'src/app/services/follow.service';
@@ -5,7 +6,11 @@ import { FollowService } from 'src/app/services/follow.service';
 @Component({
   selector: 'app-followees',
   templateUrl: './followees.component.html',
-  styleUrls: ['./followees.component.css']
+  styleUrls: ['./followees.component.css'],
+  animations: [
+    followsAnimation,
+    followAnimation
+  ]
 })
 export class FolloweesComponent implements OnInit {
   followees: UserFollowDTO[];
