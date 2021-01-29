@@ -11,7 +11,6 @@ import { NotificationSocketService } from '../services/notification-socket.servi
 })
 export class NotificationMenuComponent implements OnInit {
   notificationsContainer: NotificationDTO;
-  // @Input() isSeen: boolean;
 
   constructor(private notificationService: NotificationService,
               private notificationSocketService: NotificationSocketService) { }

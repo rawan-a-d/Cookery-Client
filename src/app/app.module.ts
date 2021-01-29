@@ -36,7 +36,7 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
 import { MyRecipesComponent } from './user-recipes/user-recipes.component';
 import { SelectedRecipeComponent } from './user-recipes/selected-recipe/selected-recipe.component';
-import { NewRecipeComponent } from './new-recipe/new-recipe.component';
+import { NewRecipeComponent } from './manage-recipe/manage-recipe.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 // import { MatSidenavModule, MatListModule } from  '@angular/material';
 import {MatMenuModule} from '@angular/material/menu';

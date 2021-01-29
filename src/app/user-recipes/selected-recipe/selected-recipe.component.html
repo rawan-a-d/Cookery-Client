@@ -1,4 +1,4 @@
-<div *ngIf="recipe">
+<div *ngIf="recipe" @fade>
     <img class="mat-elevation-z3" alt="" 
         [src]="recipe.image? recipe.image : 'https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'"
         onerror="this.src='https://bg-foods-ortega.s3.amazonaws.com/asset/recipe%20placeholder.jpg'">

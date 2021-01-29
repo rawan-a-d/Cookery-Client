@@ -1,4 +1,4 @@
-<form [formGroup]="recipeForm">
+<form [formGroup]="recipeForm" @fade>
     <div class="example-container">
         <button mat-raised-button color="accent" id="save-recipe" type="submit" (click)="submit(recipeForm)">Save</button>
         <button mat-raised-button color="accent" id="cancel" type="button" (click)="cancel()">Cancel</button>

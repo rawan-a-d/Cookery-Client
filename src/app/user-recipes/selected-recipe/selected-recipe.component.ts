@@ -1,14 +1,19 @@
+import { fade } from './../../manage-recipe/manage-recipe.component.animation';
 import { RecipeService } from './../../services/recipe.service';
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, OnInit } from '@angular/core';
 import { Recipe } from 'src/app/models/Recipe';
 import { Output } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { recipeAnimation } from '../user-recipes.component.animation';
 
 @Component({
   selector: 'app-selected-recipe',
   templateUrl: './selected-recipe.component.html',
-  styleUrls: ['./selected-recipe.component.css']
+  styleUrls: ['./selected-recipe.component.css'],
+  animations: [ 
+    fade
+  ]
 })
 export class SelectedRecipeComponent implements OnInit, OnDestroy {
   recipe: Recipe;

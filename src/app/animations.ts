@@ -39,3 +39,26 @@ export let fadeInAnimation = animation(
         }
     }
 )
+
+
+export let fadeOutAnimation = animation(
+    // [ 
+    //     animate(2000, style({ opacity: 0 }))
+    // ]
+
+    [  
+        style({
+                opacity: 1
+            }
+        ),
+        // use different duration??
+        // animate(2000)
+        // animate('2s ease-out')
+        animate('{{ duration }} {{ easing }}')
+    ], { params: // default values if they were'nt provided
+        {
+            duration: '2s', 
+            easing: 'ease-in'
+        }
+    }
+)

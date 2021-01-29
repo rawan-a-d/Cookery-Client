@@ -2,7 +2,7 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FavouritesComponent } from './favourites/favourites.component';
-import { NewRecipeComponent } from './new-recipe/new-recipe.component';
+import { NewRecipeComponent } from './manage-recipe/manage-recipe.component';
 import { HomeComponent } from './home/home.component';
 import { MyRecipesComponent } from './user-recipes/user-recipes.component';
 import { NgModule, Component } from '@angular/core';

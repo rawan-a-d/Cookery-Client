@@ -1,6 +1,6 @@
-import { Ingredient } from './../models/Ingredient';
+import { Ingredient } from '../models/Ingredient';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { RecipeService } from './../services/recipe.service';
+import { RecipeService } from '../services/recipe.service';
 import { Recipe } from 'src/app/models/Recipe';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
@@ -10,15 +10,15 @@ import { User } from '../models/User';
 import { AuthService } from '../services/auth.service';
 import { NotificationService } from '../services/notification.service';
 import { NotificationSocketService } from '../services/notification-socket.service';
-
-class ImageSnippet {
-  constructor(public src: string, public file: File) {}
-}
+import { fade } from './manage-recipe.component.animation'
 
 @Component({
   selector: 'app-new-recipe',
-  templateUrl: './new-recipe.component.html',
-  styleUrls: ['./new-recipe.component.css']
+  templateUrl: './manage-recipe.component.html',
+  styleUrls: ['./manage-recipe.component.css'],
+  animations: [
+    fade
+  ]
 })
 export class NewRecipeComponent implements OnInit {
   userId = this.authService.currentUser.sub;
@@ -27,11 +27,7 @@ export class NewRecipeComponent implements OnInit {
   editMode = false;
   recipeForm: FormGroup;
 
-  // selectedFile: File;
-
   selectedFile: File = null;
-
-
 
   constructor(private recipeService: RecipeService,
               private authService: AuthService,
@@ -112,9 +108,6 @@ export class NewRecipeComponent implements OnInit {
   cancel() {
       // Reset form
       this.router.navigate(['../'], { relativeTo: this.route });
-
-      // this.recipeForm.reset();
-      // this.recipeForm.markAsUntouched();
   }
 
   // add new ingredient
